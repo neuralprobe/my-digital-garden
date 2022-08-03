@@ -4,7 +4,7 @@ title: Your first seed
 
 ### Welcome!
 
-Jong Hoon jsut started digital gardening!
+Jong Hoon just started digital gardening!
 
 This is your first note. You'll find it in the [`notes/`](https://github.com/maximevaillancourt/digital-garden-jekyll-template/tree/master/_notes) directory. 
 
