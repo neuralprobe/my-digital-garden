@@ -65,6 +65,8 @@ title: my markdown syntax
 
 ![hope](/assets/image.jpg)
 
+![hope](../assets/image.jpg)
+
 - 유튜브 임베딩:
 	- youtube 영상 $\rightarrow$ share button  $\rightarrow$ embed button  $\rightarrow$ copy  $\rightarrow$ paste in obsidian note 
 
