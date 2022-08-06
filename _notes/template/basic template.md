@@ -1,5 +1,5 @@
 ---
-title: here
+title: basic template
 ---
 
 Created: {{date:YYYY-MM-DD}}, {{time}}

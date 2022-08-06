@@ -14,7 +14,7 @@ title: my markdown syntax
 - 취소선: `~~취소할문장~~` 
 > ~~취소할문장~~
 
-- 하이라이트: `==하이라이트==`
+- 하이라이트: = =하이라이트= =
 > ==하이라이트==
 
 - 볼드체: `**볼드체**`
@@ -32,7 +32,12 @@ title: my markdown syntax
 
 - 백링크: \[\[백링크페이지\]\]
 
-- 블록레퍼런스: \!\[\[백링크 페이지 전체 미리 보기\]\], \!\[\[백링크 페이지 일부 미리 보기\]\], \[\[백링크 페이지 특정 위치에 링크 걸기\^\]\], \[\[백링크 일부 목차 열기 \# 누르고 고르기\]\]
+- 블록레퍼런스: 
+	- \!\[\[백링크 페이지 전체 미리 보기\]\]
+	- \!\[\[백링크 페이지 일부 미리 보기\]\]
+	- \[\[백링크 페이지 특정 위치에 링크 걸기\^\]\]
+	- \[\[백링크 일부 목차 열기 \# 누르고 고르기\]\]
+
 > ![[my markdown syntax examples]]
 
 - 요약하여 링크걸기: \[\[my markdown syntax examples|링크 페이지를 짧게 설명\]\]
@@ -55,22 +60,13 @@ title: my markdown syntax
 	3. `![이미지 파일 설명](/assets/image.jpg){: width="100" height="100"}` (Jekyll에선 되고, Obsidian에선 안됨 ㅠㅠ)
 	4. `<img src="/assets/image.jpg" width="100">` (Jekyll에선 되고, Obsidian에선 안됨 ㅠㅠ. Obsidian에서 안되는건, html 경로가 절대경로로 해야 되서 그런거 같음..)
 
-<img src="/assets/image.jpg" width="100">
 
-
-
-![[/assets/image.jpg]]
-
-![이미지|300](/assets/image.jpg)
-
-![hope](/assets/image.jpg)
-
-![hope](../assets/image.jpg)
+		![hope](../assets/image.jpg)
 
 - 유튜브 임베딩:
 	- youtube 영상 $\rightarrow$ share button  $\rightarrow$ embed button  $\rightarrow$ copy  $\rightarrow$ paste in obsidian note 
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EdHGrnuCEo4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/EdHGrnuCEo4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
