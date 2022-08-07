@@ -2,8 +2,6 @@
 title: basic template
 ---
 
-Created: {{date:YYYY-MM-DD}}, {{time}}
-
 - here
 
 
@@ -13,5 +11,5 @@ Created: {{date:YYYY-MM-DD}}, {{time}}
 #### Reference
 - 
 
-#### Linked Notes
+#### Extra Internal-Links
 - 

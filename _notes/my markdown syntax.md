@@ -1,5 +1,6 @@
 ---
 title: my markdown syntax
+date: 2022-08-06
 ---
 
 ## 기본 마크다운
@@ -70,3 +71,9 @@ title: my markdown syntax
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/EdHGrnuCEo4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+---
+#### Reference
+- [Yalco's github lecture page - lesson 3](https://www.yalco.kr/@git-github/1-3/)
+- [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
+#### Extra Internal-Links
+- 
