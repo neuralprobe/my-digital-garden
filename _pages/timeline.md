@@ -20,9 +20,9 @@ content-type: eg
 <main>
     {% assign notes = site.notes | sort: 'date' | reverse %}
     {%- for note in notes -%}
-        "{{note.date}}":    
+        {% assign date =  note.date | split: ' ' | first %}
+        <i>{{date}}</i>:
         <li style="padding-bottom: 0.6em; list-style: none;"><a href="{{note.url}}">{{ note.title }}</a></li> 
-        <br>
     {%- endfor -%}
     <br/>
 </main>

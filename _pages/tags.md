@@ -24,16 +24,16 @@ content-type: eg
         <a class="internal-link" href="{{ site.baseurl }}/tags/#{{ tag }}">#{{ tag }}</a>
     {%- endfor -%}
     </b>
-    <br/>
+    <hr>
     {% for tag in tags %}
         <div id="{{ tag }}"><h3 id="{{ tag }}">{{ tag | capitalize }}</h3>
         {%- for note in site.notes -%}
             {%- if note.tags contains tag -%}
                 <li style="padding-bottom: 0.6em; list-style: none;"><a href="{{note.url}}">{{ note.title }}</a></li> 
             {%- endif -%}
-            <br>
         {%- endfor -%}
         </div>
+        <hr>
     {%- endfor -%}
     <br/>
     <br/>
