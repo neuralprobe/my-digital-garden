@@ -7,7 +7,13 @@ permalink: /
 
 # Welcome to Jong Hoon's Digital Garden! 🌱 
 
+---
 - *2022-08-08 Update*
+	- [[얄코깃헙-타임캡슐]]
+
+---
+- *2022-08-08 Update*
+	- [[얄코깃헙-gitignore]]
 	- [[tags]] 
 	- [[timeline]]
 

@@ -1,7 +1,7 @@
 ---
 title: my markdown syntax
 date: 2022-08-06
-tags: markdown
+tags: markdown jekyll
 ---
 
 ## 기본 마크다운
