@@ -52,3 +52,4 @@ lsi: false
 excerpt_separator: "\n\n"
 incremental: false
 
+disqus_shortname:    https-digital-garden-jonghoon-blog
