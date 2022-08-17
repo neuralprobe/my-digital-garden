@@ -56,6 +56,7 @@ git status
 ```
 
 - 예시 코드:
+
 ```yaml
 #tigers.yaml
 team: Tigers
