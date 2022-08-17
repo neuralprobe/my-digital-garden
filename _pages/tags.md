@@ -26,7 +26,7 @@ content-type: eg
     </b>
     <hr>
     {% for tag in tags %}
-        <div id="{{ tag }}"><h3 id="{{ tag }}">{{ tag | capitalize }}</h3>
+        <div id="{{ tag }}"><h3 id="{{ tag }}">{{ tag | capitalize }}</h3><br>
         {%- for note in site.notes -%}
             {%- if note.tags contains tag -%}
                 <li style="padding-bottom: 0.6em; list-style: none;"><a href="{{note.url}}">{{ note.title }}</a></li> 

@@ -19,10 +19,14 @@ content-type: eg
 
 <main>
     {% assign notes = site.notes | sort: 'date' | reverse %}
+    {% assign prevdate =  '0000-00-00' %}
     {%- for note in notes -%}
         {% assign date =  note.date | split: ' ' | first %}
-        <i>{{date}}</i>:
-        <li style="padding-bottom: 0.6em; list-style: none;"><a href="{{note.url}}">{{ note.title }}</a></li> 
+        {%- if date != prevdate -%}
+            <i>{{date}}</i>:
+        {%- endif -%}
+        <li style="padding-bottom: 0.6em; "><a href="{{note.url}}">{{ note.title }}</a></li>
+        {% assign prevdate =  note.date | split: ' ' | first %}
     {%- endfor -%}
     <br/>
 </main>
