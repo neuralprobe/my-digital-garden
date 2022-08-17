@@ -42,7 +42,7 @@ tags: markdown jekyll
 
 > ![[my markdown syntax examples]]
 
-- 요약하여 링크걸기: \[\[my markdown syntax examples|링크 페이지를 짧게 설명\]\]
+- 요약하여 링크걸기: \[\[my markdown syntax examples\|링크 페이지를 짧게 설명\]\]
 	- [[my markdown syntax examples|링크 페이지를 짧게 설명]]
 
 - 외부링크: `[외부링크이름](외부링크주소)`
