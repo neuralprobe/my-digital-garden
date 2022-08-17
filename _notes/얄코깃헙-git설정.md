@@ -92,4 +92,3 @@ members:
 #### Extra Internal-Links
 - 이전강의: [[얄코깃헙-맥셋팅]]
 - 다음강의: [[얄코깃헙-gitignore]]
-- 

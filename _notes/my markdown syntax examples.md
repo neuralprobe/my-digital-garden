@@ -13,9 +13,3 @@ tags: markdown jekyll
 ^26729a
 
 두번째 블럭이다 이거야.
-
----
-#### Reference
-- 
-#### Extra Internal-Links
-- 
