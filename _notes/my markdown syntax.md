@@ -63,7 +63,7 @@ tags: markdown jekyll
 	4. `<img src="f/image.jpg" width="100">` (Jekyll에선 되고, Obsidian에선 안됨 ㅠㅠ. Obsidian에서 안되는건, html 경로가 절대경로로 해야 되서 그런거 같음..)
 
 
-		![hope](f/image.jpg)
+		![hope](a/image.jpg)
 
 - 유튜브 임베딩:
 	- youtube 영상 $\rightarrow$ share button  $\rightarrow$ embed button  $\rightarrow$ copy  $\rightarrow$ paste in obsidian note 
