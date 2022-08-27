@@ -1,12 +1,12 @@
 ---
-title: 얄코깃헙-github
+title: github-basic
 date: 2022-08-16
 tags: git github coding yalco
 ---
 
----
-
 ## Github 시작하기
+
+---
 
 - 게정 등록하고 로그인!
 - Personal access token 만들기
@@ -110,4 +110,4 @@ git push (원격 이름) --delete (원격의 브랜치명)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
 
 #### Extra Internal-Links
-- 이전강의: [[얄코깃헙-브랜치관리]]
+- 이전강의: [[git-브랜치관리]]

@@ -1,5 +1,5 @@
 ---
-title: 얄코깃헙-gitignore
+title: git-gitignore
 date: 2022-08-08
 tags: git github coding yalco
 ---
@@ -62,5 +62,5 @@ logs/**/debug.log
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
 
 #### Extra Internal-Links
-- 이전강의: [[얄코깃헙-git설정]]
-- 다음강의: [[얄코깃헙-타임캡슐]]
+- 이전강의: [[git-기본설정]]
+- 다음강의: [[git-타임캡슐]]

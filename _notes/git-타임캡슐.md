@@ -1,5 +1,5 @@
 ---
-title: 얄코깃헙-타임캡슐
+title: git-타임캡슐
 date: 2022-08-08
 tags: git github coding yalco
 ---
@@ -106,5 +106,5 @@ git commit -am "your_comment"
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
 
 #### Extra Internal-Links
-- 이전강의: [[얄코깃헙-gitignore]]
-- 다음강의: [[얄코깃헙-과거로돌아가기]]
+- 이전강의: [[git-gitignore]]
+- 다음강의: [[git-과거로돌아가기]]

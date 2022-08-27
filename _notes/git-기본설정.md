@@ -1,5 +1,5 @@
 ---
-title: 얄코깃헙-git설정
+title: git-기본설정
 date: 2022-08-07
 tags: git github coding yalco
 ---
@@ -90,5 +90,5 @@ members:
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
 
 #### Extra Internal-Links
-- 이전강의: [[얄코깃헙-맥셋팅]]
-- 다음강의: [[얄코깃헙-gitignore]]
+- 이전강의: [[git-맥셋팅]]
+- 다음강의: [[git-gitignore]]

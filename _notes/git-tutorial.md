@@ -1,18 +1,23 @@
 ---
-title: 얄코깃헙
+title: git-tutorial
 date: 2022-08-17
 tags: git github coding yalco
 ---
 
 ## Git & Github 강의노트 모음
 ---
-1. [[얄코깃헙-맥셋팅]]
-2. [[얄코깃헙-git설정]]
-3. [[얄코깃헙-gitignore]]
-4. [[얄코깃헙-과거로돌아가기]]
-5. [[얄코깃헙-타임캡슐]]
-6. [[얄코깃헙-브랜치관리]]
-7. [[얄코깃헙-github]]
+
+![[a/git-tutorial.png]]
+
+1. [[git-맥셋팅]]
+2. [[git-기본설정]]
+3. [[git-gitignore]]
+4. [[git-과거로돌아가기]]
+5. [[git-타임캡슐]]
+6. [[git-브랜치관리]]
+7. [[github-basic]]
+
+
 
 
 ---
