@@ -9,7 +9,7 @@ permalink: /
 
 ---
 - *2022-08-17 Update*
-	- [[얄코깃헙|얄코깃헙 강의노트]]
+	- [[git-tutorial]]
 
 ---
 - *2022-08-08 Update*
@@ -19,7 +19,7 @@ permalink: /
 ---
 - *2022-08-06 Update*
 	-  [[My markdown syntax]]: 기본적인 마크다운 문법 기록
-	- `index.md` as a front page and updatelog.
+	- [index.md](/) as a front page and updatelog.
 
 ---
 - 2022-08-06 Day-One

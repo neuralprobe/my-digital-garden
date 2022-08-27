@@ -7,7 +7,7 @@ tags: git github coding yalco
 ## Git & Github 강의노트 모음
 ---
 
-![[a/git-tutorial.png]]
+![](a/git-tutorial.png)
 
 1. [[git-맥셋팅]]
 2. [[git-기본설정]]
