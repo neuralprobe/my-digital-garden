@@ -32,7 +32,7 @@ sass:
 collections:
   notes:
     output: true
-    permalink: /:slug
+    permalink: /:path
 
 defaults:
   - scope:
@@ -43,6 +43,7 @@ defaults:
       path: "_notes/**/*.md"
     values:
       layout: "note"
+
 
 # mathjax 
 # Conversion

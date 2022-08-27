@@ -59,11 +59,11 @@ tags: markdown jekyll
 - 이미지 파일 Resizing:
 	1. `![-[이미지 파일 위치|이미지 크기]-]` (No Jekyll support yet)
 	2. `![이미지 파일 설명|이미지 크기](위치)` (No Jekyll support yet)
-	3. `![이미지 파일 설명](/assets/image.jpg){: width="100" height="100"}` (Jekyll에선 되고, Obsidian에선 안됨 ㅠㅠ)
-	4. `<img src="/assets/image.jpg" width="100">` (Jekyll에선 되고, Obsidian에선 안됨 ㅠㅠ. Obsidian에서 안되는건, html 경로가 절대경로로 해야 되서 그런거 같음..)
+	3. `![이미지 파일 설명](f/image.jpg){: width="100" height="100"}` (Jekyll에선 되고, Obsidian에선 안됨 ㅠㅠ)
+	4. `<img src="f/image.jpg" width="100">` (Jekyll에선 되고, Obsidian에선 안됨 ㅠㅠ. Obsidian에서 안되는건, html 경로가 절대경로로 해야 되서 그런거 같음..)
 
 
-		![hope](../assets/image.jpg)
+		![hope](f/image.jpg)
 
 - 유튜브 임베딩:
 	- youtube 영상 $\rightarrow$ share button  $\rightarrow$ embed button  $\rightarrow$ copy  $\rightarrow$ paste in obsidian note 

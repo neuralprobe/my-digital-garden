@@ -79,7 +79,7 @@ members:
 ### GUI 버전으로 보기
 - `Codes/git_practice`  폴더를  `SourceTree`로 끌어서 구경하기. 
 
-![](assets/얄코깃헙-git설정-00.png)
+![](f/얄코깃헙-git설정-00.png)
 - `SourceTree`의 repository 삭제할 때는, 꼭 북마크 지우기를 선택하자. (조심조심...)
 
 
