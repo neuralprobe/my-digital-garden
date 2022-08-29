@@ -12,7 +12,7 @@ body {
   box-sizing: content-box;
   font-family: $font-family;
   margin: 0 auto;
-  line-height: 1.9;
+  line-height: 1.8;
   padding: 4vh 6vw;
   overflow-x: hidden;
   color: $color-text;
@@ -23,6 +23,10 @@ body {
     font-size: 1.1rem;
   }
 }
+
+ul li { 
+  padding: 0.2rem;
+} 
 
 time {
   display: block;
