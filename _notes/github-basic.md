@@ -4,9 +4,11 @@ date: 2022-08-16
 tags: git github coding yalco
 ---
 
-## Github 시작하기
+# Github 사용법
 
 ---
+
+## Github 시작하기
 
 - 게정 등록하고 로그인!
 - Personal access token 만들기

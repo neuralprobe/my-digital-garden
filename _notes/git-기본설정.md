@@ -4,7 +4,7 @@ date: 2022-08-07
 tags: git github coding yalco
 ---
 
-## Git 설정 & 프로젝트 관리 시작하기
+# Git 설정 & 프로젝트 관리 시작하기
 
 ---
 ### Tip: CLI vs GUI?

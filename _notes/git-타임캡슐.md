@@ -4,7 +4,7 @@ date: 2022-08-08
 tags: git github coding yalco
 ---
 
-## git-타임캡슐?
+# Git-타임캡슐?
 
 ---
 ### git add & commit

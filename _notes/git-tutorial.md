@@ -1,10 +1,11 @@
 ---
-title: git-tutorial
+title: git-튜토리얼 모음
 date: 2022-08-17
 tags: git github coding yalco
 ---
 
-## Git & Github 강의노트 모음
+# Git & Github 튜토리얼 모음
+
 ---
 
 ![](a/git-tutorial.png)

@@ -4,7 +4,7 @@ date: 2022-08-08
 tags: git github coding yalco
 ---
 
-## Git에게 맡겨지지 않을 것들
+# Git-Ignore 사용법
 
 ---
 ### Why `.gitignore`?

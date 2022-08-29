@@ -4,7 +4,7 @@ date: 2022-08-07
 tags: git github coding yalco macbook 개발환경
 ---
 
-## 강의를 위한 설치와 세팅 (맥)
+# "Git in 맥북" 개발 환경 설정하기
 
 ---
 - Git 설치/업데이트  

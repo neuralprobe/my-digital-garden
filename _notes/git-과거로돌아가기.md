@@ -4,7 +4,7 @@ date: 2022-08-14
 tags: git github coding yalco
 ---
 
-## 과거로 돌아가는 2가지 방법
+# 과거로 돌아가는 2가지 방법
 
 ---
 

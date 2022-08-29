@@ -4,6 +4,10 @@ date: 2022-08-06
 tags: markdown jekyll
 ---
 
+# Markdown 기초 문법 정리
+
+---
+
 ## 기본 마크다운
 - 헤더: `#header1 ~ ######header6`
 
@@ -40,10 +44,7 @@ tags: markdown jekyll
 	- \[\[백링크 페이지 특정 위치에 링크 걸기\^\]\]
 	- \[\[백링크 일부 목차 열기 \# 누르고 고르기\]\]
 
-> ![[my markdown syntax examples]]
-
-- 요약하여 링크걸기: \[\[my markdown syntax examples\|링크 페이지를 짧게 설명\]\]
-	- [[my markdown syntax examples|링크 페이지를 짧게 설명]]
+- 요약하여 링크걸기: \[\[다른 마크다운 문서\|링크 페이지를 짧게 설명\]\]
 
 - 외부링크: `[외부링크이름](외부링크주소)`
 > [네이버](https://naver.com)
@@ -51,6 +52,7 @@ tags: markdown jekyll
 ---
 
 ## 임베딩 문법
+
 - 이미지 파일 임베딩: 
 	1. 이미지파일을 메모로 끌어 오기. 
 	2. `![-[이미지 파일 위치]-]` (No Jekyll support yet)
