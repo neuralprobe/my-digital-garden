@@ -42,7 +42,7 @@ tags: 제텔카스텐 메모 두번째뇌 자기개발 digital-garden
 - 나는 기존에 github-page를 써서 익숙해진 `Jekyll`을 정적 웹사이트 변환 툴로 쓰기로 정했고,  결론적으로 `Obsidian` $\rightarrow$ `Jekyll`  $\rightarrow$ `Netlify` workflow를 구현하기로 정했다.
 
 ![](a/My-Digital-Garden-02.png)
-*Obsidian 사용 예시. 문서간 상호참조의 Graph representation을 지원한다 *
+*Obsidian 사용 예시. 문서간 상호참조의 Graph representation을 지원한다*
 
 - 감사하게도, [Max's digital garden template using Jekyll](https://maximevaillancourt.com/blog/setting-up-your-own-digital-garden-with-jekyll) 페이지와  [Mike's Obsidian Jekyll Workflow](https://refinedmind.co/obsidian-jekyll-workflow) 페이지에서 정확히 `Obsidian` $\rightarrow$ `Jekyll`  $\rightarrow$ `Netlify` workflow를 구현하는 방법을 자세히 소개해 두어서 이를 바탕으로 나만의 `digital garden`을 만들 수 있었다.
 - 이에 더해 몇 가지 기능과, 몇 가지 노력을 더했다.
