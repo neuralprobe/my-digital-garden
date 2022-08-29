@@ -57,10 +57,11 @@ tags: 제텔카스텐 메모 두번째뇌 자기개발 digital-garden
 		- Main-domain: [jonghoon.blog](https://jonghoon.blog), 
 		- Sub-domain: [digital-garden.jonghoon.blog](https://digital-garden.jonghoon.blog)
 	9. 댓글과 좋아요를 달 수 있는 Disqus add-on을 추가했고,
-	10. 만나는 사람마다 이런게 있다고 수다를 떨면서 내 생각을 가다듬었고, 
+	10. git-ignore 를 이용해 보안이 필요한 메모는 netlify upload에서 제외시키고,
+	11. 만나는 사람마다 이런게 있다고 수다를 떨면서 내 생각을 가다듬었고, 
 		- <span style="color:grey">크게 관심없는 친구한테도 괜한 수다를 떨어 죄송 ... </span>
-	11. [[제텔카스텐-글쓰는 인간을 위한 두번째 뇌]] 책을 2독 하면서 `노트를 기반으로 한 사고 방식`에 익숙해 지기 위해 정신무장을 했고,
-	12. 여러 노트 방식을 사용한 후기를 보며, 최적의 방법을 찾으려 탐색 중..
+	12. [[제텔카스텐-글쓰는 인간을 위한 두번째 뇌]] 책을 2독 하면서 `노트를 기반으로 한 사고 방식`에 익숙해 지기 위해 정신무장을 했고,
+	13. 여러 노트 방식을 사용한 후기를 보며, 최적의 방법을 찾으려 탐색 중..
 
 ---
 
