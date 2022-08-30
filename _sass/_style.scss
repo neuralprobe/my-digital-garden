@@ -12,7 +12,7 @@ body {
   box-sizing: content-box;
   font-family: $font-family;
   margin: 0 auto;
-  line-height: 1.8;
+  line-height: 1.7;
   padding: 4vh 6vw;
   overflow-x: hidden;
   color: $color-text;
@@ -51,9 +51,9 @@ img {
 }
 
 blockquote {
-  padding: 1.5em;
+  padding: 0.8em;
   margin: 0;
-  font-size: 0.88em;
+  font-size: 0.95em;
   background: $color-box-background;
   border-radius: $border-radius;
 
@@ -134,7 +134,7 @@ nav {
 }
 
 code {
-  background: #f5f5f5;
+  background: $color-box-background;
   padding: 0.1em 0.2em;
   border-radius: 4px;
 }
@@ -161,4 +161,11 @@ code {
   color: hsl(0, 0%, 20%);
   background: hsl(183, 87%, 91%);
 
+}
+
+mark {
+  background: #36e9aa5c;
+  padding: 0.1em 0.2em;
+  border-radius: 4px;
+  
 }
