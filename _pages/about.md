@@ -12,12 +12,13 @@ permalink: /about
 
 ## What do I want from this?
 
-- Following the Zettelkasten philosophy, this site will be used to record my learning history, stacking my own ideas, connecting different notes together, visualizing my thoguth-graph, and finally publish well-refined articles to [my blog](https://jonghoon.blog/). 
+- Following the Zettelkasten philosophy, this site will be used to record my learning history, stacking my own ideas, connecting different notes together, visualizing my thought-graph, and finally publish well-refined articles to [my blog](https://jonghoon.blog/). 
 
 --- 
 
-Below is the original README.md from Max's github for digital gardening newbies. You can build your own digiatal garden by following Max's tutorial.
-**I wrote a tutorial explaining how to set it up: [Setting up your own digital garden with Jekyll](https://maximevaillancourt.com/blog/setting-up-your-own-digital-garden-with-jekyll)**
+Below is the original README.md from Max's github for digital gardening newbies. 
+You can build your own digiatal garden by following Max's tutorial.
+**Max wrote a tutorial explaining how to set it up: [Setting up your own digital garden with Jekyll](https://maximevaillancourt.com/blog/setting-up-your-own-digital-garden-with-jekyll)**
 
 Preview the template here: https://digital-garden-jekyll-template.netlify.app/
 
@@ -30,6 +31,13 @@ Preview the template here: https://digital-garden-jekyll-template.netlify.app/
 - Supports Markdown or HTML notes
 
 <img alt="Screen Shot 2020-05-19 at 23 05 46" src="https://user-images.githubusercontent.com/8457808/82400515-7d026d80-9a25-11ea-83f1-3b9cb8347e07.png">
+
+---
+
+Update:
+
+- Added [obsidian_images_generator](https://github.com/meewgumi/green-web-template/blob/main/_plugins/obsidian_images_generator.rb) plugin written by [Meewgumi](https://github.com/meewgumi)
+
 
 ## License
 
