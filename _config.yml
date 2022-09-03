@@ -33,6 +33,7 @@ collections:
   notes:
     output: true
     permalink: /:path
+    # slug -> path: asset folder 'a'를 _note 아래에 배치하기 위해 변경
 
 defaults:
   - scope:

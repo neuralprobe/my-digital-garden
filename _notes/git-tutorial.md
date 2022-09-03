@@ -8,7 +8,7 @@ tags: git github coding yalco
 
 ---
 
-![](a/git-tutorial.png)
+![[git-tutorial-00.png]]
 
 1. [[git-맥셋팅]]
 2. [[git-기본설정]]

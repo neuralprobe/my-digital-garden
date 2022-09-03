@@ -19,7 +19,7 @@ tags: 제텔카스텐 메모 두번째뇌 자기개발 digital-garden
 	- 손을 놓고 노트를 작성한 시간 순에 따라 보관하는 순간이 찾아온다. 
 	- 개인적으로 경험상 특정 조직에 속하고 나서 2년 정도, 특정 연구를 시작하고 3개월 정도면 이런 임계점을 경험했던 것 같다.
 
-![](a/My-Digital-Garden-00.png)
+![[My-Digital-Garden-00.png]]
 
 --- 
 
@@ -28,7 +28,7 @@ tags: 제텔카스텐 메모 두번째뇌 자기개발 digital-garden
 - Evernote, Tistory, Brunch, Github-page, Notion, MS-Word, iOS-note, MS-oneNote, facebook, instagram 등등 여러 방법을 활용해 문서를 정리하거나 글을 작성해 봤지만, 여태 마음에 드는 자료의 수집/정리/공유를 위한 딱 마음에 드는 플랫폼을 여태 찾지 못했다.
 - 그러다가 지난 달, [작가의 방](https://www.youtube.com/c/%EC%9E%91%EA%B0%80%EC%9D%98%EB%B0%A9) 유튜브 채널의 [옵시디언 기초 강좌](https://youtube.com/playlist?list=PLy4SLsxzyLUUJlu0L-_U7c1jy_bqvPMR6) 플레이리스트를 발견하고, 영상 속에서 소개한 ==제텔카스텐== (Zettelkasten, 메모상자의 독일어) 에 관심을 갖게 되었고, [[제텔카스텐-글쓰는 인간을 위한 두번째 뇌]] 라는 책도 접하고, 이제는 실행 단계에 접어들게 되었다. 
 
-![](a/제텔카스텐-글쓰는-인간을-위한-두번째-뇌-01.jpeg)
+![[제텔카스텐-글쓰는-인간을-위한-두번째-뇌-01.jpeg]]
 *Niklas Luhmann's index cards*
 
 - 실행 단계에서 한 가지 해결해야 할 문제가 있었는데, 로컬 노트 플랫폼인 ==옵시디언==은 좋은 점이 너무도 많지만, 로컬 플랫폼인 만큼 글을 웹에 공유하는 솔루션은 제공하지 않아서, 옵시디언의 노트를 웹에 효율적으로 공유할 수 있는 방법을 찾아야 했다. 
@@ -41,7 +41,7 @@ tags: 제텔카스텐 메모 두번째뇌 자기개발 digital-garden
 	3. 정적 웹사이트를 배포해줄 수 있는 서버
 - 나는 기존에 github-page를 써서 익숙해진 ==Jekyll==을 정적 웹사이트 변환 툴로 쓰기로 정했고,  결론적으로 ==Obsidian== $\rightarrow$ ==Jekyll==  $\rightarrow$ ==Netlify== workflow를 구현하기로 정했다.
 
-![](a/My-Digital-Garden-02.png)
+![[My-Digital-Garden-02.png]]
 *Obsidian 사용 예시. 문서간 상호참조의 Graph representation을 지원한다*
 
 - 감사하게도, [Max's digital garden template using Jekyll](https://maximevaillancourt.com/blog/setting-up-your-own-digital-garden-with-jekyll) 페이지와  [Mike's Obsidian Jekyll Workflow](https://refinedmind.co/obsidian-jekyll-workflow) 페이지에서 정확히 ==Obsidian== $\rightarrow$ ==Jekyll==  $\rightarrow$ ==Netlify== workflow를 구현하는 방법을 자세히 소개해 두어서 이를 바탕으로 나만의 ==digital garden==을 만들 수 있었다.
@@ -78,7 +78,7 @@ tags: 제텔카스텐 메모 두번째뇌 자기개발 digital-garden
 	8. 그렇게 ==발생==한 주제들을 엮어 하나의 완성된 ==초고==로 엮어야 한다. 
 - 어떻게 보면 번거로울 수 있는 일이지만, 습관화해서 몸에 베이게 만들면 못 할 일은 아닌 것 같다. 오히려, 이렇게 평소에 노트를 정리해두지 않고 Deadline이 닥쳐서야 글감을 모으고 글을 쓰는 고통에 비하면, 미미한 투자라고 할 수 있을 것 같다.
 
-![](a/My-Digital-Garden-01.png)
+![[My-Digital-Garden-01.png]]
 *MS TECH | WIKIMEDIA, PIXABAY*
 
 ---
