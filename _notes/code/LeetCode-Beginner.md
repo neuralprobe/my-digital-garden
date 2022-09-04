@@ -1,5 +1,5 @@
 ---
-title: LeetCode-Begineer
+title: LeetCode-Beginner
 date: 2022-09-03
 tags: leetcode 
 ---
@@ -94,7 +94,7 @@ class Solution:
         if node == None:
             return node
         
-        elif node.left == None and node.right == None:
+        elif (node.left == None) and (node.right == None):
             return node
         node = self.switch_node(node)
         node.left = self.recursiveInversion(node.left)
