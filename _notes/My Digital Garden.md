@@ -29,7 +29,7 @@ tags: 제텔카스텐 메모 두번째뇌 자기개발 digital-garden
 - 그러다가 지난 달, [작가의 방](https://www.youtube.com/c/%EC%9E%91%EA%B0%80%EC%9D%98%EB%B0%A9) 유튜브 채널의 [옵시디언 기초 강좌](https://youtube.com/playlist?list=PLy4SLsxzyLUUJlu0L-_U7c1jy_bqvPMR6) 플레이리스트를 발견하고, 영상 속에서 소개한 ==제텔카스텐== (Zettelkasten, 메모상자의 독일어) 에 관심을 갖게 되었고, [[제텔카스텐-글쓰는 인간을 위한 두번째 뇌]] 라는 책도 접하고, 이제는 실행 단계에 접어들게 되었다. 
 
 ![[제텔카스텐-글쓰는-인간을-위한-두번째-뇌-01.jpeg]]
-*Niklas Luhmann's index cards*
+<center>Niklas Luhmann's index cards</center>
 
 - 실행 단계에서 한 가지 해결해야 할 문제가 있었는데, 로컬 노트 플랫폼인 ==옵시디언==은 좋은 점이 너무도 많지만, 로컬 플랫폼인 만큼 글을 웹에 공유하는 솔루션은 제공하지 않아서, 옵시디언의 노트를 웹에 효율적으로 공유할 수 있는 방법을 찾아야 했다. 
 - 그렇게 찾게 된 또 다른 키워드, ==Digital Garden==을 접하게 되었다.
@@ -42,7 +42,7 @@ tags: 제텔카스텐 메모 두번째뇌 자기개발 digital-garden
 - 나는 기존에 github-page를 써서 익숙해진 ==Jekyll==을 정적 웹사이트 변환 툴로 쓰기로 정했고,  결론적으로 ==Obsidian== $\rightarrow$ ==Jekyll==  $\rightarrow$ ==Netlify== workflow를 구현하기로 정했다.
 
 ![[My-Digital-Garden-02.png]]
-*Obsidian 사용 예시. 문서간 상호참조의 Graph representation을 지원한다*
+<center>Obsidian 사용 예시. 문서간 상호참조의 Graph representation을 지원한다</center>
 
 - 감사하게도, [Max's digital garden template using Jekyll](https://maximevaillancourt.com/blog/setting-up-your-own-digital-garden-with-jekyll) 페이지와  [Mike's Obsidian Jekyll Workflow](https://refinedmind.co/obsidian-jekyll-workflow) 페이지에서 정확히 ==Obsidian== $\rightarrow$ ==Jekyll==  $\rightarrow$ ==Netlify== workflow를 구현하는 방법을 자세히 소개해 두어서 이를 바탕으로 나만의 ==digital garden==을 만들 수 있었다.
 - 이에 더해 몇 가지 기능과, 몇 가지 노력을 더했다.
@@ -79,7 +79,9 @@ tags: 제텔카스텐 메모 두번째뇌 자기개발 digital-garden
 - 어떻게 보면 번거로울 수 있는 일이지만, 습관화해서 몸에 베이게 만들면 못 할 일은 아닌 것 같다. 오히려, 이렇게 평소에 노트를 정리해두지 않고 Deadline이 닥쳐서야 글감을 모으고 글을 쓰는 고통에 비하면, 미미한 투자라고 할 수 있을 것 같다.
 
 ![[My-Digital-Garden-01.png]]
-*MS TECH | WIKIMEDIA, PIXABAY*
+<p align="right"> MS TECH | WIKIMEDIA, PIXABAY</p>
+
+
 
 ---
 
