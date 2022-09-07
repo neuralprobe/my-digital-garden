@@ -1,7 +1,7 @@
 ---
 title: LeetCode-Beginner
 date: 2022-09-03
-tags: leetcode 
+tags: leetCode cpp python
 ---
 
 # Problems in LeetCode Beginner's Guide
@@ -311,9 +311,77 @@ public:
 > 
 > If there are two middle nodes, return **the second middle** node.
 
+![[Pasted image 20220906045842.png]]
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        arr = [head]
+        while arr[-1].next:
+            arr.append(arr[-1].next)
+        return arr[len(arr) // 2]
+```
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        vector<ListNode*> A = {head};
+        while (A.back()->next != NULL)
+            A.push_back(A.back()->next);
+        return A[A.size() / 2];
+    }
+};
+```
+
+## 383. Ransom Note
+
+> Given two strings `ransomNote` and `magazine`, return `true` _if_ `ransomNote` _can be constructed by using the letters from_ `magazine` _and_ `false` _otherwise_.
+> 
+> Each letter in `magazine` can only be used once in `ransomNote`.
+
+```python
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        # Check for obvious fail case.
+        if len(ransomNote) > len(magazine): return False
+
+        # In Python, we can use the Counter class. It does all the work that the
+        # makeCountsMap(...) function in our pseudocode did!
+        magazine_counts = collections.Counter(magazine)
+        ransom_note_counts = collections.Counter(ransomNote)
+        print(magazine_counts)
+
+        # For each *unique* character in the ransom note:
+        for char, count in ransom_note_counts.items():
+            # Check that the count of char in the magazine is equal
+            # or higher than the count in the ransom note.
+            magazine_count = magazine_counts[char]
+            if magazine_count < count:
+                return False
+
+        # If we got this far, we can successfully build the note.
+        return True
+```
 
 
 ---
 #### Reference
 - [The LeetCode Beginner's Guide](https://leetcode.com/explore/learn/card/the-leetcode-beginners-guide)
 #### Extra Internal-Links
+- What's next? [[LeetCode Explore Card Track]] 

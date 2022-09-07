@@ -1,7 +1,7 @@
 ---
 title: My Digital Garden
 date: 2022-08-29
-tags: 제텔카스텐 메모 두번째뇌 자기개발 digital-garden
+tags: 제텔카스텐 메모 두번째뇌 자기개발 digitalGarden
 ---
 
 # My Digital Garden

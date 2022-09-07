@@ -188,3 +188,16 @@ figcaption {
   padding: 1px;
   text-align: center;
 }
+
+/*
+테이블 스타일 css
+*/
+
+table {
+  font-size: 0.90rem;
+  border-collapse:collapse;
+}
+
+td, th {
+  border: 1.5px solid rgb(206, 206, 206)
+}

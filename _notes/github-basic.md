@@ -1,7 +1,7 @@
 ---
 title: github-basic
 date: 2022-08-16
-tags: git github coding yalco
+tags: git gitHub coding yalco
 ---
 
 # Github 사용법

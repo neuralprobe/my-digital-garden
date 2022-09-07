@@ -1,7 +1,7 @@
 ---
 title: git-브랜치관리
 date: 2022-08-16
-tags: git github coding yalco
+tags: git gitHub coding yalco
 ---
 
 # Git 브랜치 관리
