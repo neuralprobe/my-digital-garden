@@ -14,7 +14,7 @@ tags: leetCode algorithm dataStructure
 ![[Screen Shot 2022-09-06 at 4.40.47 PM.png]]
 
 ## Progress
-- ==Array==: Source: [Array101](https://leetcode.com/explore/learn/card/fun-with-arrays/) + Note: [[LeetCode Array101]]
+- ==Array==: Source $\rightarrow$ [Array101](https://leetcode.com/explore/learn/card/fun-with-arrays/) + Note $\rightarrow$ [[LeetCode Array101]]
 
 ---
 #### Reference
