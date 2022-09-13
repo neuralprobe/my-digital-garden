@@ -96,7 +96,7 @@ public:
 
 
 ---
-#### Reference
+**Reference**
 - [Array101](https://leetcode.com/explore/learn/card/fun-with-arrays/)
 
-#### Extra Internal-Links
+**Related Internal-Links**

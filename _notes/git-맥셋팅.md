@@ -19,9 +19,9 @@ tags: git gitHub coding yalco macBook 개발환경
 - [터미널 얄코 환경](https://www.yalco.kr/_03_mac_terminal/) 따라하기
 
 ---
-#### Reference
+**Reference**
 - [Yalco's github lecture 1-3](https://www.yalco.kr/@git-github/1-3/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
 
-#### Extra Internal-Links
+**Related Internal-Links**
 - 다음강의: [[git-기본설정]]

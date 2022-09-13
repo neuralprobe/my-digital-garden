@@ -381,7 +381,8 @@ class Solution:
 
 
 ---
-#### Reference
+**Reference**
 - [The LeetCode Beginner's Guide](https://leetcode.com/explore/learn/card/the-leetcode-beginners-guide)
-#### Extra Internal-Links
+
+**Related Internal-Links**
 - What's next? [[LeetCode Explore Card Track]] 

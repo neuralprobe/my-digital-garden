@@ -22,9 +22,9 @@ tags: git gitHub coding yalco
 
 
 ---
-#### Reference
+**Reference**
 - [Yalco's github lecture 1-1](https://www.yalco.kr/@git-github/1-1/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
 
-#### Extra Internal-Links
+**Related Internal-Links**
 - [[My Digital Garden]]

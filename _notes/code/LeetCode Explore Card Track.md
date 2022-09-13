@@ -17,7 +17,7 @@ tags: leetCode algorithm dataStructure
 - ==Array==: Source $\rightarrow$ [Array101](https://leetcode.com/explore/learn/card/fun-with-arrays/) + Note $\rightarrow$ [[LeetCode Array101]]
 
 ---
-#### Reference
+**Reference**
 - [LeetCode Explore Card Track](https://leetcode.com/explore/featured/card/the-leetcode-beginners-guide/679/sql-syntax/4358/)
 
-#### Extra Internal-Links
+**Related Internal-Links**
