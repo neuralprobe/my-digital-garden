@@ -13,8 +13,8 @@ layout: default
     <!--
     <h1 style="color:rgba(191, 191, 191, 0.653); font-size:130%;">{{ page.title }}</h1>
     -->
-    <time style="color:rgba(191, 191, 191, 0.653);" datetime="{{ page.last_modified_at | date_to_xmlschema }}">{% if page.type != 'pages' %}
-      Last updated on {{ page.last_modified_at | date: "%B %-d, %Y" }}
+    <time style="color:rgba(191, 191, 191, 0.653);" datetime="{{ page.date | date_to_xmlschema }}">{% if page.type != 'pages' %}
+      Last updated on {{ page.date | date: "%B %-d, %Y" }}
       {% endif %}
     </time>
   </div>
