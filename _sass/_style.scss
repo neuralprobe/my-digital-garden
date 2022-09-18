@@ -65,7 +65,7 @@ blockquote {
 */
 
 blockquote {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   background: #f9f9f9;
   border-left: 10px solid #ccc;
   margin: 0.5em;
@@ -153,6 +153,7 @@ side {
 }
 
 code {
+  font-size: 1.1rem;
   background: $color-box-background;
   padding: 0.1em 0.2em;
   border-radius: 4px;
