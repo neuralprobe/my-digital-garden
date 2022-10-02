@@ -7,7 +7,7 @@ tags: book 과로 자기계발 생산성
 # 게으르다는 착각 - Part1
 ## Laziness Does Not Exist
 
-- 우리는 왜 게으름을 두려워할 필요가 없는가
+\- 우리는 왜 게으름을 두려워할 필요가 없는가
 
 데번 프라이스 지음 \| 이현 옮김
 
@@ -54,5 +54,3 @@ tags: book 과로 자기계발 생산성
 ---
 **Reference**
 - [게으르다는 착각](http://www.yes24.com/Product/Goods/108721410)
-
-**Related Internal-Links**
