@@ -1,5 +1,5 @@
 ---
-title: SOLID pattern
+title: SOLID Principle
 date: 2022-10-04
 tags: coding designPattern 
 ---
