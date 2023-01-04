@@ -9,8 +9,10 @@ tags: routine health wellbeing
 ![[Pasted image 20221003165042.png]]
 
 > “In repentance and rest is your salvation, 
+> 
 > in quietness and trust is your strength"
-> - from Isaiah 30:15
+> 
+>\- from Isaiah 30:15
 
 ---
 
