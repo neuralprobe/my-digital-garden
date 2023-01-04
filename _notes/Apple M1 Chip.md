@@ -24,8 +24,7 @@ tags: UMA apple m1 compArch memory
 	- M1 Max: 64GB, 400GB/s
 
 ---
-**Reference**
-- [Understanding Apple’s Unified Memory Architecture](https://www.macobserver.com/analysis/understanding-apples-unified-memory-architecture/)
+## Reference
 
-**Related Internal-Links**
+- [Understanding Apple’s Unified Memory Architecture](https://www.macobserver.com/analysis/understanding-apples-unified-memory-architecture/)
 - [[UMA-NUMA]]

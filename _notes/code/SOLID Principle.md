@@ -84,7 +84,8 @@ tags: coding designPattern
 - 새로운 동물을 추가할 때, 기존의 코드를 전혀 수정할 필요가 없게 된다 !! ![[Pasted image 20221004111655.png]]
 
 ---
-**Reference**
+## Reference
+
 - [디자인 패턴 SOLID by 코드없는프로그래밍](https://youtube.com/playlist?list=PLDV-cCQnUlIZcWXE4PrxJx6U3qKfRTJcK)
 - [리스코프 치환 원리 by velog.io/@dogit](https://velog.io/@dogit/%EB%A6%AC%EC%8A%A4%EC%BD%94%ED%94%84-%EC%B9%98%ED%99%98-%EC%9B%90%EC%B9%99-Liskov-Substitution-Principle)
 - [Dependency inversion principle from wikipedia](https://en.wikipedia.org/wiki/Dependency_inversion_principle)

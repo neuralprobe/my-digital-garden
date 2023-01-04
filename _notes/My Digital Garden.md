@@ -91,14 +91,13 @@ tags: 제텔카스텐 메모 두번째뇌 자기계발 digitalGarden
 - 1년 정도 지나서 성공후기를 남길 수 있을면 좋을듯 :)
 
 ---
-**Reference**
+## Reference
+
 - [**제텔카스텐** *글 쓰는 인간을 위한 두 번째 뇌*](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788993784701)
 - [**하우 투 제텔카스텐(How to Zettel-Kasten)** 옵시디언 기반 두 번째 뇌 만들기](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788993784725&orderClick=LAG&Kc=)
 - [옵시디언 기초 강좌](https://youtube.com/playlist?list=PLy4SLsxzyLUUJlu0L-_U7c1jy_bqvPMR6) 플레이리스트 by [작가의 방](https://www.youtube.com/c/%EC%9E%91%EA%B0%80%EC%9D%98%EB%B0%A9)님 채널
 - [Max's digital garden template using Jekyll](https://maximevaillancourt.com/blog/setting-up-your-own-digital-garden-with-jekyll) 
 - [Mike's Obsidian Jekyll Workflow](https://refinedmind.co/obsidian-jekyll-workflow) 
-
-**Related Internal-Links**
 - [[제텔카스텐-글쓰는 인간을 위한 두번째 뇌]]
 - [[git) tutorial]]
 - [[my markdown syntax]]

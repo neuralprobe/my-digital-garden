@@ -68,40 +68,43 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ## Classes of Computers
 
-- Internet of Things (IoT), Embedded Computers
-	- 8/32-bit for low cost devices (Microwaves, Washing machines)
-	- 64-bit for high-end product (Cars, Network switches)
 
-- Personal Mobile Devices (PMD)
-	- Responsiveness and predictability
-	- Real-time performance
-	- Minimize memory and energy consumption
+### Internet of Things (IoT), Embedded Computers
 
-- Desktop Computing
-	- Benchmarking + Web-centric, interactive apps
+- 8/32-bit for low cost devices (Microwaves, Washing machines)
+- 64-bit for high-end product (Cars, Network switches)
 
-- Servers
-	- Availability: Open 7 days, 24 hours
-	- Scalability: Scale up computing capacity, the memory, the storage, the I/O bandwidth
-	- Efficient throughput (Overall Perf.) > Responsiveness (Individual Perf.)
+### Personal Mobile Devices (PMD)
 
-- Clusters/Warehouse-Scale Computers
-	- The growth of Software-as-a-Service  (SaaS)
-	- Clusters: 
-		- Collection of desktop computers or servers connected by local area networks to act as a single larger computer
-		- Each node run its own operating system, and nodes communicates using a networking protocol
-	- WSCs: The largest of the clusters
-		- Use inexpensive, redundant components compared to the servers 
-	- Price-performance and power
-	- Availability: Peak hours for Christmas!
+- Responsiveness and predictability
+- Real-time performance
+- Minimize memory and energy consumption
 
+### Desktop Computing
+
+- Benchmarking + Web-centric, interactive apps
+
+### Servers
+
+- Availability: Open 7 days, 24 hours
+- Scalability: Scale up computing capacity, the memory, the storage, the I/O bandwidth
+- Efficient throughput (Overall Perf.) > Responsiveness (Individual Perf.)
+
+### Clusters/Warehouse-Scale Computers
+
+- The growth of Software-as-a-Service  (SaaS)
+- Clusters: 
+	- Collection of desktop computers or servers connected by local area networks to act as a single larger computer
+	- Each node run its own operating system, and nodes communicates using a networking protocol
+- WSCs: The largest of the clusters
+	- Use inexpensive, redundant components compared to the servers 
+- Price-performance and power
+- Availability: Peak hours for Christmas!
 - Supercomputer
 	- Expensive, floating point performance, 
 	- Running large, communication-intensive batch programs
 
----
-
-## Class of Parallelism and Parallel Architectures
+### Class of Parallelism and Parallel Architectures
 
 - Parallelism in applications:
 	- Data-level parallelism
@@ -127,41 +130,43 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ## Defining Computer Architecture
 
-- Instruction Set Architecture: The Myopic View of Computer Architecture
-	- ISA
-		- The actual programmer-visible instruction set
-		- A boundary between the software and hardware
-		- 80x86, ARMv8, RISC-V
-		- RISC-V
-			- A large set of registers
-			- Easy-to-pipeline instructions
-			- A lean set of operations
-	1. Class of ISA
-		- General-purpose register architectures: Nearly all ISAs
-			- Register-memory ISAs (80x86)
-			- Load-store ISAs (ARMv8 & RISC-V)
-	2. Memory addressing
-		- Mostly, byte addressing
-		- Some, objects should be *aligned*
-	3. Addressing Mode
-		- Addressing modes specify the address of a memory object
-		- eg. In RISC-V, Registers / Immediate / Displacement
-	4. Types and Sizes of operands
-		- ASCII, Unicode, INT, word, FP32, FP64 ....
-	5. Operations
-		- Data transfer, arithmetic logical, control, floating point
-	6. Control flow instructions
-		- Conditional branches, unconditional branches, jumps, procedure calls, and returns
-	7. Encoding an ISA
-		- Fixed length vs Variable length
+## Instruction Set Architecture: The Myopic View of Computer Architecture
+
+- ISA
+	- The actual programmer-visible instruction set
+	- A boundary between the software and hardware
+	- 80x86, ARMv8, RISC-V
+	- RISC-V
+		- A large set of registers
+		- Easy-to-pipeline instructions
+		- A lean set of operations
+1. Class of ISA
+	- General-purpose register architectures: Nearly all ISAs
+		- Register-memory ISAs (80x86)
+		- Load-store ISAs (ARMv8 & RISC-V)
+2. Memory addressing
+	- Mostly, byte addressing
+	- Some, objects should be *aligned*
+3. Addressing Mode
+	- Addressing modes specify the address of a memory object
+	- eg. In RISC-V, Registers / Immediate / Displacement
+4. Types and Sizes of operands
+	- ASCII, Unicode, INT, word, FP32, FP64 ....
+5. Operations
+	- Data transfer, arithmetic logical, control, floating point
+6. Control flow instructions
+	- Conditional branches, unconditional branches, jumps, procedure calls, and returns
+7. Encoding an ISA
+	- Fixed length vs Variable length
 
 - RISC-V registers, names, usage, and calling conventions
 ![[Pasted image 20230104063556.png]]
 
 
-- Genuine Computer Architecture: Designing the Organization and Hardware to Meet Goals and Functional Requirements
-	- Implementation = Organization (Microarchiecture)+ Hardware
-	- Architecture = ISA + Organization (Microarchiecture) + Hardware
+### Genuine Computer Architecture: Designing the Organization and Hardware to Meet Goals and Functional Requirements
+
+- Implementation = Organization (Microarchiecture)+ Hardware
+- Architecture = ISA + Organization (Microarchiecture) + Hardware
 
 - More information in Appendix.A ([[HP) Instruction Set Principles]])
 
@@ -222,5 +227,6 @@ tags: computerArchitecture hennessy patterson risc isa
 - Amdahl's Law
 
 ---
-**Reference**
+## Reference
+
 - [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)

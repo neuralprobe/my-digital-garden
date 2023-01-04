@@ -201,8 +201,7 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 
 
 ---
-***Lecture***
-[[Computer Architecture by D. Wentzlaff]] Week1 (1/2)
+## Reference
 
-***Reading***
+- [[Computer Architecture by D. Wentzlaff]] Week1 (1/2)
 - [[HP) Fundamentals of Quantitative Design and Analysis]] (H&P6 Chapter 1), and [[HP) Instruction Set Principles]](H&P6 Appendix A)

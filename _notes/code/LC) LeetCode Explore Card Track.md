@@ -19,7 +19,6 @@ tags: leetCode algorithm dataStructure
 	- Note: [[LC) Array101]]
 
 ---
-**Reference**
-- [LeetCode Explore Card Track](https://leetcode.com/explore/featured/card/the-leetcode-beginners-guide/679/sql-syntax/4358/)
+## Reference
 
-**Related Internal-Links**
+- [LeetCode Explore Card Track](https://leetcode.com/explore/featured/card/the-leetcode-beginners-guide/679/sql-syntax/4358/)

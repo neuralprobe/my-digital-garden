@@ -101,10 +101,7 @@ git merge add-coach
 
 
 ---
-<a href="https://www.freepik.com/free-vector/set-flexible-people-various-positions_4530344.htm#query=stretching&position=2&from_view=keyword">Image by katemangostar</a> on Freepik
+## Reference
+
 - [Yalco's github lecture 3-1](https://www.yalco.kr/@git-github/3-1/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
-
-**Extra Internal-Links**
-- 이전강의: [[git) 과거로돌아가기]]
-- 다음강의: [[git) github basic]]

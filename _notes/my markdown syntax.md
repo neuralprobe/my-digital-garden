@@ -75,9 +75,8 @@ tags: markdown jekyll
 
 
 ---
-**Reference**
+## Reference
+
 - [https://digital-garden-jekyll-template.netlify.app/your-first-note](https://digital-garden-jekyll-template.netlify.app/your-first-note)
 - [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)
-
-**Related Internal-Links**
 - [[My Digital Garden]]

@@ -85,10 +85,8 @@ members:
 
 
 ---
-**Reference**
+## Reference
+
 - [Yalco's github lecture 1-4](https://www.yalco.kr/@git-github/1-4/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
 
-**Related Internal-Links**
-- 이전강의: [[git) 맥셋팅]]
-- 다음강의: [[git) gitignore]]

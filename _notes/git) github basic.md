@@ -107,9 +107,7 @@ git push (원격 이름) --delete (원격의 브랜치명)
 
 
 ---
-**Reference**
+## Reference
+
 - [Yalco's github lecture 4-1](https://www.yalco.kr/@git-github/4-1/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
-
-**Related Internal-Links**
-- 이전강의: [[git) 브랜치 관리]]
