@@ -1,5 +1,5 @@
 ---
-title: github-basic
+title: git) github basic
 date: 2022-08-16
 tags: git gitHub coding yalco
 ---
@@ -112,4 +112,4 @@ git push (원격 이름) --delete (원격의 브랜치명)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
 
 **Related Internal-Links**
-- 이전강의: [[git-브랜치관리]]
+- 이전강의: [[git) 브랜치 관리]]

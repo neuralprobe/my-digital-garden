@@ -1,5 +1,5 @@
 ---
-title: git-튜토리얼 모음
+title: git) 튜토리얼 모음
 date: 2022-08-17
 tags: git gitHub coding yalco
 ---
@@ -10,13 +10,13 @@ tags: git gitHub coding yalco
 
 ![[git-tutorial-00.png]]
 
-1. [[git-맥셋팅]]
-2. [[git-기본설정]]
-3. [[git-gitignore]]
-4. [[git-과거로돌아가기]]
-5. [[git-타임캡슐]]
-6. [[git-브랜치관리]]
-7. [[github-basic]]
+1. [[git) 맥셋팅]]
+2. [[git) 기본설정]]
+3. [[git) gitignore]]
+4. [[git) 과거로돌아가기]]
+5. [[git) 타임캡슐]]
+6. [[git) 브랜치 관리]]
+7. [[git) github basic]]
 
 
 

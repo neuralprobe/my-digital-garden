@@ -385,4 +385,4 @@ class Solution:
 - [The LeetCode Beginner's Guide](https://leetcode.com/explore/learn/card/the-leetcode-beginners-guide)
 
 **Related Internal-Links**
-- What's next? [[LeetCode Explore Card Track]] 
+- What's next? [[LC) LeetCode Explore Card Track]] 

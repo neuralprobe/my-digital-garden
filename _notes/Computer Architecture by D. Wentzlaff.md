@@ -42,8 +42,8 @@ tags: comptureArchitecture lecture wentzlaff
 
 ## Syllabus
 
-1. [[Instruction Set Architecture and Microcode]]
-2. [[Microcode and Pipelining]]
+1. [[DW) Instruction Set Architecture and Microcode]]
+2. [[DW) Microcode and Pipelining]]
 3. [[Cache Review]]
 4. [[Superscalar1]]
 5. [[Superscalar2]]

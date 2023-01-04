@@ -1,5 +1,5 @@
 ---
-title: git-맥셋팅
+title: git) 맥셋팅
 date: 2022-08-07
 tags: git gitHub coding yalco macBook 개발환경
 ---
@@ -24,4 +24,4 @@ tags: git gitHub coding yalco macBook 개발환경
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
 
 **Related Internal-Links**
-- 다음강의: [[git-기본설정]]
+- 다음강의: [[git) 기본설정]]

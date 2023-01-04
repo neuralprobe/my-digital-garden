@@ -163,7 +163,7 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Implementation = Organization (Microarchiecture)+ Hardware
 	- Architecture = ISA + Organization (Microarchiecture) + Hardware
 
-- More information in Appendix.A ([[HP)-Instruction Set Principles]])
+- More information in Appendix.A ([[HP) Instruction Set Principles]])
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: LeetCode Array101
+title: LC) Array101
 date: 2022-09-06
 tags: leetCode array python cpp dataStructure 
 ---

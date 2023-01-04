@@ -100,5 +100,5 @@ tags: 제텔카스텐 메모 두번째뇌 자기계발 digitalGarden
 
 **Related Internal-Links**
 - [[제텔카스텐-글쓰는 인간을 위한 두번째 뇌]]
-- [[git-tutorial]]
+- [[git) tutorial]]
 - [[my markdown syntax]]
