@@ -6,6 +6,8 @@ tags: routine health
 
 # 지속가능한 삶을 위한 Daily Routine 
 
+![[Pasted image 20221003165042.png]]
+
 ---
 
 ## 9가지 루틴: RMBPS/EKCW
