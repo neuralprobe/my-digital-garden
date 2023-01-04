@@ -1,5 +1,5 @@
 ---
-title: LeetCode-Beginner
+title: LC) LeetCode-Beginner
 date: 2022-09-03
 tags: leetCode cpp python
 ---

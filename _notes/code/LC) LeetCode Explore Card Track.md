@@ -1,5 +1,5 @@
 ---
-title: LeetCode Explore Card Track
+title: LC) LeetCode Explore Card Track
 date: 2022-09-06
 tags: leetCode algorithm dataStructure
 ---

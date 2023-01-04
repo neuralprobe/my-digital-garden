@@ -1,5 +1,5 @@
 ---
-title: HP)-Fundamentals of Quantitative Design and Analysis
+title: HP) Fundamentals of Quantitative Design and Analysis
 date: 2022-12-28
 tags: computerArchitecture hennessy patterson risc isa
 ---
