@@ -1,12 +1,12 @@
 ---
-title: Fundamentals of Quantitative Design and Analysis
+title: HP)-Fundamentals of Quantitative Design and Analysis
 date: 2022-12-28
 tags: computerArchitecture hennessy patterson risc isa
 ---
 
 # Fundamentals of Quantitative Design and Analysis
 
-- Chapter 1 in [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Patterson and Hennessey (2017)
+- Chapter 1 in [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson  (2017)
 
 ---
 
@@ -60,6 +60,9 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Amdahl's Law
 		- prescribes practical limits to the \#cores per chip
 	- Thus, =="The only path left to improve energy-performance-cost is specialization"== 
+
+- Growth in processor performance since the late 1970s
+![[Pasted image 20230104063257.png]]
 
 ---
 
@@ -152,9 +155,15 @@ tags: computerArchitecture hennessy patterson risc isa
 	7. Encoding an ISA
 		- Fixed length vs Variable length
 
+- RISC-V registers, names, usage, and calling conventions
+![[Pasted image 20230104063556.png]]
+
+
 - Genuine Computer Architecture: Designing the Organization and Hardware to Meet Goals and Functional Requirements
 	- Implementation = Organization (Microarchiecture)+ Hardware
 	- Architecture = ISA + Organization (Microarchiecture) + Hardware
+
+- More information in Appendix.A ([[HP)-Instruction Set Principles]])
 
 ---
 
@@ -170,6 +179,11 @@ tags: computerArchitecture hennessy patterson risc isa
 - Cost
 	- Time, volume, commoditization
 	- Cost of manufacturing vs operation
+
+![[Pasted image 20230104064109.png]]
+
+![[Pasted image 20230104064246.png]]
+![[Pasted image 20230104064932.png]]
 
 ---
 
@@ -209,4 +223,4 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 **Reference**
-- [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Patterson and Hennessey (2017)
+- [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)

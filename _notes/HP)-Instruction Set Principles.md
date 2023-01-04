@@ -1,12 +1,12 @@
 ---
-title: Instruction Set Principles
+title: HP)-Instruction Set Principles
 date: 2022-12-29
 tags: computerArchitecture hennessy patterson risc isa
 ---
 
 # Instruction Set Principles
 
-- Appendix A in [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Patterson and Hennessey (2017)
+- Appendix A in [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
 
 ---
 
