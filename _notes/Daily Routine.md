@@ -35,7 +35,7 @@ tags: routine health
 ## Planner Format for Weekly Routine 예시
 
 
-|     |  **R**  |  **M**  |  **B**  |  **P**  |  **S**  |  **E**  |  **K**  |  **C** |  **W**  |
+|     |  &nbsp;**R**&nbsp;  |  &nbsp;**M**&nbsp;  |  &nbsp;**B**&nbsp;  |  &nbsp;**P**&nbsp;  |  &nbsp;**S**&nbsp;  |  &nbsp;**E**&nbsp;  |  &nbsp;**K**&nbsp;  |  &nbsp;**C**&nbsp; |  &nbsp;**W**&nbsp;  |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 |  **Mon**   |  O  |  O  |  -  |  O  |  O  |  O  |  -  |  -  |  O  |
 |  **Tue**   |  O  |  -  |  O  |  -  |  -  |  O  |  O  |  -  |  -  |
