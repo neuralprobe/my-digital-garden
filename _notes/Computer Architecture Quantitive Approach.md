@@ -1,7 +1,7 @@
 ---
 title: Computer Architecture Quantitive Approach
 date: 2023-01-07
-tags: computerArchitecture hennessy patterson textbook
+tags: computerArchitecture hennessy patterson textbook index
 ---
 
 # Computer Architecture: A Quantitative Approach

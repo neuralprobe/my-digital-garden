@@ -1,7 +1,7 @@
 ---
 title: git) 튜토리얼 모음
 date: 2022-08-17
-tags: git gitHub coding yalco
+tags: git gitHub coding yalco index
 ---
 
 # Git & Github 튜토리얼 모음

@@ -25,7 +25,11 @@ permalink: /
         {%- if date != prevdate -%}
             <i>{{date}}</i>:
         {%- endif -%}
-        <li style="padding-bottom: 0.6em; "><a href="{{note.url}}">{{ note.title }}</a></li>
+        {%- if note.tags contains 'index' -%}
+            <li style="padding-bottom: 0.6em; "><a href="{{note.url}}" style="color: #0B7E4A; font-weight:bold">{{ note.title }}</a></li>
+        {% else %}
+            <li style="padding-bottom: 0.6em; "><a href="{{note.url}}">{{ note.title }}</a></li>
+        {%- endif -%}        
         {% assign prevdate =  note.date | split: ' ' | first %}
     {%- endfor -%}
     <br/>
