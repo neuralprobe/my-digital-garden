@@ -381,6 +381,6 @@ tags: computerArchitecture hennessy patterson risc isa
 ---
 ## Reference
 
-- [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Patterson and Hennessey (2017)
+- [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson   (2017)
 - [RISC-V Instruction-Set Cheatsheet](https://itnext.io/risc-v-instruction-set-cheatsheet-70961b4bbe8) by Erik Engheim
 - [USC RISC-V Lecture Note](https://passlab.github.io/CSCE513/notes/lecture04_RISCV_ISA.pdf) by Yonghong Yan

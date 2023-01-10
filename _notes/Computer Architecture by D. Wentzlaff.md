@@ -16,7 +16,7 @@ tags: comptureArchitecture lecture wentzlaff
 - Lecturer: David Wentzlaff (Princeton)
 - Approx. 50 hours to complete
 - Textbook:
-	- [Computer Architecture A Quantitative Approach (5th)](http://acs.pub.ro/~cpop/SMPA/Computer%20Architecture%20A%20Quantitative%20Approach%20(5th%20edition).pdf) by Patterson and Hennessey (2012)
+	- [Computer Architecture A Quantitative Approach (5th)](http://acs.pub.ro/~cpop/SMPA/Computer%20Architecture%20A%20Quantitative%20Approach%20(5th%20edition).pdf) by Hennessy and Patterson (2012)
 		- Abbreviation: **H&P5**
 	- [Modern Processor Design Fundamentals of Super-scalar Processors (1st)](http://acs.pub.ro/~cpop/SMPA/Modern%20Processor%20Design_%20Fundamentals%20of%20Superscalar%20Processors%20(%20PDFDrive%20).pdf) by Shen and Lipasti (2004)
 		- Abbreviation: **S&L**
