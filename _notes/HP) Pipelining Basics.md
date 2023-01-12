@@ -435,8 +435,159 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 
 - The complete breakdown of integer and FP stalls for five SPECfp benchmarks![[Pasted image 20230108223926.png]]
 
+---
+
+## Putting It All Together: The MIPS R4000 Pipeline
+
+- MIPS R4000 Implementation
+	- 8 stage: 
+		- Deeper than 5 stage 
+		- Decomposing the memory access: Superpipelining
+		- Higher clock rate
+	- IF: First half of instruction fetch
+		- PC selection, initiate instruction cache access
+	- IS: Second half of instruction fetch
+		- complete instruction cache access
+	- RF: Instruction decode, register fetch, hazard checking, instruction cache hit detection
+	- EX: Execution
+		- Effective address calculation, ALU operation, branch-target computation, condition evaluation
+	- DF: Data fetch
+		- First half of data cache access
+	- DS: Second half of data fetch, completion of data cache access
+	- TC: Tag check (Check data cache hit)
+	- WB: Write-back for loads and register-register operations
+
+![[Pasted image 20230111072912.png]]
+
+- Load Delay: 
+	- Load followed by immediate use of the data 
+	- Need 2 cycle stall with forwarding ![[Pasted image 20230111073135.png]]
+
+- Branch Delay:
+	- Basic delay: 3 cycles (Branch condition at the end of EX) ![[Pasted image 20230111073733.png]]
+	- Single cycle by predicted-not-take strategy for the remaining two cycles of the branch delay ![[Pasted image 20230111074007.png]]
+		- Untaken: 1 cycle delay
+		- Taken: 1-cycle delay slot followed by 2 idle cycles 
+		- Due to large penalty cycles in deeper pipelining: 
+			- After R4000, all MIPS implementation use of dynamic branch prediction
+
+- Pipeline interlocks
+	- x1 branch stall penalty on a taken branch
+	- Any data hazard stall from using load result
+
+- Increased \#levels of forwarding for ALU operations
+	- Four possible sources for an ALU pypass
+	- EX/DF, DF/DS, DS/TC, TC/WB
+
+### Floating-Point Pipeline
+
+- Three functional units: 
+	- A floating-point (FP) divider
+	- A FP multiplier
+	- A FP adder: Use the final step of MULT or DIV
+	- Negate = 2 cycles, Square root = 112 cycles
+	- 8 Stages in FP ![[Pasted image 20230111074722.png]]
+	- Latency, initiation rate, pipeline stages by DFP operation ![[Pasted image 20230111074838.png]]
+
+- Stall for two-instruction sequences
+	- MULT-ADD ![[Pasted image 20230111075521.png]]
+	- ADD-MULT ![[Pasted image 20230111075535.png]]
+	- DIV-ADD ![[Pasted image 20230111075555.png]]
+	- Double precision ADD-Double precision DIV ![[Pasted image 20230111080034.png]]
+
+### Performance of the R4000 Pipeline
+
+- Four major causes of pipeline stalls or losses
+	- Load stalls (See above)
+	- Branch stalls (See above)
+	- FP result stalls: RAW hazard for an FP operand
+	- FP structural stalls: Conflicts for functional units in the FP pipeline
+![[Pasted image 20230111080104.png]]
 
 
+---
+
+## Cross-Cutting Issues
+
+### RISC Instruction Sets and Efficiency of Pipelining
+
+- Use simple instructions!
+	- Easier to schedule code  to achieve efficiency 
+	- With RISC instruction set, separate instructions may be individually scheduled either by compiler or  dynamic hardware scheduling techniques
+	- No room for CISC instruction set for efficient schedule
+
+### Dynamically Scheduled Pipelines
+
+- Compiler attempts to schedule instructions to avoid hazard
+	- a.k.a Static scheduling
+
+- Dynamic scheduling
+	- Hardware rearranges the instruction execution to reduces the stalls
+	- Eg. Scoreboarding technique of the CDC6600
+
+- Structural and data hazards are checked during instruction decoding (ID) stage in RISC V pipeline. When an instruction could execute properly, it was issued from ID
+
+- Separate issue process into two parts
+	1. Checking the structural hazards
+	2. Waiting for the absence of a data hazard
+
+- Out-of-Order Execution
+	- Begin execution as soon as their data operands are available
+
+- Split ID pipe stage into two stages
+	1. Issue: Decode instructions, check for structural hazards
+	2. Read operands: Wait until no data hazard, then read operands
+
+### Dynamic Scheduling With a Scoreboard
+
+- Scoreboarding
+	- Allow instructions to execute out of order
+	- when there are sufficient resources and no data dependences
+
+- Avoid OoO-related hazards 
+	- WAR hazard (which doesn't exist in RISC V in-order pipeline )
+		- May arise when instructions execute out-of-order 
+		- Potential WAR hazard if fsub.d is executed before fadd.d  ![[Pasted image 20230111212719.png]]
+	- WAW hazard: 
+		- would occur if the destination of the fsub.d were f10
+
+- Scoreboard
+	- Goal: Maintain an execution rate of one instruction per clock cycle
+	- When next instruction to execute is stalled, 
+	- other instructions can be issued and executed if they do not depend on any active or stalled instruction
+	- Responsible for (1) instruction issue, (2) execution, (3) hazard detection
+	- To take advantage of OoO execution, multiple instructions can be in their EX stage simultaneously
+		- $\rightarrow$ (1) Multiple functional units, (2) pipelined functional units, or (1+2) both
+		- eg. CDC6600: 16 functional units, 4 floating point units, 5 units for memory references, 7 units for integer operations
+
+- RISC V with Scoreboard ![[Pasted image 20230111214256.png]]
+	- Simple case: 2 FP multipliers, 1 FP adder, 1 FP divide unit, sigle integer unit
+	- Every instruction goes through scoreboard
+	- A record of the data dependences is constructed
+	- The scoreboard determines 
+		- when the instruction can read registers and begin execution
+			- If not able to begin execution, it monitors every change in the hardware and decides $when$ the instruction can execute
+		- when an instruction can write its result to the destination register
+	- All hazard detection and resolution are centralized in scoreboard
+
+- Four steps (replace ID/EX/WB steps)
+	- Issue: 
+		- Check if (1) no functional unit conflict (structural hazard) and (2) no other active instruction has the same destination register (WAW hazard),
+			- No hazard $\rightarrow$ issues the instruction to the functional unit and update its internal data structure
+			- Hazard $\rightarrow$ the instruction issue stalls
+				- Buffer between instruction fetch and issue to fill
+	- Read operands:
+		- The scoreboard monitors the availability of the source operands
+		- $i.e.$ Check if no active instruction is going to write it (RAW hazards)
+	- Execution
+		- When the result is ready, it notifies the scoreboard that it completed execution
+	- Write result
+		- Check for WAR hazards and stalls the completing instruction, if necessary
+		- WAR hazard? fadd.d and fsub.d that both use f8. The scoreboard stall fsub.d until fadd.d reads f8.![[Pasted image 20230111212719.png]]
+		- Completing instruction cannot write its results with WAR hazard case, which means ...
+			- there exists a preceding instruction that has not read its operands, and ...
+			- One of the operands is the same registers as the result of the competing instruction
+		- Then, the benefit of forwarding reduces
 
 
 ---
