@@ -37,7 +37,9 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Throughput of an instruction pipeline: How often an instruction exists the pipeline
 	- Processor cycle: time for moving an instruction one step down
 	- Balance the length of each pipeline stage (cycles for each step) 
-	- The time per instruction on the pipelined processor  $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pipe\, stages}$$
+	- The time per instruction on the pipelined processor  
+
+$$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pipe\, stages}$$
 
 ### A Simple Implementation of a RISC Instruction Set
 
@@ -65,14 +67,13 @@ tags: computerArchitecture hennessy patterson risc isa
 	3. Register-Immediate ALU instruction
 	4. Conditional branch
 4. Memory access (MEM)
-	1. The memory does a read/write using the effective address
+	- The memory does a read/write using the effective address
 5. Write-back cycle (WB)
-	1. Write the result in to the register file (Register-Register ALU instruction or load instruction)
+	- Write the result in to the register file (Register-Register ALU instruction or load instruction)
 
 ### The Classic Five-Stage Pipeline for a RISC Processor
 
-- The simplest pipelining: Start new instruction on each clock cycle
-	- ![[Pasted image 20230104164446.png]]
+- The simplest pipelining: Start new instruction on each clock cycle ![[Pasted image 20230104164446.png]]
 - The pipeline can be thought as a series of data paths shifted in time
 	- Focus on CC5, a steady-state situation
 ![[Pasted image 20230104165519.png]]
@@ -90,13 +91,12 @@ tags: computerArchitecture hennessy patterson risc isa
 		- ID stage: adder to compute potential branch target
 		- Ex stage: ALU evaluation of the branch condition
 
-- Prevent interference between pipe stages
+- Prevent interference between pipe stages ![[Pasted image 20230104174915.png]]
 	- Insert pipeline registers
 	- Helpful for neighboring and non-neighboring stages 
 		- Non-neighboring stages? : 
 			- Register value for `store` needs to wait for two cycles to be used in MEM stage. Passing two pipeline register makes it work.
 			- ALU results need to wait until WB
-	- ![[Pasted image 20230104174915.png]]
 
 ### Basic Performance Issues in Pipelining
 
@@ -124,7 +124,10 @@ tags: computerArchitecture hennessy patterson risc isa
 ### Performance of Pipelines With Stalls
 
 $$ Speedup\,from\,pipelining=\frac{CPI\,unpipelined\times Clock\,cycle\,unpipelined }{CPi\, pipelined \times Clock\, cycle\, pipelined}$$
-$$\displaylines{CPI\, pipelined=Ideal\, CPI+Pipeline\,stall\,clock\,cycles\,per\,instruction\\=1+Pipelines\,stall\,clock\,cycles\,per\,instruction}$$
+
+$$CPI\, pipelined=Ideal\, CPI+Pipeline\,stall\,clock\,cycles\,per\,instruction$$
+$$=1+Pipelines\,stall\,clock\,cycles\,per\,instruction$$
+
 $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instruction}$$
 
 ### Data Hazards
@@ -150,8 +153,7 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 	-  and x6, x1, x7
 	- or x8, x1, x9
 	- xor x10,x1,x11
-	- RAW hazards: add-sub, add-and
-	- ![[Pasted image 20230105143817.png]]
+	- RAW hazards: add-sub, add-and ![[Pasted image 20230105143817.png]]
 
 - Minimizing Data Hazard Stalls by Forwarding
 	- Forwarding, bypassing, short-circuiting
@@ -166,8 +168,7 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 		- sub x4, x1, x5
 		- and x6,x1,x7
 		- or x8,x1,x9
-		- RAW hazard: Need "Backwarding" to negative time, impossible.
-		- ![[Pasted image 20230105145825.png]]
+		- RAW hazard: Need "Backwarding" to negative time, impossible. ![[Pasted image 20230105145825.png]]
 	- Pipeline interlock
 		- Detects hazard and stalls the pipeline until the hazard is cleared
 		- So, introduces stall or bubble
@@ -177,13 +178,13 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 
 - One stall cycle for every branch: 10~30% performance loss!
 - Reducing Pipeline Branch Penalties
-	- Scheme#1: Freeze or Flush 
+	- Scheme\#1: Freeze or Flush 
 		- Hold or delete the pipeline until the branch destination is known ![[Pasted image 20230105151415.png]]
-	- Scheme#2: Predicted-not-taken / Predicted-untaken
+	- Scheme\#2: Predicted-not-taken / Predicted-untaken
 		- Treat every branch as not taken, until the branch outcome is definitely known.
 		- Have to know when the state might be changed by an instruction and how to "back out" such a change![[Pasted image 20230105152359.png]]
-	- Scheme#3: Predicted-taken
-	- Scheme#4: Branch delay 
+	- Scheme\#3: Predicted-taken
+	- Scheme\#4: Branch delay 
 		- Execution order: (branch instruction)$\rightarrow$(Sequential successor = Branch delay slot)$\rightarrow$(Branch target if taken)
 		- Confusion: What if the sequential successor is also a branch? Don't allow it! ![[Pasted image 20230105154131.png]]
 
@@ -191,8 +192,8 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 
 - Deeper pipelines, more potential penalty of branches
 - Predict branches!
-	- Strategy#1: Low-cost static schemes w/ information available in compile time
-	- Strategy#2: Predict branches dynamically based on program behavior
+	- Strategy\#1: Low-cost static schemes w/ information available in compile time
+	- Strategy\#2: Predict branches dynamically based on program behavior
 
 ### Static Branch Prediction
 
@@ -269,8 +270,8 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 
 - Instruction issue: Moving an instruction fro ID to EX
 - When to detect hazards and determine forwarding?
-	- Approach#1: ID phase
-	- Approach#2: At the beginning of a clock cycle that uses an operand (EX and MEM)
+	- Approach\#1: ID phase
+	- Approach\#2: At the beginning of a clock cycle that uses an operand (EX and MEM)
 - How the interlock for a RAW hazard with the source coming from a load instruction (called $load\, interlock$) can be implemented by a check in ID?
 	- Situations that must be handled ![[Pasted image 20230107185600.png]] 
 - Implementing load interlock
