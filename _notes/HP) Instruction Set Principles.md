@@ -173,6 +173,8 @@ tags: computerArchitecture hennessy patterson risc isa
 - Two basic conventions to save registers
 	- Caller saving
 	- Callee saving
+	- [Caller vs Callee saved registers?](https://stackoverflow.com/questions/9268586/what-are-callee-and-caller-saved-registers) 
+	- Example: [RISC-V Bytes: Caller and Callee Saved Registers](https://danielmangum.com/posts/risc-v-bytes-caller-callee-registers/)
 
 ### Summary: Instructions for Control Flow
 
@@ -310,13 +312,15 @@ tags: computerArchitecture hennessy patterson risc isa
 		- with vectors of eight 8bit / four 16-bit / two 32-bit elements
 		- 64-bit = the sum of the sizes of the elements
 		- 128-bit = streaming SIMD extension (SSE)
-	- Vector computers
-		- Hiding latency of memory access
-		- Loading many elements at once
-		- Overlapping execution with data transfer
-		- Collect data scattered about memory 
-		- eg. Strided addressing and gather/scatter addressing
-			- But, SIMD computers support only unit stride accesses
+- Vector computers
+	- Hiding latency of memory access
+	- Loading many elements at once
+	- Overlapping execution with data transfer
+	- Collect data scattered about memory 
+	- eg. Strided addressing and gather/scatter addressing
+		- But, SIMD computers support only unit stride accesses
+
+---
 
 ## Putting It All Together: The RISC-V Architecture
 
@@ -327,8 +331,7 @@ tags: computerArchitecture hennessy patterson risc isa
 	- So, easy architecture to understand
 
 ### RISC-V Instruction Set Organization
-- Three base instruction sets and the instruction set extensions
-- ![[Pasted image 20230101080026.png]]
+- Three base instruction sets and the instruction set extensions![[Pasted image 20230101080026.png]]
 
 - In this section, RV64IMAFD (aka RV64G) is illustrated
 
@@ -350,6 +353,10 @@ tags: computerArchitecture hennessy patterson risc isa
 - Limited absolute addressing with a 12-bit field: using register 0 as the base register
 - RV64G memory: byte addressing with 64-bit address, Little Endian byte numbering
 - Memory access need not be aligned; but aligned access is better
+- RISC V addressing modes from [CS61C doc](http://wla.berkeley.edu/~cs61c/fa17/disc/4/Disc4Sol.pdf) 
+	- (a) Base displacement addressing: Adds an immediate to a register value to create a memory address (used for lw, lb, sw, sb) 
+	- (b) PC-relative addressing: Uses the PC and adds the immediate value of the instruction (multiplied by 2) to create an address (used by branch and jump instructions)
+	- (c) Register Addressing: Uses the value in a register as a memory address (jr)
 
 ### RISC-V Instruction Format
 - 32-bit instructions with a 7-bit primary opcode [wiki](https://en.wikipedia.org/wiki/RISC-V#ISA_base_and_extensions) ![[Pasted image 20221231170443.png]]![[Pasted image 20221231171049.png]]
