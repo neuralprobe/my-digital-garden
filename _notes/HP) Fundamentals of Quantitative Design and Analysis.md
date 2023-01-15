@@ -140,6 +140,7 @@ tags: computerArchitecture hennessy patterson risc isa
 		- A large set of registers
 		- Easy-to-pipeline instructions
 		- A lean set of operations
+
 1. Class of ISA
 	- General-purpose register architectures: Nearly all ISAs
 		- Register-memory ISAs (80x86)
