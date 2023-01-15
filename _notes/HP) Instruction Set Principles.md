@@ -79,6 +79,7 @@ tags: computerArchitecture hennessy patterson risc isa
 - Disadvantages
 	- Add to the complexity of building a computer with increased average cycle-per-instruction (CPI)
 ![[Pasted image 20221230073853.png]]
+
 ### Displacement Addressing Mode
 
 - eg. Add R4, 100(R1)
