@@ -1,7 +1,7 @@
 ---
 title: 지속가능한 삶을 위한 Daily Routine 
 date: 2022-12-19
-tags: routine health wellbeing
+tags: routine health wellbeing index
 ---
 
 # 지속가능한 삶을 위한 Daily Routine 
