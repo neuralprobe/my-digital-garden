@@ -21,7 +21,6 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Exceptions and their interaction with pipelining
 	- Extension of the five-stage pipeline to handle floating point instructions
 	- Dynamic scheduling and use of scoreboards 
-	- Tomasulo's algorithm
 
 ### What is pipelining?
 
@@ -123,7 +122,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 ### Performance of Pipelines With Stalls
 
-$$ Speedup\,from\,pipelining=\frac{CPI\,unpipelined\times Clock\,cycle\,unpipelined }{CPi\, pipelined \times Clock\, cycle\, pipelined}$$
+$$ Speedup\,from\,pipelining=\frac{CPI\,unpipelined\times Clock\,cycle\,unpipelined }{CPI\, pipelined \times Clock\, cycle\, pipelined}$$
 
 $$CPI\, pipelined=Ideal\, CPI+Pipeline\,stall\,clock\,cycles\,per\,instruction$$
 $$=1+Pipelines\,stall\,clock\,cycles\,per\,instruction$$
@@ -220,14 +219,14 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 
 - Unpipelined version
 - Integer subset of RISC-V
-	- load-store word
-	- branch equal
-	- integer ALU operations
+	- Load-store word
+	- Branch equal
+	- Integer ALU operations
 	- 5 clock cycles
 		1. Instruction fetch cycle (IF)
 			- IR $\leftarrow$ Mem\[PC\];
 			- NPC  $\leftarrow$ PC+4;
-		2. Instruction decode/register fetch cycle (ID)
+		2. Instruction decode / Register fetch cycle (ID)
 			- A  $\leftarrow$ Regs\[rs1\];
 			- B  $\leftarrow$ Regs\[rs2\];
 			- Imm $\leftarrow$ Sign-extended immediate field of IR;
@@ -235,15 +234,15 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 		3. Execution / Effective address cycle (EX)
 			- Memory reference: ALUOutput $\leftarrow$ A + Imm;
 			- Register-register ALU instruction: ALUOutput  $\leftarrow$ A $func$ B;
-			- Register-Immediate ALU instruction: ALUOutput  $\leftarrow$ A $op$ Imm;
+			- Register-immediate ALU instruction: ALUOutput  $\leftarrow$ A $op$ Imm;
 			- Branch: 
 				- ALUOutput  $\leftarrow$ NPC + (Imm << 2);
 				- Cond  $\leftarrow$ (A\=\=B)
 				- Effective address and execution cycles can be combined into a single clock cycle
-		4. Memory access/branch completion cycle (MEM)
+		4. Memory access / branch completion cycle (MEM)
 			- PC  $\leftarrow$ NPC
 			- Memory reference: 
-				- LMD (load memory data reg)  $\leftarrow$ Mem\[ALUOutput\] 
+				- LMD (load memory data register)  $\leftarrow$ Mem\[ALUOutput\] 
 				- or Mem\[ALUOutput\] $\leftarrow$ B;
 			- Branch:
 				- if (cond) PC  $\leftarrow$ ALUOutput
@@ -262,13 +261,14 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 		- Top ALU MUX: branch or not?
 		- Bottom ALU MUX: register-register or not?
 	- MUX in IF stage
-		- PC+4 or the value of the branch target from EX/MEM.ALUOutput: Controlled by EX/MEM.Cond
+		- PC+4 or the value of the branch target from EX/MEM.ALUOutput
+		- Controlled by EX/MEM.Cond
 	- MUX in WB stage to choose between Load or ALU?
 	- MUX in WB stage to choose destination register
 
 ### Implementing the Control for the RISC V Pipeline
 
-- Instruction issue: Moving an instruction fro ID to EX
+- Instruction issue: Moving an instruction from ID to EX
 - When to detect hazards and determine forwarding?
 	- Approach\#1: ID phase
 	- Approach\#2: At the beginning of a clock cycle that uses an operand (EX and MEM)
@@ -279,13 +279,13 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 	- Instruction $j$ that need the loaded value in ID stage
 	- All possible hazard situations. Detect! ![[Pasted image 20230105203828.png]]
 - Once a hazard has been detected, the control unit must ...
-	- insert the pipeline stall $\rightarrow$ change the control portion of ID/EX to be 0 (=no-op)
-	- prevent the instructions in IF and ID stages from advancing $\rightarrow$ recirculate IF/ID registers
+	- Insert the pipeline stall $\rightarrow$ change the control portion of ID/EX to be 0 (=no-op)
+	- Prevent the instructions in IF and ID stages from advancing $\rightarrow$ recirculate IF/ID registers
 
 - Implementing the forwarding logic by
 	- A comparison of the destination registers of the IR contained in the EX/MEM (ALUOutput) and MEM/WB (Load memory data) stages against the source registers of the IR contained in the ID/EX and EX/MEM registers. ![[Pasted image 20230107185731.png]] 
-	- When a forwarding path needs to be enabled?
-		- Enlarge multiplexers at the ALU ![[Pasted image 20230105211104.png]]
+	- When a forwarding path needs to be enabled
+		- $\rightarrow$ Enlarge multiplexers at the ALU ![[Pasted image 20230105211104.png]]
 
 ### Dealing With Branches in the Pipeline
 
@@ -364,7 +364,7 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 
 - How to extend integer RISC V for floating point operation?
 - RISC V with four separate functional units ![[Pasted image 20230108174057.png]]
-	- The main inter unit with load / store / integer ALU / branches
+	- The main integer unit with load / store / integer ALU / branches
 	- FP and integer multiplier
 	- FP adder for FP add, subtract, conversion
 	- FP and integer divider
@@ -373,7 +373,7 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 	- The initiation or repeat interval : The number of cycles that must elapse between issuing two operations of a given type ![[Pasted image 20230108174517.png]]
 	- Pipeline latency = (The depth of the execution pipeline) - 1
 	- A pipeline that supports multiple outstanding FP operations ![[Pasted image 20230108180240.png]]
-		- FP multiplier/adder $\rightarrow$ Fully pipelined
+		- FP multiplier / adder $\rightarrow$ Fully pipelined
 		- FP divider $\rightarrow$ Not pipelined, requires 24 cycles to complete
 
 ### Hazards and Forwarding in Longer Latency Pipelines
@@ -406,12 +406,12 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 
 - Assuming detection in ID stage,
 	1. Check for structural hazards
-		1. Wait until the required function unit is not busy
+		- Wait until the required function unit is not busy
 	2. Check for a RAW data hazards
-		1. Wait until the source regs are not listed as pending destinations in a pipeline regs that will not be available when this instruction needs the result
-		2. eg. if an instruction in ID is FP operation with f2 as destination, then f2 cannot be listed as a destination in ID/A1 ... or A2/A3.
+		- Wait until the source regs are not listed as pending destinations in a pipeline regs that will not be available when this instruction needs the result
+		- eg. if an instruction in ID is FP operation with f2 as destination, then f2 cannot be listed as a destination in ID/A1 ... or A2/A3.
 	3. Check for a WAW data hazard
-		1. Determine if any instructions in A1, ... D, ... M7 has the same register destination as this instruction.
+		- Determine if any instructions in A1, ... D, ... M7 has the same register destination as this instruction.
 
 ### Maintaining Precise Exceptions
 
@@ -541,9 +541,7 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 
 ### Dynamic Scheduling With a Scoreboard
 
-- Scoreboarding
-	- Allow instructions to execute out of order
-	- when there are sufficient resources and no data dependences
+- Scoreboarding allows instructions to execute out of order when there are sufficient resources and no data dependences
 
 - Avoid OoO-related hazards 
 	- WAR hazard (which doesn't exist in RISC V in-order pipeline )
@@ -595,3 +593,4 @@ $$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instr
 ## Reference
 
 - [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
+- Notebook: [[Computer Architecture Quantitive Approach]]

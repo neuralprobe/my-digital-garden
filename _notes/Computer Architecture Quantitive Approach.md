@@ -23,6 +23,7 @@ tags: computerArchitecture hennessy patterson textbook index
 - A. Instruction Set Principles  
 	- Note: [[HP) Instruction Set Principles]]
 - B. Review of Memory Hierarchy  
+	- Note: [[HP) Review of Memory Hierarchy]]
 - C. Pipelining: Basic and Intermediate Concepts
 	- Note: [[HP) Pipelining Basics]]
 - D. Storage Systems  

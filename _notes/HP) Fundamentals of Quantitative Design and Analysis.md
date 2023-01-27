@@ -231,3 +231,4 @@ tags: computerArchitecture hennessy patterson risc isa
 ## Reference
 
 - [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
+- Notebook: [[Computer Architecture Quantitive Approach]]

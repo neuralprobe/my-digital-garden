@@ -64,3 +64,8 @@ tags: comptureArchitecture lecture wentzlaff index
 20. [[Multiprocessor interconnect2]]
 21. [[Large Multiprocessors - Directory Protocols]]
 
+---
+
+## Reference
+
+- [[Computer Architecture Quantitive Approach]]
