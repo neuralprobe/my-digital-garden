@@ -44,14 +44,14 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 
 ### Cache Performance Review
 
-$CPU\,execution\,time=(CPU\,clock\,cycles\,+\,memory\,stall\,cycles)\times\,Clock\,cycle\,time$
-$Memory\,stall\,cycles\,=\,IC\times\frac{Memory\,accesses}{Instruction}\times Miss\,rate \times Miss\,penalty$
+![[Pasted image 20230131221938.png]]
+![[Pasted image 20230131221949.png]]
 
 (Miss rate: Cache miss per memory access)
 
-$Memory\,stall\,clock\,cycles\,=$ $IC\times\,Reads\,per\,instruction\times Read\,miss\,rate \times Read\,miss\,penalty$ $+IC\times\,Reads\,per\,instruction\times Read\,miss\,rate \times Read\,miss\,penalty$
-
-$\frac{Misses}{Instrruction}=Miss\,rate\times\frac{Memory\,access}{Instruction}$
+![[Pasted image 20230131222001.png]]
+![[Pasted image 20230131222011.png]]
+![[Pasted image 20230131222148.png]]
 
 ### Four Memory Hierarchy Questions
 
@@ -127,7 +127,7 @@ $\frac{Misses}{Instrruction}=Miss\,rate\times\frac{Memory\,access}{Instruction}$
 		- $\rightarrow$ 40-bit physical address 
 		- $\rightarrow$ 34-bit block address + 6-bit block offset 
 		- $\rightarrow$ 34-bit block address = 25 Tag + 9 Index
-		- $Index\,bits = log(frac{Cache\,size}{Block\,size\times Set\,associativity})$
+		- $Index\,bits$ $= log(\frac{Cache\,size}{Block\,size\times Set\,associativity})$
 	- Step 2: Select a set according to the cache index and read two tags (because it is 2-way set associative cache)
 	- Step 3: Compare the two tags and tag-portion of the block address from the processor + Check valid bits
 	- Step 4: Assume cache hit. Then select the winning data and send signal to the processor to load the data from the cache. 
@@ -157,7 +157,8 @@ $\frac{Misses}{Instrruction}=Miss\,rate\times\frac{Memory\,access}{Instruction}$
 
 ### Average Memory Access Time and Processor Performance
 
-$CPU\,time=(CPU\,execution\,clock\,cycles\,+\,memory\,stall\,clock\,cycles)\times\,Clock\,cycle\,time$
+![[Pasted image 20230131222342.png]]
+
 - Include hit clock cycles in CPU execution clock cycles
 
 - Impact of cache miss: Larger for lower $CPI_{execution}$ and higher clock frequency
@@ -167,7 +168,7 @@ $CPU\,time=(CPU\,execution\,clock\,cycles\,+\,memory\,stall\,clock\,cycles)\time
 
 - How to define "miss-penalty" for out-of-order processors? $\rightarrow$ Non-overlapped latency
 
-$\frac{Memory\,stall,cycles}{Instruction}=\frac{Misses}{Instruction}\times(Total\,miss\,latency-Overlapped\,miss\,latency)$
+![[Pasted image 20230131222424.png]]
 
 - Miss latency factors
 	- Length of memory latency

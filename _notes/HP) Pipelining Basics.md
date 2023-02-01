@@ -122,12 +122,11 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 ### Performance of Pipelines With Stalls
 
-$$ Speedup\,from\,pipelining=\frac{CPI\,unpipelined\times Clock\,cycle\,unpipelined }{CPI\, pipelined \times Clock\, cycle\, pipelined}$$
+![[Pasted image 20230131221651.png]]
 
-$$CPI\, pipelined=Ideal\, CPI+Pipeline\,stall\,clock\,cycles\,per\,instruction$$
-$$=1+Pipelines\,stall\,clock\,cycles\,per\,instruction$$
+![[Pasted image 20230131221720.png]]
 
-$$ Speedup=\frac{Pipeline\,depth }{1+Pipelines\,stall\,clock\,cycles\,per\,instruction}$$
+![[Pasted image 20230131221728.png]]
 
 ### Data Hazards
 
