@@ -45,7 +45,11 @@ layout: default
       {% endif %}
 
       <h3 style="margin-bottom: 1em">Table of Contents</h3>
-      {% include toc.html html=content %}
+      <div class="backlink-box">
+        <div style="margin-left: -2em; margin-top: -1em">
+        {% include toc.html html=content %}
+        </div>
+      </div>
 
     </side>
   </div>
