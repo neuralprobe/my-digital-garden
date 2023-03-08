@@ -26,7 +26,8 @@ tags: NLP Attention Decoder GPT
 
 ## High Level Description of GPT3
 
-- GPT3 = A stack of ==12 decoders==
+- GPT2 = A stack of ==12 decoders== with ==12 attention heads==
+- GPT3 = A stack of ==96 decoders== with ==96 attention heads==
 
 ![[Pasted image 20230304081249.png]]
 <figcaption> Architectures of GPT and Transformer </figcaption>
