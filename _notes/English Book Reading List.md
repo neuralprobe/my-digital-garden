@@ -8,7 +8,7 @@ tags: english book kindle english index
 
 ---
 
-## School Reading:
+# School Reading:
 
 - [To Kill a Mockingbird](https://a.co/d/5vajZ4N) 
 - [The Giver](https://a.co/d/9XQE6Eg)
@@ -24,7 +24,7 @@ tags: english book kindle english index
 
 ---
 
-## Miscellaneous Reading:
+# Miscellaneous Reading:
 
 - [Are You There God? It's Me, Margaret](https://a.co/d/9q4Rj6q)
 - [The Screwtape Letters](https://a.co/d/bB2mrHE)
@@ -68,7 +68,7 @@ tags: english book kindle english index
 
 ---
 
-## Reference
+# Reference
 - Thanks to Angelina
 - [[수준에 맞는 영어원서 고르기]]
 - [[Kindle Tips for Better Reading Skill]]

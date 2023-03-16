@@ -8,7 +8,7 @@ tags: git gitHub coding yalco
 
 ---
 
-## 브랜치 만들기
+# 브랜치 만들기
 
 ```zsh
 # creat branch
@@ -46,7 +46,7 @@ git log --all --decorate --oneline --graph
 
 ---
 
-## 브랜치 합치기
+# 브랜치 합치기
 
 - Merge: 두 브랜치의 변화 내용을 모두 반영해서 한 브랜치로 합치기
 	- Branch history를 그대로 남길 수 있음
@@ -90,7 +90,7 @@ git merge add-coach
 
 ---
 
-## 충돌 해결하기
+# 충돌 해결하기
 
 - Merge 충돌
 	- merge 할 때, 두 브랜치가 충돌될 경우, 오류 메시지 확인하고, 브랜치 충돌되는 부분을 편집하고 `git add .` +  `git commit -m "xxx"`
@@ -101,7 +101,8 @@ git merge add-coach
 
 
 ---
-## Reference
+
+# Reference
 
 - [Yalco's github lecture 3-1](https://www.yalco.kr/@git-github/3-1/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)

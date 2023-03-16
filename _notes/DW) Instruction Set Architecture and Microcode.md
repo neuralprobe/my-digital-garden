@@ -10,7 +10,7 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 
 ---
 
-## Architecture vs. Microarchitecture
+# Architecture vs. Microarchitecture
 
 - "Architecture"/Instruction Set Architecture:
 	- Programmer visible state (Memory & Register)
@@ -25,7 +25,7 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 
 ---
 
-## Software Developments
+# Software Developments
 
 - Up to 1955
 	- Libraries of numerical routines
@@ -42,7 +42,7 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 
 ---
 
-## Compatibility Problem at IBM
+# Compatibility Problem at IBM
 
 - By early 1960's IBM had 4 incompatible lines of computers!
 	- 701: Science $\rightarrow$ 7094
@@ -63,7 +63,7 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 
 ---
 
-## IBM 360: A General-Purpose Register (GPR) Machine
+# IBM 360: A General-Purpose Register (GPR) Machine
 
 - Processor state
 	- 16 General purpose 32-bit registers
@@ -82,7 +82,7 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 
 ---
 
-## IBM 360: Initial Implementations
+# IBM 360: Initial Implementations
 
 - IBM 360 ISA completely hid the underlying technological differences between various models
 - Milestones: The first ISA designed as portable hardware-software interface!
@@ -91,13 +91,13 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 
 ---
 
-### Same Architecture, Different Microarchitecture
+## Same Architecture, Different Microarchitecture
 
 ![[Pasted image 20230102074407.png]]
 
 ---
 
-## Where Do Operands Come from And Where Do Results Go?
+# Where Do Operands Come from And Where Do Results Go?
 
 ![[Pasted image 20230102074450.png]]
 
@@ -112,11 +112,12 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 	- If stack size stored in registers is too small, need frequent fetch/store from/to memory: expensive
 	- Problem? : Bad locality
 		- a variable A is used in multiple terms: A should be fetched multiple times 
+
 ![[Pasted image 20230102075100.png]]
 
 ---
 
-## Classes of Instructions
+# Classes of Instructions
 
 - Data transfer: LD, ST, MFC1, MTC1, MFC0, MTC0
 - ALU: ADD, SUB, AND, OR, XOR, MUL, DIV, SLT, LUI
@@ -127,13 +128,13 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 
 ---
 
-## Addressing Modes: How to Get Operands from Memory
+# Addressing Modes: How to Get Operands from Memory
 
 ![[Pasted image 20230102080318.png]]
 
 --- 
 
-## Data Types and Sizes
+# Data Types and Sizes
 
 - Types
 	- Binary Integer
@@ -152,7 +153,7 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 
 ---
 
-## ISA Encoding
+# ISA Encoding
 
 - Fixed Width: Every Instruction has same width
 	- Easy to decode
@@ -179,13 +180,15 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 - MIPS Instruction Encoding
 ![[Pasted image 20230102084306.png]]
 
-## Real World Instruction Sets
+---
+
+# Real World Instruction Sets
 
 ![[Pasted image 20230102084353.png]]
 
 ---
 
-## Why Diversity in ISAs?
+# Why Diversity in ISAs?
 
 - Technology Influenced ISA 
 	- Storage is expensive, tight encoding important
@@ -201,7 +204,8 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 
 
 ---
-## Reference
+
+# Reference
 
 - [[Computer Architecture by D. Wentzlaff]] Week1 (1/2)
 - [[HP) Fundamentals of Quantitative Design and Analysis]] (H&P6 Chapter 1), and [[HP) Instruction Set Principles]](H&P6 Appendix A)

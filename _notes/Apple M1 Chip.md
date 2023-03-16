@@ -13,7 +13,7 @@ tags: UMA apple m1 compArch memory
 
 ---
 
-## Unified Memory Access in M1  Chip
+# Unified Memory Access in M1  Chip
 
 > In Apple’s implementation of unified memory, the available ==RAM is on the M1 system-on-a-chip== (SoC). While it’s not located within the processor itself, it’s still part of the same silicon seated to the side of the other fundamental components.
 >
@@ -24,7 +24,8 @@ tags: UMA apple m1 compArch memory
 	- M1 Max: 64GB, 400GB/s
 
 ---
-## Reference
+
+# Reference
 
 - [Understanding Apple’s Unified Memory Architecture](https://www.macobserver.com/analysis/understanding-apples-unified-memory-architecture/)
 - [[UMA-NUMA]]

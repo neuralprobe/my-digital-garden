@@ -10,7 +10,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Introduction
+# Introduction
 
 - Two significant changes in computer market place
 	- Virtual elimination of assembly language programming
@@ -66,31 +66,31 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Classes of Computers
+# Classes of Computers
 
 
-### Internet of Things (IoT), Embedded Computers
+## Internet of Things (IoT), Embedded Computers
 
 - 8/32-bit for low cost devices (Microwaves, Washing machines)
 - 64-bit for high-end product (Cars, Network switches)
 
-### Personal Mobile Devices (PMD)
+## Personal Mobile Devices (PMD)
 
 - Responsiveness and predictability
 - Real-time performance
 - Minimize memory and energy consumption
 
-### Desktop Computing
+## Desktop Computing
 
 - Benchmarking + Web-centric, interactive apps
 
-### Servers
+## Servers
 
 - Availability: Open 7 days, 24 hours
 - Scalability: Scale up computing capacity, the memory, the storage, the I/O bandwidth
 - Efficient throughput (Overall Perf.) > Responsiveness (Individual Perf.)
 
-### Clusters/Warehouse-Scale Computers
+## Clusters/Warehouse-Scale Computers
 
 - The growth of Software-as-a-Service  (SaaS)
 - Clusters: 
@@ -104,7 +104,7 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Expensive, floating point performance, 
 	- Running large, communication-intensive batch programs
 
-### Class of Parallelism and Parallel Architectures
+## Class of Parallelism and Parallel Architectures
 
 - Parallelism in applications:
 	- Data-level parallelism
@@ -128,9 +128,9 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Defining Computer Architecture
+# Defining Computer Architecture
 
-## Instruction Set Architecture: The Myopic View of Computer Architecture
+# Instruction Set Architecture: The Myopic View of Computer Architecture
 
 - ISA
 	- The actual programmer-visible instruction set
@@ -164,7 +164,7 @@ tags: computerArchitecture hennessy patterson risc isa
 ![[Pasted image 20230104063556.png]]
 
 
-### Genuine Computer Architecture: Designing the Organization and Hardware to Meet Goals and Functional Requirements
+## Genuine Computer Architecture: Designing the Organization and Hardware to Meet Goals and Functional Requirements
 
 - Implementation = Organization (Microarchiecture)+ Hardware
 - Architecture = ISA + Organization (Microarchiecture) + Hardware
@@ -173,7 +173,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Trends in ...
+# Trends in ...
 
 - Technology: IC logic technology, DRAM, Flash, Disk, Network
 - Performance
@@ -193,7 +193,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Dependability
+# Dependability
 
 - Is a system operating properly? 
 - How a failure in a specific level of computer influence other levels, esp. for application level?
@@ -205,7 +205,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Measuring, Reporting, and Summarizing
+# Measuring, Reporting, and Summarizing
 
 - Benchmarks
 	-  Kernels: small, key pieces of real applications
@@ -220,7 +220,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Quantitative Principles of Computer Design
+# Quantitative Principles of Computer Design
 
 - Take Advantage of Parallelism
 - Principle of Locality
@@ -228,7 +228,7 @@ tags: computerArchitecture hennessy patterson risc isa
 - Amdahl's Law
 
 ---
-## Reference
+# Reference
 
 - [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
 - Notebook: [[Computer Architecture Quantitive Approach]]

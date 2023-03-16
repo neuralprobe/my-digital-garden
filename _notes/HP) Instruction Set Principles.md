@@ -10,14 +10,14 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Introduction
+# Introduction
 
 - Instruction set architecture: 
 	- The portion of the computer visible to the programmer or compiler writer
 
 ---
 
-## Classifying Instruction Set Architectures
+# Classifying Instruction Set Architectures
 
 - Alternatives inside a processors
 	- Stack vs Accumulator vs Set of registers
@@ -55,11 +55,11 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Memory Addressing
+# Memory Addressing
 
 - How memory addresses are interpreted and how they are specified?
 
-### Interpreting memory addresses
+## Interpreting memory addresses
 
 - Conventions for ordering the bytes within a larger object
 	- Little Endian byte order: Put the 0th byte at the least significant position (to the left)
@@ -71,7 +71,9 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Address A with size S: A%S=0 $\rightarrow$ Aligned
 	- If misaligned, may need two memory accesses since memories are typically aligned on a multiple of word or double-word boundary
 
-### Addressing modes
+---
+
+## Addressing modes
 
 - How architects specify the address of an object they will access?
 - Advantages
@@ -80,21 +82,21 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Add to the complexity of building a computer with increased average cycle-per-instruction (CPI)
 ![[Pasted image 20221230073853.png]]
 
-### Displacement Addressing Mode
+## Displacement Addressing Mode
 
 - eg. Add R4, 100(R1)
 - Major questions? : proper range of displacements? 
 	- Possible displacement range vs Instruction length
 	- In practice, same with the immediate size
 
-### Immediate or Literal Addressing Mode
+## Immediate or Literal Addressing Mode
 - Used in arithmetic operations, comparison, and moves
 - ~ 1/4 have an immediate operand
 - Immediate instruction set measurement? : 
 	- Support all operations? or just subset?
 	- proper range of values for immediates? 
 
-### Summary: Memory Addressing
+## Summary: Memory Addressing
 - Support at least the following addressing modes
 	- Displacement, immediate, register-indirect (77%-99%)
 - The size of the address for displacement mode: at least 12-16 bits (75%-99%)
@@ -102,7 +104,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Type and Size of Operands
+# Type and Size of Operands
 
 - Character 8b (Unicode 16b), half word 16b, word 32b, single-precision float 32b, double-precision float 64b ...
 - Should 64b access path be supported?
@@ -112,7 +114,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Operations in the instruction set
+# Operations in the instruction set
 
 - Categories of instructions include in most ISAs
 ![[Pasted image 20221230083834.png]]
@@ -123,7 +125,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Instructions for Control Flow
+# Instructions for Control Flow
 
 - Change in control
 	- Unconditional: Jump
@@ -137,7 +139,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ![[Pasted image 20221230131848.png]]
 
-### Address Modes for Control Flow Instructions
+## Address Modes for Control Flow Instructions
 
 - Always specify the destination address 
 - PC-relative control flow instructions:
@@ -158,15 +160,16 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ![[Pasted image 20221230142908.png]]
 
-### Conditional Branch Options
+## Conditional Branch Options
 
 - Three primary techniques to evaluate branch conditions
 	- Condition code
 	- Condition register
 	- Compare and branch
+
 ![[Pasted image 20221230143039.png]]
 
-### Procedure Invocation Options
+## Procedure Invocation Options
 
 - Return address must be saved somewhere
 	- Special link register or a GPR
@@ -176,7 +179,7 @@ tags: computerArchitecture hennessy patterson risc isa
 	- [Caller vs Callee saved registers?](https://stackoverflow.com/questions/9268586/what-are-callee-and-caller-saved-registers) 
 	- Example: [RISC-V Bytes: Caller and Callee Saved Registers](https://danielmangum.com/posts/risc-v-bytes-caller-callee-registers/)
 
-### Summary: Instructions for Control Flow
+## Summary: Instructions for Control Flow
 
 - Most frequently executed instructions
 - New ISA needs to have
@@ -196,7 +199,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Encoding an Instruction Set
+# Encoding an Instruction Set
 
 - How to decode the binary representation of instruction?
 	- Specified with opcode
@@ -214,6 +217,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 - Three popular choices for encoding the instruction set
 	- Variable / Fixed / Hybrid
+
 ![[Pasted image 20221230150221.png]]
 
 - Example of variable encoding in 80x86 (1~17 bytes)
@@ -223,7 +227,7 @@ tags: computerArchitecture hennessy patterson risc isa
 	- 4 bytes for the size of the address field ( = 1000 = $2^8$ > 1byte and < 4 byte)
 	- Thus, 6 bytes-instruction
 
-### Reduced Code Size in RISCs
+## Reduced Code Size in RISCs
 
 - Standard = 32 bit instruction
 - Hybrid
@@ -236,18 +240,18 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Simple compiler and decoder
 	- To handle branches, a hash table in memory that maps between compressed and uncompressed addresses.
 
-### Summary: Encoding an Instruction Set
+## Summary: Encoding an Instruction Set
 
 - More interested in performance: Variable encoding
 - More interested in code size: Fixed encoding
 
 ---
 
-## Crosscutting Issues: The Role of Compilers
+# Crosscutting Issues: The Role of Compilers
 
 - Understanding compiler technology today is critical to designing and efficiently implementing an instruction set.
 
-### The Structure of Recent Compilers
+## The Structure of Recent Compilers
 
 - Goal?
 	- Correctness, speed of compiled code, fast compilation, debugging support, interoperability among language
@@ -264,7 +268,7 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Register allocation
 	- Processor-dependent optimizations
 
-### Register Allocation
+## Register Allocation
 
 - Graph coloring
 	- Construct a graph representing the possible candidates for allocation to a register and then to use the graph to allocate registers
@@ -273,11 +277,11 @@ tags: computerArchitecture hennessy patterson risc isa
 	- NP-complete, heuristic algorithms
 	- Works best when there are at least 16 general-purpose registers available (more for floating-point)
 
-### Impact of Optimization on Performance
+## Impact of Optimization on Performance
 
 - Major types of optimizations and examples in each class ![[Pasted image 20221231072155.png]]
 - Change in instruction count for the programs lucas and mcf from the SPEC2000 as compiler optimization levels vary ![[Pasted image 20221231072532.png]]
-  ### The Impact of Compiler Technology on the Architect's Decisions
+  ## The Impact of Compiler Technology on the Architect's Decisions
   
   - How are variables allocated and addressed?
   - How many registers are needed to allocate variables appropriately?
@@ -291,7 +295,7 @@ tags: computerArchitecture hennessy patterson risc isa
 	  - Variables referred by pointers (a = \*p) cannot be register allocated
 	  - Difficult or impossible to decide what a pointer may refer to
 
-### How the Architect Can Help the Compiler Writer
+## How the Architect Can Help the Compiler Writer
 
 - Provide regularity
 	- Make three primary components of instruction set to be orthogonal
@@ -301,7 +305,7 @@ tags: computerArchitecture hennessy patterson risc isa
 - Simplify trade-offs among alternatives
 - Provide instructions that bind the quantities known at compile time as constants
 
-### Compiler Support (or Lack Thereof) for Multimedia Instructions
+## Compiler Support (or Lack Thereof) for Multimedia Instructions
 
 - SIMD instruction designers ignored the previous subsection! 
 	- Solutions, not primitives
@@ -322,7 +326,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Putting It All Together: The RISC-V Architecture
+# Putting It All Together: The RISC-V Architecture
 
 - RISC-V emphasizes
 	- A simple load-store instruction set
@@ -330,23 +334,23 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Efficiency as a compiler target
 	- So, easy architecture to understand
 
-### RISC-V Instruction Set Organization
+## RISC-V Instruction Set Organization
 - Three base instruction sets and the instruction set extensions![[Pasted image 20230101080026.png]]
 
 - In this section, RV64IMAFD (aka RV64G) is illustrated
 
-### Registers for RISC-V
+## Registers for RISC-V
 
 - 32 64-bit general-purpose registers (GPR, aka integer registers, x0-x31)
 - 'F' and 'D' extensions: 32 32-bit floating point registers (FPR, f0-f31) 
 - x0 = always zero
 - GPR $\leftrightarrow$ Special registers : eg. floating-point status register holds information about the results of FP operations
 
-### Data Types for RISC-V
+## Data Types for RISC-V
 
 - 8, 16, 32, 64 bits for integer, 32, 64 bits for floating point
 
-### Addressing Modes for RISC-V Data Transfers
+## Addressing Modes for RISC-V Data Transfers
 
 - Immediate and Displacement with 12-bit fields
 - Register indirect: placing 0 in the 12-bit displacement field
@@ -358,13 +362,13 @@ tags: computerArchitecture hennessy patterson risc isa
 	- (b) PC-relative addressing: Uses the PC and adds the immediate value of the instruction (multiplied by 2) to create an address (used by branch and jump instructions)
 	- (c) Register Addressing: Uses the value in a register as a memory address (jr)
 
-### RISC-V Instruction Format
+## RISC-V Instruction Format
 - 32-bit instructions with a 7-bit primary opcode [wiki](https://en.wikipedia.org/wiki/RISC-V#ISA_base_and_extensions) ![[Pasted image 20221231170443.png]]![[Pasted image 20221231171049.png]]
 - The use of instruction fields for each instruction type ![[Pasted image 20221231170655.png]]
 - Opcode specifies operations (ALU instruction, ALU immediate, load, store, branch, jump)
 	- "funct" fields $\rightarrow$ specific operations (add, subtract ...)
 
-### RISC-V Operations (RV64G)
+## RISC-V Operations (RV64G)
 
 - Loads and stores ![[Pasted image 20230101080345.png]]
 - ALU operations
@@ -379,7 +383,7 @@ tags: computerArchitecture hennessy patterson risc isa
 - fadd.d/s: FP with double/single precision
 - flw, fsw: FP load, FP store
 
-### RISC-V Instruction Set Cheatsheat by [Erik Engheim](https://itnext.io/risc-v-instruction-set-cheatsheet-70961b4bbe8)
+## RISC-V Instruction Set Cheatsheat by [Erik Engheim](https://itnext.io/risc-v-instruction-set-cheatsheet-70961b4bbe8)
 
 - Arithmetic operations ![[Pasted image 20230101082958.png]]
 - Logical operations ![[Pasted image 20230101083022.png]]
@@ -387,7 +391,7 @@ tags: computerArchitecture hennessy patterson risc isa
 - Branching operations ![[Pasted image 20230101083121.png]]
 
 ---
-## Reference
+# Reference
 
 - [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson   (2017)
 - [RISC-V Instruction-Set Cheatsheet](https://itnext.io/risc-v-instruction-set-cheatsheet-70961b4bbe8) by Erik Engheim

@@ -8,7 +8,7 @@ tags: git gitHub coding yalco
 
 ---
 
-## Github 시작하기
+# Github 시작하기
 
 - 게정 등록하고 로그인!
 - Personal access token 만들기
@@ -21,7 +21,7 @@ tags: git gitHub coding yalco
 
 ---
 
-## Github 원격 repository 사용하기
+# Github 원격 repository 사용하기
 
 ```zsh
 # origin: 원격 저장소 이름. 다른걸로 바꿔도 된다.
@@ -46,7 +46,7 @@ git clone {원격 저장소 주소}
 
 ---
 
-## Push and Pull
+# Push and Pull
 
 ```zsh
 # local => remote
@@ -80,7 +80,8 @@ git push --force
 
 ---
 
-## 원격 브랜치 관리
+# 원격 브랜치 관리
+
 ```zsh
 # 로컬 브랜치만 보기
 git branch
@@ -107,7 +108,8 @@ git push (원격 이름) --delete (원격의 브랜치명)
 
 
 ---
-## Reference
+
+# Reference
 
 - [Yalco's github lecture 4-1](https://www.yalco.kr/@git-github/4-1/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)

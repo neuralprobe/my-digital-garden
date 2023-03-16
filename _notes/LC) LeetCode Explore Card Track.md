@@ -13,12 +13,14 @@ tags: leetCode algorithm dataStructure
 
 ![[Screen Shot 2022-09-06 at 4.40.47 PM.png]]
 
-## Progress
+# Progress
+
 - ==Array==: 
 	- Source: [Array101](https://leetcode.com/explore/learn/card/fun-with-arrays/) 
 	- Note: [[LC) Array101]]
 
 ---
-## Reference
+
+# Reference
 
 - [LeetCode Explore Card Track](https://leetcode.com/explore/featured/card/the-leetcode-beginners-guide/679/sql-syntax/4358/)

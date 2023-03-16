@@ -10,14 +10,15 @@ tags: coding designPattern index
 
 ![[Pasted image 20221004102127.png]]
 
-## Why design patterns and SOLID principle?
+# Why design patterns and SOLID principle?
 - 코드의 작성, 유지보수, 변경, 확장을 쉽게 할 수 있도록 코드 작성하기 전부터 코드의 구조를 잘 정해두면 도움이 된다. 
 - 코드로 구현하고 싶은 기능의 유형에 따라 도움이 되는 구조에는 반복되는 패턴이 존재하는데, 이를 디자인 패턴이라고 부른다.
 - 디자인 패턴은 본질적으로 이해하기 좋은, 그래서 수정-확장하기 좋은 코드를 짜는 것을 목적으로 하기에, 개별적인 디자인 패턴을 배우기 전에 디자인패턴의 일반 원리인 SOLID principle 을 알아보자.
 
 ---
 
-## 1. Single Responsibility
+# 1. Single Responsibility
+
 ![[Pasted image 20221004102044.png]]
 
 
@@ -28,7 +29,8 @@ tags: coding designPattern index
 
 ---
 
-## 2. Open/Closed Principle
+# 2. Open/Closed Principle
+
 ![[Pasted image 20221004102317.png]]
 
 > 코드는 확장에는 열려있고, 수정에는 닫혀있도록 짜야한다.
@@ -42,7 +44,8 @@ tags: coding designPattern index
 
 ---
 
-## 3.  Liskov Substitution Principle
+# 3.  Liskov Substitution Principle
+
 ![[Pasted image 20221004104254.png]]
 
 > $S$ 가 $T$ 의 subtype 일 때, type $T$ 의 object 는  type $S$ 의 object로 치환 할 수 있다.
@@ -55,7 +58,8 @@ tags: coding designPattern index
 
 ---
 
-## 4. Interface Segregation
+# 4. Interface Segregation
+
 ![[Pasted image 20221004105434.png]]
 
 > Client를 사용하지도 않을 메소드에 의존하게 만들어서는 안된다.
@@ -67,7 +71,8 @@ tags: coding designPattern index
 - 그럼 `잠수 기능이 있는 자동차` 만들고 싶으면 어떡하지? 하는 호기심이 생길 수 있는데, 이 경우에는 `자동차 인터페이스`와 `잠수함 인터페이스`를 둘다 상속 받는 식으로 해결할 수 있다.
 
 ---
-## 5. Dependency Inversion Principle
+
+# 5. Dependency Inversion Principle
 
 ![[Pasted image 20221004111637.png]]
 
@@ -84,7 +89,8 @@ tags: coding designPattern index
 - 새로운 동물을 추가할 때, 기존의 코드를 전혀 수정할 필요가 없게 된다 !! ![[Pasted image 20221004111655.png]]
 
 ---
-## Reference
+
+# Reference
 
 - [디자인 패턴 SOLID by 코드없는프로그래밍](https://youtube.com/playlist?list=PLDV-cCQnUlIZcWXE4PrxJx6U3qKfRTJcK)
 - [리스코프 치환 원리 by velog.io/@dogit](https://velog.io/@dogit/%EB%A6%AC%EC%8A%A4%EC%BD%94%ED%94%84-%EC%B9%98%ED%99%98-%EC%9B%90%EC%B9%99-Liskov-Substitution-Principle)

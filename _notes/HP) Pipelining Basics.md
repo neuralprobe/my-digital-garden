@@ -10,7 +10,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 ---
 
-## Introduction
+# Introduction
 
 - This appendix includes ...
 	- Data path implications
@@ -22,7 +22,7 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Extension of the five-stage pipeline to handle floating point instructions
 	- Dynamic scheduling and use of scoreboards 
 
-### What is pipelining?
+## What is pipelining?
 
 - Pipelining: 
 	- An implementation technique whereby multiple instructions are overlapped in execution
@@ -40,7 +40,7 @@ tags: computerArchitecture hennessy patterson risc isa
 
 $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pipe\, stages}$$
 
-### A Simple Implementation of a RISC Instruction Set
+## A Simple Implementation of a RISC Instruction Set
 
 - RISC implementation without pipelining
 	- Branch instructions: 3 cycles 
@@ -70,7 +70,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 5. Write-back cycle (WB)
 	- Write the result in to the register file (Register-Register ALU instruction or load instruction)
 
-### The Classic Five-Stage Pipeline for a RISC Processor
+## The Classic Five-Stage Pipeline for a RISC Processor
 
 - The simplest pipelining: Start new instruction on each clock cycle ![[Pasted image 20230104164446.png]]
 - The pipeline can be thought as a series of data paths shifted in time
@@ -97,7 +97,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 			- Register value for `store` needs to wait for two cycles to be used in MEM stage. Passing two pipeline register makes it work.
 			- ALU results need to wait until WB
 
-### Basic Performance Issues in Pipelining
+## Basic Performance Issues in Pipelining
 
 - Execution time of each instruction does not decrease
 - Program runs faster, even though no single instruction runs faster
@@ -106,7 +106,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 ---
 
-## The Major Hurdle of Pipelining - Pipeline Hazard
+# The Major Hurdle of Pipelining - Pipeline Hazard
 
 - Hazards
 	- Prevent the next instruction in the instruction stream from executing during its designated clock cycle
@@ -120,7 +120,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 	- Control hazards
 		- Arise from the pipelining of branches and other instructions that change the PC
 
-### Performance of Pipelines With Stalls
+## Performance of Pipelines With Stalls
 
 ![[Pasted image 20230131221651.png]]
 
@@ -128,7 +128,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 ![[Pasted image 20230131221728.png]]
 
-### Data Hazards
+## Data Hazards
 
 - When an instruction $i$ and its subsequent instruction $j$ both use register $x$
 - Read After Write (RAW) hazard: 
@@ -172,7 +172,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 		- So, introduces stall or bubble
 		- ![[Pasted image 20230105150351.png]]
 
-### Branch Hazards
+## Branch Hazards
 
 - One stall cycle for every branch: 10~30% performance loss!
 - Reducing Pipeline Branch Penalties
@@ -186,19 +186,19 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 		- Execution order: (branch instruction)$\rightarrow$(Sequential successor = Branch delay slot)$\rightarrow$(Branch target if taken)
 		- Confusion: What if the sequential successor is also a branch? Don't allow it! ![[Pasted image 20230105154131.png]]
 
-### Reducing the Cost of Branches Through Prediction 
+## Reducing the Cost of Branches Through Prediction 
 
 - Deeper pipelines, more potential penalty of branches
 - Predict branches!
 	- Strategy\#1: Low-cost static schemes w/ information available in compile time
 	- Strategy\#2: Predict branches dynamically based on program behavior
 
-### Static Branch Prediction
+## Static Branch Prediction
 
 - Use profile information collected from earlier runs
 - Success of static branch prediction ![[Pasted image 20230105160326.png]]
 
-### Dynamic Branch Prediction and Branch-Prediction Buffers
+## Dynamic Branch Prediction and Branch-Prediction Buffers
 
 - Scheme#1: Branch-prediction buffer = Branch history table
 	- A small memory indexed by the lower portion of the address of the branch instruction
@@ -212,9 +212,9 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 ---
 
-## How Is Pipeline Implemented?
+# How Is Pipeline Implemented?
 
-### A Simple Implementation of RISC-V
+## A Simple Implementation of RISC-V
 
 - Unpipelined version
 - Integer subset of RISC-V
@@ -253,7 +253,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 - Simplified and unpipelined RISC-V implementation! ![[Pasted image 20230107185449.png]]
 
-### A Basic Pipeline for RISC V
+## A Basic Pipeline for RISC V
 - Pipelined version ![[Pasted image 20230107185529.png]]
 - Control signals for the four multiplexers (four MUXs from the figure above, and one hidden MUX)
 	- 2 MUXs in ALU stage depend on the instruction type. Refer instruction in IF/ID reg
@@ -265,7 +265,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 	- MUX in WB stage to choose between Load or ALU?
 	- MUX in WB stage to choose destination register
 
-### Implementing the Control for the RISC V Pipeline
+## Implementing the Control for the RISC V Pipeline
 
 - Instruction issue: Moving an instruction from ID to EX
 - When to detect hazards and determine forwarding?
@@ -286,15 +286,15 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 	- When a forwarding path needs to be enabled
 		- $\rightarrow$ Enlarge multiplexers at the ALU ![[Pasted image 20230105211104.png]]
 
-### Dealing With Branches in the Pipeline
+## Dealing With Branches in the Pipeline
 
 - Add separate adder that computes the branch target address during ID
 
 ---
 
-## What Makes Pipelining Hard to Implement?
+# What Makes Pipelining Hard to Implement?
 
-### Dealing With Exception
+## Dealing With Exception
 
 - Can an instruction safely change the state of the processor in exceptional situations?
 
@@ -349,7 +349,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 		- For each exception indication in a vector, all possible data-writing associated to the instruction are turned off
 		- Hardware must be prepared to prevent the store from completing (due to potential exception of store in MEM stage) 
 
-### Instruction Set Complications
+## Instruction Set Complications
 
 - An instruction is "Committed": The instruction is guaranteed to complete
 - To maintain a precise exception model, most processors with such instructions have the ability to back out any state changes made before the instruction is committed
@@ -359,7 +359,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 ---
 
-## Extending the RISC V Integer Pipeline to Handle Multicycle Operations
+# Extending the RISC V Integer Pipeline to Handle Multicycle Operations
 
 - How to extend integer RISC V for floating point operation?
 - RISC V with four separate functional units ![[Pasted image 20230108174057.png]]
@@ -375,7 +375,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 		- FP multiplier / adder $\rightarrow$ Fully pipelined
 		- FP divider $\rightarrow$ Not pipelined, requires 24 cycles to complete
 
-### Hazards and Forwarding in Longer Latency Pipelines
+## Hazards and Forwarding in Longer Latency Pipelines
 
 - What happen with longer latency pipelines?
 	1. If not pipelined (eg. FP divider), Structural hazard can occur $\rightarrow$ Detect $\rightarrow$ Stall
@@ -412,7 +412,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 	3. Check for a WAW data hazard
 		- Determine if any instructions in A1, ... D, ... M7 has the same register destination as this instruction.
 
-### Maintaining Precise Exceptions
+## Maintaining Precise Exceptions
 
 - Problem from instructions with no dependency ![[Pasted image 20230108215943.png]]
 	- fadd.d and fsub.d complete before fdiv.d completes
@@ -429,7 +429,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 	3. Keep enough information so that trap-handling routines can create a precise sequence for the exception![[Pasted image 20230108222830.png]]
 	4. Hybrid scheme that allows the instruction issue to continue only if it is certain that all the instructions before the issuing instruction will complete without causing an exception
 
-### Performance of a Simple RISC V Pipeline
+## Performance of a Simple RISC V Pipeline
 
 - \# stall cycles for each type of FP operation on a per-instance basis $\sim$ latency![[Pasted image 20230108223710.png]]
 
@@ -437,7 +437,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 ---
 
-## Putting It All Together: The MIPS R4000 Pipeline
+# Putting It All Together: The MIPS R4000 Pipeline
 
 - MIPS R4000 Implementation
 	- 8 stage: 
@@ -479,7 +479,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 	- Four possible sources for an ALU pypass
 	- EX/DF, DF/DS, DS/TC, TC/WB
 
-### Floating-Point Pipeline
+## Floating-Point Pipeline
 
 - Three functional units: 
 	- A floating-point (FP) divider
@@ -495,7 +495,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 	- DIV-ADD ![[Pasted image 20230111075555.png]]
 	- Double precision ADD-Double precision DIV ![[Pasted image 20230111080034.png]]
 
-### Performance of the R4000 Pipeline
+## Performance of the R4000 Pipeline
 
 - Four major causes of pipeline stalls or losses
 	- Load stalls (See above)
@@ -507,16 +507,16 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 ---
 
-## Cross-Cutting Issues
+# Cross-Cutting Issues
 
-### RISC Instruction Sets and Efficiency of Pipelining
+## RISC Instruction Sets and Efficiency of Pipelining
 
 - Use simple instructions!
 	- Easier to schedule code  to achieve efficiency 
 	- With RISC instruction set, separate instructions may be individually scheduled either by compiler or  dynamic hardware scheduling techniques
 	- No room for CISC instruction set for efficient schedule
 
-### Dynamically Scheduled Pipelines
+## Dynamically Scheduled Pipelines
 
 - Compiler attempts to schedule instructions to avoid hazard
 	- a.k.a Static scheduling
@@ -538,7 +538,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 	1. Issue: Decode instructions, check for structural hazards
 	2. Read operands: Wait until no data hazard, then read operands
 
-### Dynamic Scheduling With a Scoreboard
+## Dynamic Scheduling With a Scoreboard
 
 - Scoreboarding allows instructions to execute out of order when there are sufficient resources and no data dependences
 
@@ -589,7 +589,7 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 
 ---
-## Reference
+# Reference
 
 - [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
 - Notebook: [[Computer Architecture Quantitive Approach]]

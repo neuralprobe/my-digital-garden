@@ -24,7 +24,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## High Level Description of GPT3
+# High Level Description of GPT3
 
 - GPT2 = A stack of ==12 decoders== with ==12 attention heads==
 - GPT3 = A stack of ==96 decoders== with ==96 attention heads==
@@ -34,7 +34,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Input/Output
+# Input/Output
 
 ![[Pasted image 20230304081430.png]]
 <figcaption> Inputs and outputs of language models </figcaption>
@@ -54,7 +54,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Encoding of Word Sequence
+# Encoding of Word Sequence
 
 - GPT3 as a ML algorithm, it operates on vectors of numbers
 - How to convert words into vectors?
@@ -76,7 +76,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Embedding of Encoded Word Sequence
+# Embedding of Encoded Word Sequence
 
 - ==50257 dim-vector== is too big! 
 - Let's Make it short!
@@ -106,7 +106,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Positional Encoding
+# Positional Encoding
 
 ![[Pasted image 20230304085755.png]]
 <figcaption> The position information of i-th word in 2048 word sequence is sent to 12288 sine functions with different frequencies and converted to 12288-dimensional position vector </figcaption>
@@ -123,7 +123,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Final Embedding Matrix
+# Final Embedding Matrix
 
 ![[Pasted image 20230304091130.png]]
 <figcaption> Sequance-Embedding matrix + Positional-Encoding matrix  = Final embedding matrix </figcaption>
@@ -134,7 +134,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Attention (Simplified)
+# Attention (Simplified)
 
 - What is attention?
 	- An operation that gives ...
@@ -188,7 +188,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Multi-Head Attention
+# Multi-Head Attention
 
 - GPT-3 used 96 multi-head attention with different $W_q, W_k, W_v$ projection weights
 	- So, 96x3x(Embedding-dim)x($QKV$'s columns) parameters from linear projections
@@ -206,7 +206,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Feed Forward
+# Feed Forward
 
 - 1 Hidden layer 
 ![[Pasted image 20230304102559.png]]
@@ -217,7 +217,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Add & Norm
+# Add & Norm
 
 - After Multi-Head attention and the Feed Forward blocks
 - Input + Output $\rightarrow$ Normalize (like ResNet)
@@ -230,7 +230,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Decoding
+# Decoding
 
 - The output from the multi-head attention layer $\rightarrow$ Input for decoding
 - Decoding is to invert
@@ -246,7 +246,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Full Architecture
+# Full Architecture
 
 ![[Pasted image 20230304104444.png]]
 <figcaption> Sequence Encoding and Embedding </figcaption>
@@ -270,15 +270,15 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Application: Summarization of An Article
+# Application: Summarization of An Article
 
-### Machine translation 
+## Machine translation 
 
 - From English to French
 ![[Pasted image 20230308071520.png]]
 <figcaption> Machine translation training example by Jay Alamar </figcaption>
 
-### Summarization 
+## Summarization 
 
 - If you train the wikipedia pages (with summaries and articles in it) to GPT,
 ![[Pasted image 20230308071857.png]]
@@ -290,7 +290,7 @@ tags: NLP Attention Decoder GPT
 
 ---
 
-## Reference:
+# Reference:
 
 - [The GPT-3 Architecture, on a Napkin](https://dugas.ch/artificial_curiosity/GPT_architecture.html)
 - [The Illustrated GPT-2 (Visualizing Transformer Language Models)](http://jalammar.github.io/illustrated-gpt2/)

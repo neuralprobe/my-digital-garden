@@ -16,7 +16,7 @@ tags: routine health wellbeing index
 
 ---
 
-## 9가지 루틴: RMBPS/EKCW
+# 9가지 루틴: RMBPS/EKCW
 
 1. Basic **Rest** : Sleep Well, Eat Well (R) 
 	- Ref. [[내적 건강 루틴 만들기]]
@@ -38,7 +38,7 @@ tags: routine health wellbeing index
 
 ---
 
-## Planner Format for Weekly Routine 예시
+# Planner Format for Weekly Routine 예시
 
 - Rest 는 매일 체크할 수 있도록 노력하자.
 - Meditation, Bible, Pray 는 마음 건강을 잘 지킬 수 있는 빈도를 찾아 그에 맞게 수행 할 것. 
@@ -62,7 +62,7 @@ tags: routine health wellbeing index
 
 ---
 
-## Reference
+# Reference
 
 - [[근육 긴장도 관리법]]
 - [[근막에 관하여]]

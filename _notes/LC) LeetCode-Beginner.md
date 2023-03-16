@@ -8,7 +8,7 @@ tags: leetCode cpp python
 
 ---
 
-## 2235. Add Two Integers
+# 2235. Add Two Integers
 > Given two integers `num1` and `num2`, return _the **sum** of the two integers_.
 
 ```c++
@@ -29,7 +29,7 @@ class Solution:
 
 ---
 
-## 2236. Root Equals Sum of Children
+# 2236. Root Equals Sum of Children
 > You are given the `root` of a **binary tree** that consists of exactly `3` nodes: the root, its left child, and its right child.
 > 
 > Return `true` _if the value of the root is equal to the **sum** of the values of its two children, or_ `false` _otherwise_.
@@ -71,7 +71,7 @@ public:
 
 ---
 
-## 226. Invert Binary Tree
+# 226. Invert Binary Tree
 > Given the `root` of a binary tree, invert the tree, and return _its root_.
 
 ![[Pasted image 20220903185021.png]]
@@ -149,7 +149,7 @@ TreeNode* Solution::invertTree(TreeNode* root){
 
 ---
 
-## 1480. Running Sum of 1d Array
+# 1480. Running Sum of 1d Array
 > Given an array `nums`. We define a running sum of an array as `runningSum[i] = sum(nums[0]…nums[i])`.
 > 
 > Return the running sum of `nums`.
@@ -190,7 +190,7 @@ public:
 
 ---
 
-## 1672. Richest Customer Wealth
+# 1672. Richest Customer Wealth
 > You are given an `m x n` integer grid `accounts` where `accounts[i][j]` is the amount of money the `i-th` customer has in the `j-th` bank. Return _the **wealth** that the richest customer has.
 > 
 > A customer's **wealth** is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum **wealth**.
@@ -225,7 +225,7 @@ public:
 };
 ```
 ---
-## 412. Fizz Buzz
+# 412. Fizz Buzz
 
 > Given an integer `n`, return _a string array_ `answer` _(**1-indexed**) where_:
 >
@@ -273,7 +273,7 @@ public:
 };
 ```
 
-## 1342. Number of Steps to Reduce a Number to Zero
+# 1342. Number of Steps to Reduce a Number to Zero
 
 > Given an integer `num`, return _the number of steps to reduce it to zero_.
 > 
@@ -305,7 +305,7 @@ public:
 };
 ```
 
-## 876. Middle of the Linked List
+# 876. Middle of the Linked List
 
 > Given the `head` of a singly linked list, return _the middle node of the linked list_.
 > 
@@ -349,7 +349,7 @@ public:
 };
 ```
 
-## 383. Ransom Note
+# 383. Ransom Note
 
 > Given two strings `ransomNote` and `magazine`, return `true` _if_ `ransomNote` _can be constructed by using the letters from_ `magazine` _and_ `false` _otherwise_.
 > 
@@ -381,7 +381,7 @@ class Solution:
 
 
 ---
-## Reference
+# Reference
 
 - [The LeetCode Beginner's Guide](https://leetcode.com/explore/learn/card/the-leetcode-beginners-guide)
 - What's next? [[LC) LeetCode Explore Card Track]] 

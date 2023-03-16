@@ -10,7 +10,7 @@ tags: comptureArchitecture lecture wentzlaff index
 
 ---
 
-## Course Information
+# Course Information
 
 - Course: [Computer Architecture in Coursera](https://www.coursera.org/learn/comparch)
 - Lecturer: David Wentzlaff (Princeton)
@@ -28,7 +28,7 @@ tags: comptureArchitecture lecture wentzlaff index
 
 ---
 
-## Abstractions in Modern Computing Systems
+# Abstractions in Modern Computing Systems
 
 - **From application requirements:**
 	- suggest how to improve architecture
@@ -40,7 +40,7 @@ tags: comptureArchitecture lecture wentzlaff index
 
 ---
 
-## Syllabus
+# Syllabus
 
 1. [[DW) Instruction Set Architecture and Microcode]]
 2. [[DW) Microcode and Pipelining]]
@@ -66,6 +66,6 @@ tags: comptureArchitecture lecture wentzlaff index
 
 ---
 
-## Reference
+# Reference
 
 - [[Computer Architecture Quantitive Approach]]

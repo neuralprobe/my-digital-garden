@@ -10,7 +10,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 
 ---
 
-## Introduction
+# Introduction
 
 - A quick review of the following 36 terms. Check Chapter 7 in [Computer Organization and Design](https://www.amazon.com/Computer-Organization-Design-MIPS-Architecture/dp/0124077269) for better understanding
 
@@ -42,7 +42,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 
 ![[Pasted image 20230126061744.png]]
 
-### Cache Performance Review
+## Cache Performance Review
 
 ![[Pasted image 20230131221938.png]]
 ![[Pasted image 20230131221949.png]]
@@ -53,7 +53,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 ![[Pasted image 20230131222011.png]]
 ![[Pasted image 20230131222148.png]]
 
-### Four Memory Hierarchy Questions
+## Four Memory Hierarchy Questions
 
 - **Q1: Where can a block be placed in the upper level? (block placement)**
 	- Direct mapped: A block is mapped to only one place in the cache
@@ -65,6 +65,11 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 		- N-blocks in a set? $\rightarrow$ N-way set associated cache
 
 ![[Pasted image 20230126065600.png]]
+
+![[Pasted image 20230311074051.png]]
+![[Pasted image 20230311074110.png]]
+(Image source: [http://csillustrated.berkeley.edu/PDFs/handouts/cache-3-associativity-handout.pdf](http://csillustrated.berkeley.edu/PDFs/handouts/cache-3-associativity-handout.pdf))
+
 
 - **Q2: How is a block found if it is in the upper level? (block identification)**
 	- Processor address = Block address + Block offset (select the desired data in the block)
@@ -110,7 +115,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 			- The block is not allocated in cache. Directly write on main memory.
 			- Often used by write-through cache
 
-### An Example: The Opteron Data Cache
+## An Example: The Opteron Data Cache
 
 ![[Pasted image 20230126083320.png]]
 
@@ -149,13 +154,13 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 
 ---
 
-## Cache Performance
+# Cache Performance
 
 - A better measure of memory hierarchy performance than *miss rate*?
 	- Average memory access time = Hit time $+$ Miss rate $\times$ Miss penalty
 	- eg. Splitting instruction and data caches is better than unified cache in terms of average memory access time
 
-### Average Memory Access Time and Processor Performance
+## Average Memory Access Time and Processor Performance
 
 ![[Pasted image 20230131222342.png]]
 
@@ -164,7 +169,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 - Impact of cache miss: Larger for lower $CPI_{execution}$ and higher clock frequency
 
 
-### Miss Penalty and Out-of-Order Execution Processors
+## Miss Penalty and Out-of-Order Execution Processors
 
 - How to define "miss-penalty" for out-of-order processors? $\rightarrow$ Non-overlapped latency
 
@@ -179,7 +184,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 
 ---
 
-## Six Basic Cache Optimizations
+# Six Basic Cache Optimizations
 
 - Average memory access time = Hit time $+$ Miss rate $\times$ Miss penalty
 
@@ -198,23 +203,23 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 
 - Too many misses $\rightarrow$ The memory hierarchy is said to *thrash*
 
-### First Optimization: Larger Block Size to Reduce Miss Rate
+## First Optimization: Larger Block Size to Reduce Miss Rate
 
 - The simplest way
 - Trade-off for to different block size
 ![[Pasted image 20230126122439.png]]
 
-### Second Optimization: Larger Caches to Reduce Miss Rate
+## Second Optimization: Larger Caches to Reduce Miss Rate
 
 ![[Pasted image 20230126123249.png]]
 
-### Third Optimization: Higher Associativity to Reduce Miss Rate
+## Third Optimization: Higher Associativity to Reduce Miss Rate
 
 - Two rules of thumb from Figure B.9
 	- (1) Eight-way set associative is for practical purposes as effective in reducing misses for these sized caches as fully associative.
 	- (2) The 2:1 cache rule of thumb: A direct mapped cache of size N has about the same miss rate as a two-way set associative cache of size N/2.
 
-### Fourth Optimization: Multilevel Caches to Reduce Miss Penalty
+## Fourth Optimization: Multilevel Caches to Reduce Miss Penalty
 
 - The first-level cache can be small enough to match the clock cycle time of the fast processor. 
 
@@ -230,7 +235,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 - Multilevel inclusion (Data in the first level cache is included in the second level)
 	- Desirable because of consistency between I/O an caches or among caches in a multiprocessor
 
-### Fifth Optimization: Giving Priority to Read Misses over Writes to Reduce Miss Penalty
+## Fifth Optimization: Giving Priority to Read Misses over Writes to Reduce Miss Penalty
 
 - Most important optimization for write-through cache is to add a write buffer with proper size
 	- The write buffer may need to hold the updated value of a location needed on a read miss
@@ -247,7 +252,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 		- Let the read miss continue
 		- i.e. Give reads priority over writes
 
-### Sixth Optimization: Avoiding Address Translation During Indexing of the Cache to Reduce Hit Time
+## Sixth Optimization: Avoiding Address Translation During Indexing of the Cache to Reduce Hit Time
 
 - Even a small and simple cache must cope with the translation of a virtual address from the processor to a physical address to access memory.
 
@@ -288,26 +293,27 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 ![[Pasted image 20230127095822.png]]
 
 
-### Summary of Basic Cache Optimization
+## Summary of Basic Cache Optimization
 
 ![[Pasted image 20230126133600.png]]
 
 ---
 
-## Virtual Memory
+# Virtual Memory
 
 - Why virtual memory?
-	- A computer running multiple processes
-	- Each process has its own address space, just a small part of memory
-	- Too expensive to dedicate a full address space of memory for each process
-	- Share a smaller amount of physical memory among many processes
+	- A computer running ==multiple processes==
+	- Each process has ==its own address space==, just a small part of memory
+	- Too ==expensive== to dedicate a ==full address space== of memory for each process
+	- Share a ==smaller amount of physical memory== among many processes
  
 - Virtual memory 
-	- Divides physical memory into blocks and allocate them to different processes
+	- ==Divides physical memory into blocks== and 
+	- ==allocate them to different processes==
 	- Reduce the time to start a program
 	 
 - Protection scheme 
-	- Restricts a process to the blocks belonging only to that process
+	- ==Restricts a process to the blocks== belonging only to that process
 
 - Automatically manages memory hierarchy (eg. the two levels of memory and storage)
 
@@ -316,21 +322,22 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 
 - Relocation
 	- Virtual memory simplifies loading the program for execution 
-	- The program in Figure B.19 can be placed anywhere in physical memory or disk just by changing the mapping between them
-	- Alternatively, software can change all address in a program each time it wa
+	- The program in Figure B.19 can be placed ==anywhere in physical memory or disk== just by changing the mapping between them
+	- Alternatively, software can change all address in a program each time
 
-- Virtual memory $\leftrightarrow$ Cache analogy
+- ==Virtual memory== $\leftrightarrow$ ==Cache analogy==
 | Cache |Virtual memory |
 | :---: | :---:|
-| Block | Page or segment |
+| Block/Line | Page or Segment |
+| Hardware cache | Main memory |
 | Miss | Page fault or address fault |
 
-- Memory mapping or address translation
+- Memory mapping or ==address translation==
 	- With virtual memory, the processor produces virtual addresses that are translated by a combination of hardware and software to physical addresses
-	- Today, the two memory hierarchy levels controlled by virtual memory are DRAMs and magnetic disks.
-
+	- Today, the ==two memory hierarchy levels== controlled by virtual memory are DRAMs and magnetic disks.
 
 ![[Pasted image 20230126162031.png]]
+
 - Difference between Cache and Virtual memory
 	- Replacement :
 		- On cache misses $\rightarrow$ Controlled by hardware
@@ -341,39 +348,39 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 	- Secondary storage is also used for the file system, not include din the address space
 
 - Block size in virtual memory
-	- Fixed size block = Pages (4~8KB)
+	- ==Fixed== size block = ==Pages== (4~8KB)
 		- Paged addressing $\rightarrow$ Single fixed-size address = page number + offset within a page
-	- Variable size blocks = Segments (~ $2^{16}$ up to $2^{32}$ bytes)
+	- ==Variable== size blocks = ==Segments== (~ $2^{16}$ up to $2^{32}$ bytes)
 		- Segmented addressing $\rightarrow$ 1 word for segment number + 1 word for an offset within a segment
 
 ![[Pasted image 20230126175457.png]]
 ![[Pasted image 20230126175936.png]]
 
-### Four Memory Hierarchy Questions Revisited
+## Four Memory Hierarchy Questions Revisited
 
-- Q1: Where Can a Block be Placed in Main Memory?
+- Q1: ==Where== Can a Block be Placed in Main Memory?
 	- To reduce the miss rate, operating systems allow blocks to be placed anywhere in main memory
-	- i.e. Fully associative
+	- i.e. ==Fully associative==
 
-- Q2: How Is a Block Found If It Is in Main Memory?
-	- For paging, the page offset is simply concatenated to this physical page address (see Figure B.23). 
-	- Page table
+- Q2: How Is a Block ==Found== If It Is in Main Memory?
+	- For paging (accessing data in a page), the ==page offset== is simply concatenated to this physical page address (see Figure B.23). 
+	- ==Page table==
 		- Indexed by the virtual page number, the size of the table is the number of pages in the virtual address space. 
-		- Given a 32-bit virtual address, 4 KiB ($2^{12}$) pages, and 4 bytes per page table entry (PTE), the size of the page table would be $(2^{32}/2^{12})\times2^2=2^{22}$ or 4 MiB
-		- cf. Inverted page table: Apply hashing function to virtual address to save page table size
-	- Translation lookaside buffer (TLB) or translation buffer
-		- A cache dedicated to the address translation
+		- Given a 32-bit virtual address, 4 KiB ($2^{12}$) pages, and 4 bytes per page table entry (PTE), the size of the page table would be $(2^{32}/2^{12})\times2^2=2^{22}$ or ==4 MiB==
+		- cf. Inverted page table: Apply ==hashing function== to virtual address to save page table size
+	- ==Translation lookaside buffer (TLB)== or translation buffer
+		- A ==cache== dedicated to the address ==translation==
 
 ![[Pasted image 20230126180113.png]]
 
-- Q3: Which Block Should be Replaced on a Virtual Memory Miss?
-	- Almost all OS try to replace the least recently use (LRU) block 
+- Q3: Which Block Should be ==Replaced== on a Virtual Memory Miss?
+	- Almost all OS try to replace the ==least recently use (LRU) block== 
 	- "Use bit" or "Reference bit" like LRU in cache
 
-- Q4: What Happens on a Write?
-	- Always write-back. Write-through is extremely expensive
+- Q4: What Happens on a ==Write==?
+	- Always ==write-back==. Write-through is extremely expensive
 
-### Techniques for Fast Address Translation
+## Techniques for Fast Address Translation
 
 - Page tables are usually so large that they are stored in main memory and are sometimes paged themselves. 
 
@@ -401,7 +408,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 	- (Step 4) The page offset $+$ the physical page frame $\rightarrow$ A full physical address
 ![[Pasted image 20230126185358.png]]
 
-### Selecting a Page Size
+## Selecting a Page Size
 
 - Why larger page!
 	- $Page \,table\, size \,\propto\, 1/(Page \,size)$ $\rightarrow$ Larger page size saves memory space for page table
@@ -413,7 +420,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 		- i.e. Internal fragmentation
 	- Process start-up time
 
-### Summary of Virtual Memory and Caches
+## Summary of Virtual Memory and Caches
 
 - Figure B.25: a hypothetical example going from a 64-bit virtual address to a 41-bit physical address with two levels of cache. This L1 cache is virtually indexed, and physically tagged because both the cache size and the page size are 8 KiB ($2^{13}$). The L2 cache is a direct mapped 4 MiB ($2^{22}$). The block size for both is 64 bytes ($2^6$).
 
@@ -430,7 +437,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 
 ---
 
-## Protection and Examples of Virtual Memory
+# Protection and Examples of Virtual Memory
 
 - Safe multiprogramming $\rightarrow$ Protection and sharing among programs!
 
@@ -443,7 +450,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 	- The computer designer must ensure that the processor portion of the process state can be saved and restored. 
 	- The operating system designer must guarantee that processes do not interfere with each others’ computations.
 
-### Protecting Processes
+## Protecting Processes
 
 - Simple
 	- Processes can be protected by having their own page tables, each pointing to distinct pages of memory
@@ -459,7 +466,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 	- The newer flat, 64-bit address space.
 
 
-### A Segmented Virtual Memory Example: Protection in the Intel Pentium
+## A Segmented Virtual Memory Example: Protection in the Intel Pentium
 
 - IA-32: Protection scheme in Intel 8086 architectures
 	- Four levels of protection
@@ -486,7 +493,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 	- How, then, can a hardware designer increase the chances of a safe system without trusting the operating system or any other piece of code? 
 	- The IA-32 approach is to restrict where the user can enter a piece of code, to safely place parameters on the proper stack, and to make sure the user parameters don’t get the protection level of the called code.
 
-### A Paged Virtual Memory Example: The 64-Bit Opteron Memory Management
+## A Paged Virtual Memory Example: The 64-Bit Opteron Memory Management
 
 ![[Pasted image 20230127091136.png]]
 
@@ -513,7 +520,7 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 ![[Pasted image 20230127092202.png]]
 
 ---
-## Reference
+# Reference
 
 - Appendix B in [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
 - Notebook: [[Computer Architecture Quantitive Approach]]

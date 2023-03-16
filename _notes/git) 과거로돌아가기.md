@@ -8,7 +8,7 @@ tags: git gitHub coding yalco
 
 ---
 
-### Reset vs Revert:
+# Reset vs Revert:
 - **Reset:**
 	- 과거 특정 시점으로 돌아가면서, 현재와 복귀시점 사이의 히스토리를 지우는 방법.
 
@@ -51,7 +51,8 @@ git revert --no-commit {commit hash}
 
 
 ---
-## Reference
+
+# Reference
 
 - [Yalco's github lecture 2-2](https://www.yalco.kr/@git-github/2-2/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)

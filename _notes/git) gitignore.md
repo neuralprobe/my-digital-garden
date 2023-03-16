@@ -7,7 +7,9 @@ tags: git gitHub coding yalco
 # Git-Ignore 사용법
 
 ---
-### Why `.gitignore`?
+
+# Why `.gitignore`?
+
 - git으로 관리할 필요 없는 애들: package file 이나 result file 들
 - git으로 관리하며 안되는 애들: **security** 때문에 공유하면 안되는 파일들 !!!
 ```YAML
@@ -23,7 +25,9 @@ secrets.yaml
 - `git status`를 쳐보면, `secrets.yaml` 정보가 사라짐.
 
 ---
-### `.gitignore` 형식
+
+# `.gitignore` 형식
+
 - [https://git-scm.com/docs/gitignore](https://git-scm.com/docs/gitignore) 참조
 
 ```zsh
@@ -57,7 +61,8 @@ logs/**/debug.log
 
 
 ---
-## Reference
+
+# Reference
 
 - [Yalco's github lecture 1-6](https://www.yalco.kr/@git-github/1-6/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)

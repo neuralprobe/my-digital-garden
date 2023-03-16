@@ -7,7 +7,8 @@ tags: git gitHub coding yalco
 # Git-타임캡슐?
 
 ---
-### git add & commit
+# git add & commit
+
 - git 상태확인: `git status`
 
 - git 타임캡슐(staging area)에 staging 하기: `git add "file_name"` or `git add .`
@@ -32,7 +33,7 @@ Date:   Tue Aug 9 07:04:01 2022 +0900
 ```
 
 ---
-### 코드 변경 example
+# 코드 변경 example
 
 ```zsh
 # lions.yaml 지우고,
@@ -101,7 +102,8 @@ git commit -am "your_comment"
 ```
 
 ---
-## Reference
+
+# Reference
 
 - [Yalco's github lecture 2-1](https://www.yalco.kr/@git-github/2-1/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)

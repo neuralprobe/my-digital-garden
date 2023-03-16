@@ -8,7 +8,7 @@ tags: leetCode array python cpp dataStructure
 
 ---
 
-## Basic concepts:
+# Basic concepts:
 
 > An Array is a ==collection of items==. The items could be integers, strings, DVDs, games, books—anything really. The items are stored in ==neighboring (contiguous) memory locations==. Because they're stored together, checking through the entire collection of items is straightforward.
 - Accessing elements in arrays
@@ -16,7 +16,8 @@ tags: leetCode array python cpp dataStructure
 
 ---
 
-## Max consecutive ones
+# Max consecutive ones
+
 > Given a binary array `nums`, return _the maximum number of consecutive_ `1`_'s in the array_.
 
 ```python
@@ -53,7 +54,8 @@ public:
 
 ---
 
-## Find Numbers with Even Number of Digits
+# Find Numbers with Even Number of Digits
+
 > Given an array `nums` of integers, return how many of them contain an **even number** of digits.
 
 ```cpp
@@ -89,13 +91,14 @@ public:
 
 ---
 
-## Squares of a Sorted Array
+# Squares of a Sorted Array
 
 > Given an integer array `nums` sorted in **non-decreasing** order, return _an array of **the squares of each number** sorted in non-decreasing order_.
 
 
 
 ---
-## Reference
+
+# Reference
 
 - [Array101](https://leetcode.com/explore/learn/card/fun-with-arrays/)

@@ -7,12 +7,12 @@ tags: git gitHub coding yalco
 # Git 설정 & 프로젝트 관리 시작하기
 
 ---
-### Tip: CLI vs GUI?
+# Tip: CLI vs GUI?
 - CLI: Command line interface
 - GUI: Graphic user interface with SourceTree
 
 ---
-### Git 최초 설정
+# Git 최초 설정
 - 내 깃 정보를 특정하기. github account 는 별개. 
 ```zsh
 git config --global user.name "your name"
@@ -31,7 +31,7 @@ git config --global init.defaultBranch main
 ```
 
 ---
-### 프로젝트 생성!  (CLI 버전)
+# 프로젝트 생성!  (CLI 버전)
 - `Codes/git_practice`  폴더 만들어서 여기 git 프로젝트를 생성해보자.
 ```zsh
 # git initialization: .git folder 생성
@@ -76,7 +76,7 @@ members:
 ```
 
 ---
-### GUI 버전으로 보기
+# GUI 버전으로 보기
 - `Codes/git_practice`  폴더를  `SourceTree`로 끌어서 구경하기. 
 
 ![[얄코깃헙-git설정-00.png]]
@@ -85,7 +85,8 @@ members:
 
 
 ---
-## Reference
+
+# Reference
 
 - [Yalco's github lecture 1-4](https://www.yalco.kr/@git-github/1-4/)
 - [Yalco's gihub lecture from inflearn](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)

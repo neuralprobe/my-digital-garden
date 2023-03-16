@@ -8,7 +8,7 @@ tags: UMA NUMA memory compArch
 
 ---
 
-## UMA (Unified Memory Access)
+# UMA (Unified Memory Access)
 
 - ==**Uniform memory access**== (**UMA**) is a [shared memory](https://en.wikipedia.org/wiki/Shared_memory_architecture "Shared memory architecture") architecture used in [parallel computers](https://en.wikipedia.org/wiki/Parallel_computer "Parallel computer").
 - All processors in the UMA model shard the physical memory **uniformly**
@@ -21,8 +21,9 @@ tags: UMA NUMA memory compArch
 ![[Pasted image 20220903044130.png]]
 <figcaption>Unified Memory Access</figcaption>
 
+---
 
-### UMA Types
+## UMA Types
 -  UMA using bus-based [symmetric multiprocessing](https://en.wikipedia.org/wiki/Symmetric_multiprocessing "Symmetric multiprocessing") (SMP) architectures
 	- Processors may be interconnected using buses, [crossbar switches](https://en.wikipedia.org/wiki/Crossbar_switch "Crossbar switch") or on-chip mesh networks. 
 	- The bottleneck in the scalability of SMP using ==buses or crossbar switches== is the ==bandwidth and power consumption== of the interconnect among the various processors, the memory, and the disk arrays. 
@@ -40,7 +41,8 @@ tags: UMA NUMA memory compArch
 
 ---
 
-## Non-Uniform Memory Access (NUMA)
+# Non-Uniform Memory Access (NUMA)
+
 - **Non-uniform memory access** (**NUMA**) is a [computer memory](https://en.wikipedia.org/wiki/Computer_storage "Computer storage") design used in [multiprocessing](https://en.wikipedia.org/wiki/Multiprocessing "Multiprocessing"), 
 - The memory access time **==depends on the memory location**== relative to the processor. 
 - Under NUMA, a processor can access its own [local memory](https://en.wikipedia.org/wiki/Local_memory "Local memory") faster than non-local memory (memory local to another processor or memory shared between processors). 
@@ -55,10 +57,11 @@ tags: UMA NUMA memory compArch
 
 
 ---
-## Reference
+
+# Reference
 
 - Wikipedia: [Uniform Memory Access](https://en.wikipedia.org/wiki/Uniform_memory_access)
 - Wikipedia: [Non-Uniform Memory Access](https://en.wikipedia.org/wiki/Non-uniform_memory_access)
 - [NUMA DEEP DIVE PART 1: FROM UMA TO NUMA](https://frankdenneman.nl/2016/07/07/numa-deep-dive-part-1-uma-numa/)
 - [[Apple M1 Chip]]
-- [[Collective Operations by Jelena - Part1]]
+- [[MPI Collective Operations by Pjesivac-Grbovic]]

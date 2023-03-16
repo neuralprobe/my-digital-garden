@@ -11,7 +11,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 --- 
 
-## Introduction and Background
+# Introduction and Background
 
 - ==Previous works== for language modeling and machine translation
 	- Recurrent neural networks (==RNN==)
@@ -64,7 +64,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-## Model Architecture
+# Model Architecture
 
 - Encoder-Decoder structure
 - Encoder:
@@ -80,7 +80,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-### Encoder Stack
+## Encoder Stack
 - Stack of N=6 identical layers
 - Each  layer with two sub-layers
 	- ==Multi-head self-attention== mechanism 
@@ -99,7 +99,7 @@ tags: NLP Attention Transformer Encoder Decoder
 ![[Pasted image 20230308060448.png]]
 <figcaption> Single Encoder in Transformer by Minseok Heo </figcaption>
 
-### Decoder Stack
+## Decoder Stack
 
 - Stack of N=6 identical layers
 - Each  layer with three sub-layers
@@ -141,7 +141,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-## Attention
+# Attention
 
 - Attention function
 	- Mapping a ==query== and a set of ==key==-==value== pairs to an ==output==
@@ -158,7 +158,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-### Scaled Dot-Product Attention
+## Scaled Dot-Product Attention
 
 - Input: queries and keys of dimensions $d_k$ and values of dimensions $d_v$
 ![[Pasted image 20230305180719.png]]
@@ -176,7 +176,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-### Multi-Head Attention
+## Multi-Head Attention
 
 1. To linearly project the Q, K, V $h$ times with different, learned linear projections to $d_k$, $d_k$ and $d_v$ dimensions
 2. Then, perform the attention function in parallel 
@@ -195,7 +195,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-### Applications of Attention in our Model
+## Applications of Attention in our Model
 
 - Encoder-decoder attention layers
 	- The queries ($Q$) come from the previous decoder layer
@@ -221,7 +221,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-### Position-wise Feed-Forward Networks
+## Position-wise Feed-Forward Networks
 
 ![[Pasted image 20230305184705.png]]
 
@@ -230,7 +230,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-### Embeddings and Softmax
+## Embeddings and Softmax
 
 - Used learned embeddings to convert the input tokens to output tokens with $d_{model}$ dimension
 - Used learned linear transformation and softmax function
@@ -239,7 +239,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-### Positional Encoding
+## Positional Encoding
 
 - Must inject some information about 
 	- the ==relative== or 
@@ -252,7 +252,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-## Why Self-Attention
+# Why Self-Attention
 
 1. Better complexity 
 2. Better parallelism
@@ -264,7 +264,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-## Training
+# Training
 
 - Dataset: 
 	- WMT2014 English-German dataset
@@ -293,7 +293,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-## Results
+# Results
 
 - Machine translation
 	- WMT 2014 English-to-German translation task: 
@@ -307,7 +307,7 @@ tags: NLP Attention Transformer Encoder Decoder
 
 ---
 
-## Reference
+# Reference
 
 - Vaswani, Ashish, et al. "[Attention is all you need.](https://proceedings.neurips.cc/paper/7181-attention-is-all)" _Advances in neural information processing systems_ 30 (2017).
 	- [Github repository](https://github.com/ tensorflow/tensor2tensor.) by the authors

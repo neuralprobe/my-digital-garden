@@ -8,7 +8,8 @@ tags: 제텔카스텐 메모 두번째뇌 자기계발 digitalGarden index
 
 ---
 
-## Notebook-Scalability 문제
+# Notebook-Scalability 문제
+
 - 연구 경력 / 업무 경력 / 학습 기간이 길어지다 보면, 쌓여가는 아이디어와 지식을 어떻게 관리하는게 좋을까 고민하게 된다. 
 - 특히, 요즘의 연구 분야인 deep learning accelerator는 다양한 분야와 연관이 있어 아이디어/지식을 어떻게 정리해야할지 헷갈릴 때가 많다. 
 - 연관 분야를 좀 적어보자면 ==computer architecture==, ==memory system==, ==neural network==, ==machine learning==, ==linear algebra==, ==computer graphics==, ==HW-SW interface==, ==compiler==, ==deep learning frameworks (tensorflow, pytorch ...)==, ==graph processing==, ==vision application==, ==natural language processing==, ==programming languages (python, C++ ...)==, ==algorithm and data structure==, ==git==, ==SaaS==, ==object-oriented programming==, ==design patterns==, ==cloud computing==, ==software architecture==, ==IT market trend==, ==ASIC flow==, ==FPGA==, ==operating system==, ==schedule optimization==  등등이 있는데, 
@@ -23,7 +24,8 @@ tags: 제텔카스텐 메모 두번째뇌 자기계발 digitalGarden index
 
 --- 
 
-## Zettelkasten 과 Digital Garden
+# Zettelkasten 과 Digital Garden
+
 - Notebook-scalability로 여태 고생해온 덕에, 노트 기법이나 자료 정리 기법에 평소에도 관심을 갖고 더 좋은 방법이 있는지 찾아보곤 한다.
 - Evernote, Tistory, Brunch, Github-page, Notion, MS-Word, iOS-note, MS-oneNote, facebook, instagram 등등 여러 방법을 활용해 문서를 정리하거나 글을 작성해 봤지만, 여태 마음에 드는 자료의 수집/정리/공유를 위한 딱 마음에 드는 플랫폼을 여태 찾지 못했다.
 - 그러다가 지난 달, [작가의 방](https://www.youtube.com/c/%EC%9E%91%EA%B0%80%EC%9D%98%EB%B0%A9) 유튜브 채널의 [옵시디언 기초 강좌](https://youtube.com/playlist?list=PLy4SLsxzyLUUJlu0L-_U7c1jy_bqvPMR6) 플레이리스트를 발견하고, 영상 속에서 소개한 ==제텔카스텐== (Zettelkasten, 메모상자의 독일어) 에 관심을 갖게 되었고, [[제텔카스텐-글쓰는 인간을 위한 두번째 뇌]] 라는 책도 접하고, 이제는 실행 단계에 접어들게 되었다. 
@@ -65,7 +67,7 @@ tags: 제텔카스텐 메모 두번째뇌 자기계발 digitalGarden index
 
 ---
 
-## 왜 하필 Digital "Garden"인가?
+# 왜 하필 Digital "Garden"인가?
 - 정원은 정원사가 (거의) 매일 들러 돌봐주어야 한다. 나무와 풀에 물을 줘야하고, 관상용 식물의 나뭇잎이나 가지를 쳐줘야 하고, 가끔은 힘을 잔뜩 주어 새로운 길을 닦고 확장 공사를 해야할 수도 있다.
 - ==제2의 두뇌== 역할을 하게 될 노트 시스템도 Gardening과 마찬가지로 하루 하루 부단히 돌봐주어야 하는 녀석이다. (아래에 설명한 제텔카스텐 워크플로우는 [[제텔카스텐-글쓰는 인간을 위한 두번째 뇌|여기]] 참고)
 	1. 새로운 임시노트를 매일 만들고, 
@@ -81,17 +83,17 @@ tags: 제텔카스텐 메모 두번째뇌 자기계발 digitalGarden index
 ![[My-Digital-Garden-01.png]]
 <p align="right"> MS TECH | WIKIMEDIA, PIXABAY</p>
 
-
-
 ---
 
-## 결론?
+# 결론?
+
 - 시간이 지나 풍성해진 digital garden을 보며 새로운 생각들과 통찰을 얻을 미래를 생각하면 하루 한 두개의 메모 쯤 거뜬히 적어낼 수 있지 않을까.
 - 오랜 세월 고통 받아온 Notebook-scalability 문제를 이번엔 해결할 수 있을 것 같아 성실히 gardening 해보려고 한다. 화이팅.
 - 1년 정도 지나서 성공후기를 남길 수 있을면 좋을듯 :)
 
 ---
-## Reference
+
+# Reference
 
 - [**제텔카스텐** *글 쓰는 인간을 위한 두 번째 뇌*](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788993784701)
 - [**하우 투 제텔카스텐(How to Zettel-Kasten)** 옵시디언 기반 두 번째 뇌 만들기](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788993784725&orderClick=LAG&Kc=)

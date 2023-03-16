@@ -8,7 +8,7 @@ tags: markdown jekyll
 
 ---
 
-## 기본 마크다운
+# 기본 마크다운
 - 헤더: `#header1 ~ ######header6`
 
 - 리스트: `- 문장`, `1. 문장`
@@ -34,7 +34,7 @@ tags: markdown jekyll
 
 ----------
 
-## 링크 관련 마크다운
+# 링크 관련 마크다운
 
 - 백링크: \[\[백링크페이지\]\]
 
@@ -51,7 +51,7 @@ tags: markdown jekyll
 
 ---
 
-## 임베딩 문법
+# 임베딩 문법
 
 - 이미지 파일 임베딩: 
 	1. 이미지파일을 메모로 끌어 오기. 
@@ -75,7 +75,8 @@ tags: markdown jekyll
 
 
 ---
-## Reference
+
+# Reference
 
 - [https://digital-garden-jekyll-template.netlify.app/your-first-note](https://digital-garden-jekyll-template.netlify.app/your-first-note)
 - [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)
