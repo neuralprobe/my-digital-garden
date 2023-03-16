@@ -789,23 +789,12 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ## Protection via Virtual Memory
 
+- ==Page-based virtual memory==, 
+	- Including a ==TLB== that caches page table entries, 
+	- Is the primary mechanism that ==protects processes from each other==.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Protection via segmentation and paging in the 80x86
+	- Refer to Sections B.4 and B.5 in [[HP) Review of Memory Hierarchy]]
 
 
 
@@ -820,19 +809,6 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 ---
 
 # Putting It All Together: Memory Hierarchies in the ARM Cortex-A53 and Inter Core i7 6700
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
