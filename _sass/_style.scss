@@ -148,6 +148,11 @@ side {
   //background-color: lightblue;
 }
 
+side::-webkit-scrollbar{
+  display: none;
+}
+
+
 .backlink-box {
   background: $color-box-background;
   padding: 1em;

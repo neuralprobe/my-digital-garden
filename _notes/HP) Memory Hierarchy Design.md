@@ -796,7 +796,17 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 - Protection via segmentation and paging in the 80x86
 	- Refer to Sections B.4 and B.5 in [[HP) Review of Memory Hierarchy]]
 
+- ==Multiprogramming==, where several programs running ==concurrently share a computer==, 
+	- Has led to demands for ==protection and sharing among programs== 
+	- And to the concept of a ==process==
 
+- ==Process switch== or ==context switch==
+	- A process = Breathing air and living space of a program
+	- Must be possible to switch from one process to another. 
+
+- ==OS and architecture== join forces to 
+	- Allow processes to ==share== the hardware 
+	- Yet ==not interfere== with each other
 
 
 ---
