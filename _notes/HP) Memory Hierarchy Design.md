@@ -808,6 +808,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 	- Allow processes to ==share== the hardware 
 	- Yet ==not interfere== with each other
 
+- 
 
 ---
 
