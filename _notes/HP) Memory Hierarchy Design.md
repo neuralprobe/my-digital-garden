@@ -1,6 +1,6 @@
 ---
 title: HP) Memory Hierarchy Design
-date: 2023-03-16
+date: 2023-03-26
 tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtualMemory
 ---
 
@@ -376,7 +376,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
-## First Opt.: Small and Simple First-Level Caches to Reduce Hit Time and Power
+## #1. Small and Simple First-Level Caches to Reduce Hit Time and Power
 
 - Use lower levels of associativity
 
@@ -410,7 +410,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
-## Second Opt.: Way Prediction to Reduce Hit Time
+## \#2. Way Prediction to Reduce Hit Time
 
 
 - ==Extra bits== are kept in the cache to ==predict the way== (or block within the set) of the next cache access. 
@@ -432,7 +432,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
-## Third Opt.: Pipelined Access and Multibanked Caches to Increase Bandwidth
+## \#3. Pipelined Access and Multibanked Caches to Increase Bandwidth
 
 - To allow multiple accesses per clock
 	- Pipelining the cache access 
@@ -460,13 +460,13 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
-## Fourth Opt.: Nonblocking Caches to Increase Cache Bandwidth
+## \#4. Opt.: Nonblocking Caches to Increase Cache Bandwidth
 
 - Non blocking cache =  Lockup-free cache
 
  ![[Pasted image 20230311144338.png]]
-<figcaption> <b>Non-blocking cache</b> from Valsan, Prathap Kumar, Heechul Yun, and Farzad Farshchi. "Addressing isolation challenges of non-blocking caches for multicore real-time systems." _Real-Time Systems_ 53 (2017): 673-708. </figcaption>
- 
+<figcaption> <b>Non-blocking cache</b> from Valsan, Prathap Kumar, Heechul Yun, and Farzad Farshchi. "Addressing isolation challenges of non-blocking caches for multicore real-time systems." Real-Time Systems 53 (2017): 673-708. </figcaption>
+
 - "Hit under miss"
 	- Allowing the data cache to continue to supply cache hits during a miss
 
@@ -474,7 +474,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 	- Further lower the effective miss penalty
 
 ![[Pasted image 20230311151345.png]]
-<figcaption> Belayneh, Samson, and David R. Kaeli. "A discussion on non-blocking/lockup-free caches." _ACM SIGARCH Computer Architecture News_ 24.3 (1996): 18-25. </figcaption>
+<figcaption> Belayneh, Samson, and David R. Kaeli. "A discussion on non-blocking/lockup-free caches." ACM SIGARCH Computer Architecture News 24.3 (1996): 18-25. </figcaption>
 
 ![[Pasted image 20230311142647.png]]
 <figcaption> <b>Figure 2.11 The effectiveness of a nonblocking cache is evaluated by allowing 1, 2, or 64 hits under a cache miss with 9 SPECINT (on the left) and 9 SPECFP (on the right) benchmarks.</b> The data memory system modeled after the Intel i7 consists of a 32 KiB L1 cache with a four-cycle access latency. The L2 cache (shared with instructions) is 256 KiB with a 10-clock cycle access latency. The L3 is 2 MiB and a 36-cycle access latency. All the caches are eight-way set associative and have a 64-byte block size. Allowing one hit under miss reduces the miss penalty by 9% for the integer benchmarks and 12.5% for the floating point. Allowing a second hit improves these results to 10% and 16%, and allowing 64 results in little additional improvement. </figcaption>
@@ -512,7 +512,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
-## Fifth Opt.: Critical Word First and Early Restart to Reduce Miss Penalty
+## \#5. Critical Word First and Early Restart to Reduce Miss Penalty
 
 - Idea: Don't wait for the full block to be loaded
 
@@ -532,7 +532,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
-## Sixth Opt.: Merging Write Buffer to Reduce Miss Penalty
+## \#6. Merging Write Buffer to Reduce Miss Penalty
 
 - Write-through caches rely on write buffers
 
@@ -554,7 +554,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
-## Seventh Opt.: Compiler Optimization to Reduce Miss Rate
+## \#7. Compiler Optimization to Reduce Miss Rate
 
 - No hardware changes
 
@@ -599,7 +599,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
-## Eighth Opt.: Hardware Prefetching of Instructions and Data to Reduce Miss Penalty or Miss Rate
+## \#8. Hardware Prefetching of Instructions and Data to Reduce Miss Penalty or Miss Rate
 
 - Prefetch items before the processor requests them!
 
@@ -621,7 +621,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
-## Ninth Opt.: Compiler-Controlled Prefetching to Reduce Miss Penalty or Miss Rate
+## \#9. Compiler-Controlled Prefetching to Reduce Miss Penalty or Miss Rate
 
 - Alternative to hardware prefetching for the compiler?
 
@@ -688,7 +688,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
-## Tenth Opt.: Using HBM to Extend the Memory Hierarchy
+## \#10. Using HBM to Extend the Memory Hierarchy
 
 - Use DRAM as a massive L4 caches
 
@@ -794,26 +794,353 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 	- Is the primary mechanism that ==protects processes from each other==.
 
 - Protection via segmentation and paging in the 80x86
-	- Refer to Sections B.4 and B.5 in [[HP) Review of Memory Hierarchy]]
+	- Refer to Sections B.4 and B.5 in [[HP) Review of Memory Hierarchy]] for more detailed description
 
 - ==Multiprogramming==, where several programs running ==concurrently share a computer==, 
 	- Has led to demands for ==protection and sharing among programs== 
 	- And to the concept of a ==process==
 
-- ==Process switch== or ==context switch==
-	- A process = Breathing air and living space of a program
+- A ==process== 
+	- "Breathing air and living space of a program"
 	- Must be possible to switch from one process to another. 
+	- i.e. ==Process switch== or ==context switch==
 
 - ==OS and architecture== join forces to 
 	- Allow processes to ==share== the hardware 
 	- Yet ==not interfere== with each other
 
-- 
+---
+
+## Role of architecture for protection?
+
+1. Provide at least ==two mode==s to distinguish ...
+	1. ==User process== 
+	2. ==Operating system process== = Kernel process = Supervisor process
+2. Provide a portion of the ==processor state== 
+	1. that a user process ==can use but not write==.
+	2. This state includes
+		1. User/Supervisor mode bit
+		2. Exception enable/disable bit
+		3. Memory protection information
+3. Provide mechanism to switch the processor modes
+	1. User mode $\rightarrow$ Supervisor mode : ==System call==
+		1. Implemented as a special instruction 
+		2. Transfer control to a dedicated location in supervisor code space
+		3. Save the PC from the point of the system call
+	2. Supervisor mode $\rightarrow$  User mode : 
+		1. Like a subroutine return,
+		2. Restore the previous/user mode 
+4. Provide mechanisms to ==limit memory accesses== 
+
+### How to implement protection?
+
+- ==Add protection restrictions== to each ==page== of virtual memory
+
+- The protection restrictions included in ==each page table entry== determines ...
+	1. whether a user process ==can read== this page, 
+	2. whether a user process ==can write== to this page, and
+	3. whether code can be ==executed== from this page
+	4. ==neither read nor write== a page if it is not in the page table.
+
+- Because only the ==OS== can update the page table, 
+
+- The ==paging mechanism== provides ==total access protection==.
+
+- Paged virtual memory access
+	- At least twice longer latency
+	- One for obtaining the physical address
+		- Need to look up a huge page table!
+	- One for getting the data
+
+- Solution of the slow paged virtual memory access
+	- Rely on the principle of locality
+	- If the access has locality, then the address translation have locality
+	- $\rightarrow$ Use ==Translation lookaside buffer== (TLB)
+	- i.e. Use a special cache for page table
+
+- Exploiting locality in memory hierarchy?
+	- Cache $vs$ Main-memory
+	- Page $vs$ Virtual-memory
+	- TLB $vs$ Page-table 
+ 
+- TLB entry or Page-table entry 
+	- Mapping between the ==virtual== address and the physical ==address== of a ==page==
+	 - ==Tag-portion==: 
+		 - Holds portions of the ==virtual== address
+	 - ==Data-portion==: 
+		 - Holds a ==physical== page address, ==protection== field, ==valid== bit, and usually a ==use== bit and a ==dirty== bit.
+	 - How to ==update== a page table entry?
+		 - ==OS== update the values in the page table
+		 - Invalidating the corresponding TLB entry
+
+- Is it ==enough== to let your computer architecture obey the restrictions on pages?
+	- ==Not enough==!!
+	- We depend on the ==operating system == as well as the hardware!
+
+- What's the problem of OS?
+	- It is too big to find and fix the ==bugs== in it
+	- 10s of millions of lines
+	- Bug rate (?) = One per thousand lines
+	- So much security hole
+	- Solution? Use a protection model like ==virtual machines== with a much smaller code base than the full OS
+
+---
+
+## Protection via Virtual Machines
+
+- First developed in the late 1960s
+
+- Why virtual machines?
+	- Importance of isolation and security
+	- Failures in security and reliability of standard OSs
+	- Sharing of a single computer among many users
+	- Overhead of VMs become acceptable
+
+- Definition of VMs?
+	- "All emulation methods that provide a standard software interface"
+
+- Our focus here will be on VMs where the ISA presented by the VM and the underlying hardware match
+	- i.e. ==System virtual machines==
+	- e.g. IBM VM/370, VMware ESX Server, Xen
+
+- With a VM, multiple OSes all share the hardware resources
+
+- ==Virtual machine monitor (VMM) or Hypervisor==
+	- Underlying hardware = =='Host'==
+	- Host's resources are shared among the =='Guest' VMs==
+	- VMM determines how to map virtual resources to physical resources
+		- Time-shared
+		- Partitioned
+		- Emulated in software
+	- Much smaller than a traditional OS
+	- Isolation portion of a VMM ~ only 10,000 lines of code
+
+- Cost of virtualization?
+	- User level processor-bound programs $\rightarrow$ Little OS invocation $\rightarrow$ Little virtualization overhead
+	- I/O-intensive workloads $\rightarrow$ Many system calls and privileged instructions $\rightarrow$ OS-intensive $\rightarrow$ High virtualization overhead
+	- Slowed down by the instructions that must be emulated by the VMM
+
+- If Guest ISA = Host ISA $\rightarrow$ Run instructions directly on the native hardware
+
+- VM's benefits
+	- Protection improvement
+	- Manage software
+		- Free to use multiple/old/new/legacy OSes
+	- Mange hadrware
+		- Multiple software stacks share hardware
+		- Possible to migrate 'running VM' to a different computer
+
+- Basic requirement of system virtual machines
+	- System mode and user mode (at least)
+	- A privileged subset of instructions 
+		- Available only in system mode
+
+---
+
+## Requirements of a Virtual Machine Monitor
+
+- VMMs that present a software interface to guest software
+	- ==Must isolate== the state of ==guests== from each other
+	- ==Must protect== ==itself== from guest software (including guest OSes).
+
+- VMM must control everything
+	- access to privileged state
+	- address translation
+	- I/O
+	- exceptions and interrupts
+
+- Privilege level of VMM  > Guest VMs
+
+---
+
+## Instruction Set Architecture Support for Virtual Machines
+
+- ==Virtualizable architecture== 
+	- VM planning during the design of the ISA $\rightarrow$ 
+	- Allows the VM to execute directly on the hardware
+	- e.g. IBM 370, recent x86, RISC-V
+
+- Privileged instruction by guest OS?
+	- Trap to VMM $\rightarrow$ Support a virtual version of the sensitive information as the guest OS expects
+	- No VMM trapping support? $\rightarrow$ 
+		- Special precautions by VMM, 
+		- Locate all problematic instructions 
+
+- Multi-level privileged instructions
+	- One for guest user
+	- One for some OS operations that 
+		- exceed the permissions granted to a user program
+		- But, do not require intervention by VMM because they cannot affect any other VM
+	- One for VMM
+	- eg. Xen design
+
+---
+
+## Impact of Virtual Machines on Virtual Memory and I/O
+
+- Virtualization of virtual memory 
+	- Each guest OS in every VM ...
+	- manages its own set of page tables
+
+- Separation of the notion of real and physical memory!
+	- Real memory?
+		- Intermediate level between virtual memory and physical memory
+	- Virtual memory $\rightarrow$ Real memory 
+		- Mapped by guest OS 
+		- Via page tables
+	- Guests' real memory $\rightarrow$ Physical memory
+		- Mapped by VMM page tables
+
+- Memory virtualization and [VMware Ballooning](http://www.vfrank.org/2013/09/18/understanding-vmware-ballooning/) by FRANKBRIX
+	1.  Inside a virtual machine you start an application. For instance solitaire
+	2.  Solitaire as an application will ask the guest operating system (in this case windows) for memory. Windows will give it memory and map it from the ==virtual memory $\rightarrow$ guest physical memory (real memory in H&P)== 
+	3. What happens next is that the hypervisor sees the request for memory and the hypervisor maps ==guest physical memory (real memory in H&P) $\rightarrow$ host physical memory (physical memory in H&P)==
+	4.  Now everything is perfect. You play solitaire for a few hours. And then you close it down.
+	5.  When you close solitaire the guest operating system will mark the memory as “free” and make it available for other applications. BUT since the hypervisor does not have access to Windows’ “free memory” list the memory will still be mapped in “**host physical memory”** and putting memory load on the ESXi host.
+	6.  This is where ==ballooning== comes into place. In case of an ESXi host running low on memory the hypervisor will ask the “balloon” driver installed inside the virtual machine (with VMware Tools) to “inflate”
+	7.  The balloon driver will inflate and because it is “inside” the operating system it will start by getting memory from the “free list”. ==The hypervisor will detect what memory the balloon driver has reclaimed and will free it up on the **“host physical memory”** layer!==
+![[Pasted image 20230325172739.png]]
+<figcaption> VMware ballooning is a memory reclamation  technique used when and ESXi host is running low on memory. You should not see balloning if your hosts is performing like it should. To understand ballooning we would have to take a look at the following picture. (Figure By FRANKBRIX)</figcaption>
+
+![[Pasted image 20230325174634.png]]
+<figcaption> Memory virtualization problem captured from video by Mythili Vutukuru</figcaption>
+
+![[Pasted image 20230325174603.png]]
+<figcaption> Extended page table by Mythili Vutukuru</figcaption>
+
+- Shadow page table (SPT)
+	- Double mapping is too expensive
+	- SPT maps directly (!) from 
+		- the guest virtual address space
+		- to the physical address space of the hardware
+	- How to?
+		- VMM detects all modification to the guest's page table
+		- Ensure the shadow page table entries being used by the hardware for translations 
+		- So, VMM must trap any attempt by the guest OS
+			- to change ints page table or
+			- to access the page table pointer
+
+![[Pasted image 20230325174903.png]]
+<figcaption> Shadow page table by Mythili Vutukuru</figcaption>
+
+- I/O Virtualization?
+	- Most difficult part of system virtualization
+	- Increasing number of I/O devices
+	- Increasing diversity of I/O device types
+	- Sharing of a real device among multiple VMs
+	- Supporting the myriad of device drivers
+	- How to?
+		- Giving each VM generic version of each type of I/O device driver
+		- Then, VMM handle real I/O
+	- eg1. HDD $\rightarrow$ virtual tracks/sectors
+	- eg2. Network $\rightarrow$ VMs share short time slices
+
+---
+
+## Extending the Instruction Set for Efficient Virtualization and Better Security
+
+- Two primary areas of performance improvement 
+	- Handling page tables and TLBs (the cornerstone of virtual memory) 
+		- Avoiding unnecessary TLB flushes 
+		- Using the nested page table mechanism (eg. IBM) 
+			- Rather than a complete set of shadow page tables
+	- I/O, specifically handling interrupts and DMA.
+		- Allow a device to directly use DMA to move data (eliminating a potential copy by the VMM) 
+		- Allow device interrupts and commands to be handled by the guest OS directly.
+
+- Concerns about security
+	- VMM penetration followed by memory remapping to access to the credit card information data
+	- Trojan horse in the same VM with the credit card information data
+	- eg. Intel's ==software guard extensions== (SGX)
+		- Allow user programs to create "==enclaves=="
+		- Enclaves: Portions of code and data that are ==always encrypted and decrypted only on use== and only with the key provided by the user code.
+
+---
+
+## An Example VMM: The Xem Virtual Machine
+
+- VM developers decided to
+	- Allow the guest OS to be aware that it is running on a VM
+
+- Para-virtualization in Xen VMM
+	- Allowing small modification to the guest OS to simplify virtualization
+
+- Xen VMM
+	- Used in Amazon's web services data centers
+	- Provides a guest OS with a virtual machine abstraction
+	- eg1. Avoid flushing the TLB
+	- eg2. Allow the guest OS to allocate page, checking protection restriction
+
+- Four protection level 
+	- Lv 0: Xen VMM
+	- Lv 1: Guest OSs
+	- Lv 3: Applications
+
+- Xen modifies the guest OS
+	- Not to use problematic portions of the architecture
+	- eg. Change 1% (~3000 lines) of 80x86 specific code in Linux port to Xen
+
+- Driver domains
+	- Special privileged VMs to simplify the I/O challenge of VMs
+	- Run the physical device drivers
+	- Regular VMs (guest domains) run simple virtual device drivers that must communicate with the physical device drivers in the driver domains
+	- Data communication between guest and driver domains $\rightarrow$ Done by page remapping
 
 ---
 
 # Cross-Cutting Issues: The Design of Memory Hierarchies
 
+(Topics from other chapters that are fundamental to memory hierarchies)
+
+## Protection, Virtualization, and Instruction Set Architecture
+
+- IBM360 $\rightarrow$ IBM370 : Support virtual memory
+
+- 80x86 instruction `POPF` problem
+
+- IBM mainframe hardware and VMM's 3 steps to improve performance
+	1. Reduce the cost of processor virtualization.
+	2. Reduce interrupt overhead cost due to the virtualization.
+	3. Reduce interrupt cost by steering interrupts to the proper VM without invoking VMM.
+
+## Autonomous Instruction Fetch Units
+
+- OoO or deep pipeline processors decouple the instruction fetch using a ==separate instruction fetch unit==
+
+- The instruction fetch unit accesses the instruction cache to ==fetch an entire block== before decoding it into individual instructions
+
+- May generate additional misses, but may reduce the total miss penalty incurred
+
+- Also include data prefetching
+
+## Speculation and Memory Access
+
+- Speculation
+	- An instruction is ==tentatively executed== before the processor knows whether it is really needed.
+	- Rely on branch prediction
+	- If incorrect, flush the speculated instructions from the pipeline
+
+- Protection with speculation?
+	- With ==speculation==, the processor may generate ==memory references==, which will never be used because the instructions were the result of incorrect speculation. Those references, if executed, could generate ==protection exceptions==. Obviously, such faults should occur only if the instruction is actually executed.
+
+## Special Instruction Caches
+
+- One of the biggest challenges in ==superscalar processors==
+	- To supply the instruction bandwidth!!
+
+- A small ==cache of recently translated instructions==
+	- reduce instruction ==bandwidth== demands
+	- reduce branch ==misprediction== penalties
+
+## Coherency of Cached Data
+
+- Processor may see the ==old or stale copy== of data in multiple processors and I/O devices
+
+- I/O cache coherency question is this: 
+	- ==where== does the I/O occur in the computer—
+	- ==between the I/O device and the cache== 
+	- or ==between the I/O device and main memory?==
+	- Many systems therefore prefer that I/O occur ==directly== to main memory
 
 
 
@@ -821,8 +1148,83 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 # Putting It All Together: Memory Hierarchies in the ARM Cortex-A53 and Inter Core i7 6700
 
+## [The ARM Corte-A53](https://en.wikipedia.org/wiki/ARM_Cortex-A53)
+
+- Cortex-53
+	- A configurable core that supports the ==ARMv8A instruction set architecture==
+	- Includes 32bit and 64bit modes
+	- Delivered as an ==IP== (intellectual property) core
+	- Used in a variety of tablets and smartphones
+
+- IP core flavors
+	- Hard cores
+		- Optimized for a particular semiconductor vendor
+		- Black boxes with external interfaces
+	- Soft cores
+		- Delivered in a form that uses a standard library of logic elements
+		- Can be compiled for different semiconductor vendors
+		- Can be Modified
+
+- Issue two instructions per clock @ up to 1.3 GHz
+
+- Two-level TLB, two-level cache
+
+![[Pasted image 20230326142740.png]]
+
+![[Pasted image 20230326143406.png]]
+![[Pasted image 20230326143415.png]]
 
 
+## Performance of the Cortex-A53 Memory Hierarchy
+
+- 32 KiB primary cache / 1 MiB L2 cache 
+- < 1% instruction cache miss rates for SpecInt2006 benchmarks
+- Data cache miss and penalty?
+![[Pasted image 20230326144528.png]]
+
+![[Pasted image 20230326144706.png]]
+
+---
+
+## [The Intel Core i7 6700](https://en.wikipedia.org/wiki/List_of_Intel_Core_i7_processors)
+
+- 64-bit extension of the 80x86 architecture
+- OoO execution processor
+- Four 80x86 instructions per clock cycle @ up to 4.0 GHz
+	- Multiple issue
+	- Dynamically scheduled
+	- 16-stage pipeline
+	- Two simultaneous threads per processor = ==simultaneous multithreading==
+
+- Memory support
+	- Three memory channels
+	- DDR3-1066 (DIMM PC8500)
+	- Peak memory BW > 25 GB/s
+
+- Virtual memory
+	- 48-bit virtual addresses
+	- 36-bit physical addresses
+	- Max physical memory = 36 GiB
+	- Two-level TLB
+
+- L1 cache
+	- Virtually indexed
+	- Physically tagged
+- L2 and L3
+	- Physically indexed
+- L4
+	- Some version of i7 6700 use HBM as fourth level cache
+
+![[Pasted image 20230326145540.png]]
+![[Pasted image 20230326145547.png]]
+![[Pasted image 20230326150342.png]]
+![[Pasted image 20230326150413.png]]
+- Read page from 136 to  for detailed explanation on 
+	- the memory access steps and 
+	- the performance related to
+		- Autonomous instruction fetch
+		- Speculation
+		- Instruction prefetch and data prefetch
 
 ---
 
@@ -830,3 +1232,11 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 - Chapter 2 in [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
 - Notebook: [[Computer Architecture Quantitive Approach]]
+- [Valsan, Prathap Kumar, Heechul Yun, and Farzad Farshchi. "Addressing isolation challenges of non-blocking caches for multicore real-time systems." _Real-Time Systems_ 53 (2017): 673-708.](https://link.springer.com/article/10.1007/s11241-017-9280-9)
+- [Belayneh, Samson, and David R. Kaeli. "A discussion on non-blocking/lockup-free caches." _ACM SIGARCH Computer Architecture News_ 24.3 (1996): 18-25.](https://dl.acm.org/doi/abs/10.1145/381718.381727)
+- [Nonblocking cache from MIT lecture by Arvind (with Asif Khan)](http://csg.csail.mit.edu/6.S078/6_S078_2012_www/handouts/lectures/L25-Non-Blocking%20caches.pdf)
+- [Memory hierarchy lecture from CMPUT429/CMPE382 Winter 2001 by J. N. Amaral](https://webdocs.cs.ualberta.ca/~amaral/courses/429/webslides/Topic4-MemoryHierarchy/index.htm )
+- [Loh and Hill, "EFFICIENTLY ENABLING CONVENTIONAL BLOCK SIZES FOR VERY LARGE DIESTACKED DRAM CACHES" (2011)](https://research.cs.wisc.edu/multifacet/papers/micro11_missmap_talk.pdf)
+- [Quresh and Loh, "Fundamental Latency Trade-offs in Architecting DRAM Cache" (2012)](https://drive.google.com/file/d/1dVjoItCxvT9x_R1qP4LXAYxPY_VIwwKt/view)
+- [VMware Ballooning](http://www.vfrank.org/2013/09/18/understanding-vmware-ballooning/) by FRANKBRIX
+- [Virtualization and Cloud Computing Lecture 6: Memory Virtualization Techniques](https://youtu.be/SiVuXTqwYWk) by [Mythili Vutukuru](https://www.youtube.com/@mythilivutukuru6136)
