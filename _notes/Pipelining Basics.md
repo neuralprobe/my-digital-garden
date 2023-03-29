@@ -40,8 +40,6 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Balance the length of each pipeline stage (cycles for each step) 
 	- The time per instruction on the pipelined processor  
 
-$$=\frac{Time\, per\, instr.\, on\, unpipelined\, machine}{Number\, of\, pipe\, stages}$$
-
 ---
 
 ## A Simple Implementation of a RISC Instruction Set
@@ -271,6 +269,7 @@ $$=\frac{Time\, per\, instr.\, on\, unpipelined\, machine}{Number\, of\, pipe\, 
 		- Regs\[rd\]  $\leftarrow$ LMD;
 
 - Simplified and unpipelined RISC-V implementation! ![[Pasted image 20230107185449.png]]
+
 ---
 
 ## A Basic Pipeline for RISC V
