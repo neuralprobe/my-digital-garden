@@ -1,5 +1,5 @@
 ---
-title: UMA-NUMA
+title: UMA and NUMA
 date: 2022-09-02
 tags: UMA NUMA memory compArch 
 ---

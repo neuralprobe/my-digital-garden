@@ -69,6 +69,6 @@ tags: routine health wellbeing index
 - [[전신 스트레칭 모음]]
 - [[맨몸 운동 루틴]]
 - [[런지에 대하여]]
-- [[게으르다는 착각 - Part1]]
+- [[게으르다는 착각]]
 - [[내적 건강 루틴 만들기]]
 - [[My Digital Garden]]

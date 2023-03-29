@@ -1,5 +1,5 @@
 ---
-title: git) 과거로돌아가기
+title: Git 과거로돌아가기
 date: 2022-08-14
 tags: git gitHub coding yalco
 ---

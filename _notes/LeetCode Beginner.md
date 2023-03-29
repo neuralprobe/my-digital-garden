@@ -1,5 +1,5 @@
 ---
-title: LC) LeetCode-Beginner
+title: LeetCode Beginner
 date: 2022-09-03
 tags: leetCode cpp python
 ---
@@ -384,4 +384,4 @@ class Solution:
 # Reference
 
 - [The LeetCode Beginner's Guide](https://leetcode.com/explore/learn/card/the-leetcode-beginners-guide)
-- What's next? [[LC) LeetCode Explore Card Track]] 
+- What's next? [[LeetCode Explore Card Track]] 

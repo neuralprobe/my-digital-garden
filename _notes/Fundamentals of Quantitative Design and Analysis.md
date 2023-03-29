@@ -1,5 +1,5 @@
 ---
-title: HP) Fundamentals of Quantitative Design and Analysis
+title: Fundamentals of Quantitative Design and Analysis
 date: 2022-12-28
 tags: computerArchitecture hennessy patterson risc isa
 ---
@@ -169,7 +169,7 @@ tags: computerArchitecture hennessy patterson risc isa
 - Implementation = Organization (Microarchiecture)+ Hardware
 - Architecture = ISA + Organization (Microarchiecture) + Hardware
 
-- More information in Appendix.A ([[HP) Instruction Set Principles]])
+- More information in Appendix.A ([[Instruction Set Principles]])
 
 ---
 

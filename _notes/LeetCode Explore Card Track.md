@@ -1,5 +1,5 @@
 ---
-title: LC) LeetCode Explore Card Track
+title: LeetCode Explore Card Track
 date: 2022-09-06
 tags: leetCode algorithm dataStructure
 ---
@@ -8,7 +8,7 @@ tags: leetCode algorithm dataStructure
 
 ---
 
-- [[LC) LeetCode-Beginner]] $\rightarrow$ [Explore Card Track](https://leetcode.com/explore/featured/card/the-leetcode-beginners-guide/679/sql-syntax/4358/)
+- [[LeetCode Beginner]] $\rightarrow$ [Explore Card Track](https://leetcode.com/explore/featured/card/the-leetcode-beginners-guide/679/sql-syntax/4358/)
 - 자료구조와 알고리즘의 기본기를 다지기 위한 섹션
 
 ![[Screen Shot 2022-09-06 at 4.40.47 PM.png]]
@@ -17,7 +17,7 @@ tags: leetCode algorithm dataStructure
 
 - ==Array==: 
 	- Source: [Array101](https://leetcode.com/explore/learn/card/fun-with-arrays/) 
-	- Note: [[LC) Array101]]
+	- Note: [[LeetCode Array101]]
 
 ---
 

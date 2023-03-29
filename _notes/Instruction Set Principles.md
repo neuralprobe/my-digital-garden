@@ -1,5 +1,5 @@
 ---
-title: HP) Instruction Set Principles
+title: Instruction Set Principles
 date: 2022-12-29
 tags: computerArchitecture hennessy patterson risc isa
 ---

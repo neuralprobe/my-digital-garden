@@ -1,5 +1,5 @@
 ---
-title: git) 기본설정
+title: Git 기본설정
 date: 2022-08-07
 tags: git gitHub coding yalco
 ---

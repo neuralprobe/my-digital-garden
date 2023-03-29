@@ -28,4 +28,4 @@ tags: UMA apple m1 compArch memory
 # Reference
 
 - [Understanding Apple’s Unified Memory Architecture](https://www.macobserver.com/analysis/understanding-apples-unified-memory-architecture/)
-- [[UMA-NUMA]]
+- [[UMA and NUMA]]

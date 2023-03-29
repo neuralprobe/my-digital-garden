@@ -1,5 +1,5 @@
 ---
-title: git) 브랜치 관리
+title: Git 브랜치 관리
 date: 2022-08-16
 tags: git gitHub coding yalco
 ---

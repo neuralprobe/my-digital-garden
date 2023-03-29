@@ -1,5 +1,5 @@
 ---
-title: git) gitignore
+title: Gitignore
 date: 2022-08-08
 tags: git gitHub coding yalco
 ---

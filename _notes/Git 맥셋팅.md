@@ -1,5 +1,5 @@
 ---
-title: git) 맥셋팅
+title: Git 맥셋팅
 date: 2022-08-07
 tags: git gitHub coding yalco macBook 개발환경
 ---

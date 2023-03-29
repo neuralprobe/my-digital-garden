@@ -1,5 +1,5 @@
 ---
-title: my markdown syntax
+title: My Markdown Syntax
 date: 2022-08-06
 tags: markdown jekyll
 ---

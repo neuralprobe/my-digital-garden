@@ -1,5 +1,5 @@
 ---
-title: DW) Instruction Set Architecture and Microcode
+title: Instruction Set Architecture and Microcode
 date: 2022-12-16
 tags: comptureArchitecture lecture wentzlaff ISA microcode
 ---
@@ -208,4 +208,4 @@ tags: comptureArchitecture lecture wentzlaff ISA microcode
 # Reference
 
 - [[Computer Architecture by D. Wentzlaff]] Week1 (1/2)
-- [[HP) Fundamentals of Quantitative Design and Analysis]] (H&P6 Chapter 1), and [[HP) Instruction Set Principles]](H&P6 Appendix A)
+- [[Fundamentals of Quantitative Design and Analysis]] (H&P6 Chapter 1), and [[Instruction Set Principles]](H&P6 Appendix A)

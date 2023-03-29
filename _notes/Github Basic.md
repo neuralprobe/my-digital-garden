@@ -1,5 +1,5 @@
 ---
-title: git) github basic
+title: Github Basic
 date: 2022-08-16
 tags: git gitHub coding yalco
 ---

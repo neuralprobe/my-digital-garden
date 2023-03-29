@@ -1,5 +1,5 @@
 ---
-title: HP) Memory Hierarchy Design
+title: Memory Hierarchy Design
 date: 2023-03-26
 tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtualMemory
 ---
@@ -70,7 +70,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ## Basics of Memory Hierarchies: A Quick Review
 
-- See appendix on basics on memory hierarchies $\rightarrow$ [[HP) Review of Memory Hierarchy]]
+- See appendix on basics on memory hierarchies $\rightarrow$ [[Review of Memory Hierarchy]]
 
 - Cache Basics
 	- Hit / Miss
@@ -772,7 +772,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 	 - The VMM is in complete ==control of system== resources.
 
 - Virtual memory 
-	- Refer to the introduction of virtual memory in [[HP) Review of Memory Hierarchy]]
+	- Refer to the introduction of virtual memory in [[Review of Memory Hierarchy]]
 	- Physical memory $\rightarrow$ ==Cache of secondary storage==
 	- ==Move pages between== the physical memory and the storage
 	- ==TLB== $\rightarrow$ ==Caches on the page table==
@@ -794,7 +794,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 	- Is the primary mechanism that ==protects processes from each other==.
 
 - Protection via segmentation and paging in the 80x86
-	- Refer to Sections B.4 and B.5 in [[HP) Review of Memory Hierarchy]] for more detailed description
+	- Refer to Sections B.4 and B.5 in [[Review of Memory Hierarchy]] for more detailed description
 
 - ==Multiprogramming==, where several programs running ==concurrently share a computer==, 
 	- Has led to demands for ==protection and sharing among programs== 

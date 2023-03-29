@@ -101,5 +101,5 @@ tags: 제텔카스텐 메모 두번째뇌 자기계발 digitalGarden index
 - [Max's digital garden template using Jekyll](https://maximevaillancourt.com/blog/setting-up-your-own-digital-garden-with-jekyll) 
 - [Mike's Obsidian Jekyll Workflow](https://refinedmind.co/obsidian-jekyll-workflow) 
 - [[제텔카스텐-글쓰는 인간을 위한 두번째 뇌]]
-- [[git) tutorial]]
-- [[my markdown syntax]]
+- [[Git Tutorial]]
+- [[My Markdown Syntax]]

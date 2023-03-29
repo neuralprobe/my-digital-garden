@@ -1,5 +1,5 @@
 ---
-title: HP) Review of Memory Hierarchy
+title: Review of Memory Hierarchy
 date: 2023-01-26
 tags: computerArchitecture hennessy patterson memory cache virtualMemory
 ---
@@ -326,8 +326,9 @@ tags: computerArchitecture hennessy patterson memory cache virtualMemory
 	- Alternatively, software can change all address in a program each time
 
 - ==Virtual memory== $\leftrightarrow$ ==Cache analogy==
+
 | Cache |Virtual memory |
-| :---: | :---:|
+| :---: | :---: |
 | Block/Line | Page or Segment |
 | Hardware cache | Main memory |
 | Miss | Page fault or address fault |

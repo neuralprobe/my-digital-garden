@@ -1,5 +1,5 @@
 ---
-title: HP) Pipelining Basics
+title: Pipelining Basics
 date: 2023-01-02
 tags: computerArchitecture hennessy patterson risc isa
 ---
@@ -22,12 +22,14 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Extension of the five-stage pipeline to handle floating point instructions
 	- Dynamic scheduling and use of scoreboards 
 
+---
+
 ## What is pipelining?
 
 - Pipelining: 
-	- An implementation technique whereby multiple instructions are overlapped in execution
-	- Takes advantage of parallelism that exists among the actions needed to execute an instruction
-	- Like an assembly line
+	- An implementation technique whereby ==multiple instructions== are ==overlapped== in execution
+	- Takes advantage of ==parallelism== that exists among the actions needed to execute an ==instruction==
+	- Like an ==assembly line==
 	- Comprises pipe stages or pipe segments
 	- Exploits parallelism among the instructions in a sequential instruction stream
 	- Not visible to programmer
@@ -38,7 +40,9 @@ tags: computerArchitecture hennessy patterson risc isa
 	- Balance the length of each pipeline stage (cycles for each step) 
 	- The time per instruction on the pipelined processor  
 
-$$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pipe\, stages}$$
+$$=\frac{Time\, per\, instr.\, on\, unpipelined\, machine}{Number\, of\, pipe\, stages}$$
+
+---
 
 ## A Simple Implementation of a RISC Instruction Set
 
@@ -47,55 +51,59 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 	- Store instructions: 4 cycles
 	- Other instructions: 5 cycles 
 
-1. Instruction Fetch cycle (IF)
-	1. Send the program counter (PC) to memory
-	2. Fetch the current instruction
+1. **Instruction Fetch cycle (IF)**
+	1. Send the ==program counter (PC)== to memory
+	2. ==Fetch== the current instruction
 	3. Update the PC $\leftarrow$ PC + 4
-2. Instruction Decode / register fetch cycle (ID)
-	1. Decode the instruction
-	2. Read the registers corresponding to register source specifiers
-	3. Do the equality test for a possible branch
-	4. Sign-extend the offset field if needed
-	5. Compute the possible branch target address by adding the sign-extended offset to the incremented PC
-	6. Fixed field decoding: 
+2. **Instruction Decode / register fetch cycle (ID)**
+	1. ==Decode== the instruction
+	2. ==Read the registers== corresponding to register source specifiers
+	3. Do the ==equality== test for a possible branch
+	4. ==Sign-extend== the offset field if needed
+	5. Compute the ==possible branch target== address by adding the sign-extended offset to the incremented PC
+	6. ==Fixed field decoding==: 
 		1. Parallelize decoding and register reading (good for perf, bad for energy)
 		2. Parallelize decoding and sign-extension of the immediate field for loads and ALU (store has immediate field in different location)
-3. Execution / effective address cycle (Ex)
+3. **Execution / effective address cycle (Ex)**
 	1. Memory reference
 	2. Register-Register ALU instruction
 	3. Register-Immediate ALU instruction
 	4. Conditional branch
-4. Memory access (MEM)
+4. **Memory access (MEM)**
 	- The memory does a read/write using the effective address
-5. Write-back cycle (WB)
+5. **Write-back cycle (WB)**
 	- Write the result in to the register file (Register-Register ALU instruction or load instruction)
+
+---
 
 ## The Classic Five-Stage Pipeline for a RISC Processor
 
-- The simplest pipelining: Start new instruction on each clock cycle ![[Pasted image 20230104164446.png]]
+- The ==simplest pipelining==: Start new instruction on each clock cycle ![[Pasted image 20230104164446.png]]
 - The pipeline can be thought as a series of data paths shifted in time
 	- Focus on CC5, a steady-state situation
 ![[Pasted image 20230104165519.png]]
 
-- How not to make resource conflict (Look at CC5 in the figure above)
-	- Separate instruction (IM) and data (DM) memories (or caches)
+- How not to make ==resource conflict== (Look at CC5 in the figure above)
+	- **Separate ==instruction (IM)== and ==data (DM) memories== (or caches)**
 		- Need higher bandwidth
-	- Register file used in two stages
-		- One for reading in ID and One for writing in WB
+	- **Register file used in two stages**
+		- One for ==reading== in ID and One for writing ==in== WB
 		- So, two reads and one writes every clock cycle
 		- Read and write to the same register?
 			- Perform register write in the first half of the clock cycle, register read in the second half
-	- PC?
+	- **PC?**
 		- IF stage: PC $\leftarrow$ PC+4 and 
 		- ID stage: adder to compute potential branch target
 		- Ex stage: ALU evaluation of the branch condition
 
 - Prevent interference between pipe stages ![[Pasted image 20230104174915.png]]
-	- Insert pipeline registers
+	- Insert ==pipeline registers==
 	- Helpful for neighboring and non-neighboring stages 
 		- Non-neighboring stages? : 
 			- Register value for `store` needs to wait for two cycles to be used in MEM stage. Passing two pipeline register makes it work.
 			- ALU results need to wait until WB
+
+---
 
 ## Basic Performance Issues in Pipelining
 
@@ -108,17 +116,19 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 # The Major Hurdle of Pipelining - Pipeline Hazard
 
-- Hazards
-	- Prevent the next instruction in the instruction stream from executing during its designated clock cycle
+- **Hazards**
+	- ==Prevent the next instruction== in the instruction stream from executing during its designated clock cycle
  
-- Three classes of hazards
-	- Structural hazards
+- **Three classes of hazards**
+	- ==Structural== hazards
 		- Arise from resource conflicts 
 		- Primarily occur in special purpose functional units
-	- Data hazards
+	- ==Data== hazards
 		- When an instruction depends on the results of a previous instruction 
-	- Control hazards
+	- ==Control== hazards
 		- Arise from the pipelining of branches and other instructions that change the PC
+
+---
 
 ## Performance of Pipelines With Stalls
 
@@ -128,38 +138,40 @@ $$=\frac{Time\, per\, instruction\, on\, unpipelined\, machine}{Number\, of\, pi
 
 ![[Pasted image 20230131221728.png]]
 
+---
+
 ## Data Hazards
 
 - When an instruction $i$ and its subsequent instruction $j$ both use register $x$
-- Read After Write (RAW) hazard: 
+- ==Read After Write (RAW)== hazard: 
 	-  $j$ reads $x$ before $i$ writes back its result to $x$
 	- $j$ reads wrong $x$ value 
 	- $j$ should stall
-- Write After Read (WAR) hazard:
+- ==Write After Read (WAR)== hazard:
 	-  $i$ reads $x$ after $j$ writes back its result to $x$
 	-  $i$ reads wrong $x$ value 
 	- Not happen in simple five stage pipeline
-	- Possible when $i$ and $j$ reordered in dynamically scheduled pipelines
-- Write After Write (WAW) hazard:
+	- Possible when $i$ and $j$ reordered in ==dynamically scheduled pipelines==
+- ==Write After Write (WAW)== hazard:
 	-  $i$ writes to $x$ after $j$ writes to $x$
 	- Wrong $x$ value in future
 	- Not happen in simple five stage pipeline
-	- Possible when $i$ and $j$ reordered in dynamically scheduled pipelines
+	- Possible when $i$ and $j$ reordered in ==dynamically scheduled pipelines==
 - Example
 	- add x1, x2, x3
 	- sub x4, x1, x5
 	-  and x6, x1, x7
 	- or x8, x1, x9
 	- xor x10,x1,x11
-	- RAW hazards: add-sub, add-and ![[Pasted image 20230105143817.png]]
+	- ==RAW hazards: add-sub, add-and== ![[Pasted image 20230105143817.png]]
 
-- Minimizing Data Hazard Stalls by Forwarding
-	- Forwarding, bypassing, short-circuiting
+- **Minimizing Data Hazard Stalls by Forwarding**
+	- ==Forwarding, bypassing, short-circuiting==
 		- ALU results in EX/MEM and MEM/WB pipeline registers is fed back to the ALU inputs
-		- Forward hardware detects RAW hazards, selects the forwarded results as ALU input 
+		- Forward hardware ==detects RAW hazards==, selects the forwarded results as ALU input 
 	 - A set of instructions that depends on the ADD result uses forwarding paths to avoid the data hazard ![[Pasted image 20230105145334.png]]
 
-- Data Hazards Requiring Stalls
+- **Data Hazards Requiring Stalls**
 	- Not all data hazards can be handled by bypassing
 	- Example
 		- ld x1, 0(x2)
