@@ -79,7 +79,6 @@ public:
 ![[Pasted image 20220903185021.png]]
 
 ```python
-# [Python]
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -106,7 +105,6 @@ class Solution:
 ```
 
 ```cpp
-// [C++]
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -159,7 +157,6 @@ TreeNode* Solution::invertTree(TreeNode* root){
 > Return the running sum of `nums`.
 
 ```python
-# [Python]
 class Solution:
     def runningSum(self, nums: List[int]) -> List[int]:
         result = []
@@ -171,7 +168,6 @@ class Solution:
 ```
 
 ```cpp
-// [C++]
 class Solution {
 public:
     vector<int> runningSum(vector<int>& nums) {
@@ -202,7 +198,6 @@ public:
 > A customer's **wealth** is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum **wealth**.
 
 ```python
-# [Python]
 class Solution:
     def maximumWealth(self, accounts: List[List[int]]) -> int:
         max_money = 0
@@ -215,7 +210,6 @@ class Solution:
         return max_money
 ```
 ```cpp
-// [C++]
 class Solution {
 public:
     int maximumWealth(vector<vector<int>>& accounts) {
@@ -243,7 +237,6 @@ public:
 > -   `answer[i] == i` (as a string) if none of the above conditions are true.
 
 ```python
-# [Python]
 class Solution(object):
     def fizzBuzz(self, n):
         """
@@ -264,7 +257,6 @@ class Solution(object):
         return result        
 ```
 ```cpp
-// [C++]
 class Solution {
 public:
     vector<string> fizzBuzz(int n) {
@@ -290,7 +282,6 @@ public:
 > In one step, if the current number is even, you have to divide it by `2`, otherwise, you have to subtract `1` from it.
 
 ```python
-# [Python]
 class Solution:
     def numberOfSteps(self, num: int) -> int:
         if (num == 0): return 0
@@ -301,7 +292,6 @@ class Solution:
             return 1 + self.numberOfSteps(num - 1)
 ```
 ```cpp
-// [C++]
 class Solution {
 public:
     int numberOfSteps(int num) {
@@ -326,7 +316,6 @@ public:
 ![[Pasted image 20220906045842.png]]
 
 ```python
-# [Python]
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -341,7 +330,6 @@ class Solution:
 ```
 
 ```cpp
-// [C++]
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -370,7 +358,6 @@ public:
 > Each letter in `magazine` can only be used once in `ransomNote`.
 
 ```python
-# [Python]
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         # Check for obvious fail case.
