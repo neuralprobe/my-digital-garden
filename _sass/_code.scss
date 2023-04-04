@@ -136,6 +136,10 @@ figure.highlight::before {
 }
 */
 
+// code:before {
+//     content: attr(data-lang);
+// }
+
 .rouge-table .code pre {
     overflow: hidden;
 }
@@ -185,7 +189,7 @@ figure pre {
   border-radius: 3px;
   font-size: 0.8em;
   overflow: auto;
-  margin: 0.7rem;
+  margin: 0.6rem;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   code{

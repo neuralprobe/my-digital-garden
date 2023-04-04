@@ -55,7 +55,7 @@ highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter_opts:
-    default_lang: bash
+    default_lang: html
     css_class: 'highlight'
     span:
       line_numbers: false
