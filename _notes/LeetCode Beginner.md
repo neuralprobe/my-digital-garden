@@ -12,9 +12,7 @@ tags: leetCode cpp python
 
 > Given two integers `num1` and `num2`, return _the **sum** of the two integers_.
 
-
 ```python
-# [Python]
 class Solution:
     def sum(self, num1: int, num2: int) -> int:
         return num1 + num2
@@ -22,7 +20,6 @@ class Solution:
 ```
 
 ```c++
-// [C++]
 class Solution {
 public:
     int sum(int num1, int num2) {
@@ -40,7 +37,6 @@ public:
 > Return `true` _if the value of the root is equal to the **sum** of the values of its two children, or_ `false` _otherwise_.
 
 ```python
-# [Python]
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -54,7 +50,6 @@ class Solution:
 ```
 
 ```cpp
-// [C++]
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
