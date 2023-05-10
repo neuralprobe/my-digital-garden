@@ -1,7 +1,7 @@
 ---
 title: LeetCode Beginner
 date: 2022-09-03
-tags: leetCode cpp python
+tags: leetCode cpp python algorithm
 ---
 
 # Problems in LeetCode Beginner's Guide
@@ -220,13 +220,14 @@ public:
                 customer += money;
             }
             maxWealthSoFar = max(maxWealthSoFar,customer);
-            
         }
         return maxWealthSoFar;
     }
 };
 ```
+
 ---
+
 # 412. Fizz Buzz
 
 > Given an integer `n`, return _a string array_ `answer` _(**1-indexed**) where_:
@@ -275,6 +276,8 @@ public:
 };
 ```
 
+---
+
 # 1342. Number of Steps to Reduce a Number to Zero
 
 > Given an integer `num`, return _the number of steps to reduce it to zero_.
@@ -306,6 +309,8 @@ public:
     }
 };
 ```
+
+---
 
 # 876. Middle of the Linked List
 
@@ -350,6 +355,8 @@ public:
     }
 };
 ```
+
+---
 
 # 383. Ransom Note
 

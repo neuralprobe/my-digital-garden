@@ -1,10 +1,10 @@
 ---
-title: Pipelining Basics
+title: Pipelining Basic and Intermediate Concepts
 date: 2023-01-02
 tags: computerArchitecture hennessy patterson risc isa
 ---
 
-# Pipelining Basics and Intermediate Concepts
+# Pipelining: Basic and Intermediate Concepts
 
 - Appendix C in [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
 

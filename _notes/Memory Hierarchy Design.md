@@ -10,7 +10,7 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 ---
 
->  Ideally one would desire an indefinitely **large memory capacity** such that any particular… word would be **immediately available**… We are… forced to recognize the possibility of constructing a hierarchy of memories each of which has greater capacity than the preceding but which is less quickly accessible.
+>  Ideally one would desire an indefinitely **large memory capacity** such that any particular… word would be **immediately available**… We are… forced to recognize the possibility of constructing **a hierarchy of memories** each of which has greater capacity than the preceding but which is less quickly accessible.
 > 
 > - **A. W. Burks, H. H. Goldstine, and J. von Neumann**, *Preliminary Discussion of the Logical Design of an Electronic Computing Instrument* (1946).
 
@@ -18,47 +18,47 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 # Introduction
 
-- Ideal case:  Unlimited amounts of fast memory
+- Ideal case:  ==Unlimited amounts== of fast memory
 
 - Memory hierarchy takes advantage of
-	- The principle of locality
-		- Time and Space
+	- The ==principle of locality==
+		- ==Time== and ==Space==
 		- *i.e.* Not uniform memory access
 	- The trade-offs in the cost-performance of memory technologies
 	- Goal?
-		- To provide a memory system with a cost per byte that is 
-		- Almost as low as the cheapest level of memory and 
-		- A speed almost as fast as the fastest level.
+		- To provide a memory system with ==a cost per byte== that is 
+		- Almost ==as low as the cheapest level== of memory and 
+		- A ==speed almost as fast as the fastest level==.
 
 ![[Pasted image 20230201085909.png]]
 ![[Pasted image 20230201085918.png]]
 ![[Pasted image 20230201085930.png]]
 
-- Inclusion property
+- ==Inclusion== property
 	- In most cases (not all), the data contained in lower level are superset of the next higher level.
 
-- Performance growth gap between the processors and memories $\rightarrow$ The importance of the memory hierarchy $\uparrow$
+- Performance growth ==gap between the processors and memories== $\rightarrow$ The importance of the memory hierarchy $\uparrow$
 
 ![[Pasted image 20230201090749.png]]
 <figcaption> Figure 2.2. Starting with 1980 performance as a baseline, the gap in performance, measured as the difference in the time between processor memory requests (for a single processor or core) and the latency of a DRAM access (assuming a single DRAM and a single memory bank), is plotted over time. In mid-2017, AMD, Intel and Nvidia all announced chip sets using versions of HBM technology.</figcaption>
 
-- Multicore processors $\rightarrow$ Bandwidth requirements $\uparrow$ 
+- Multicore processors $\rightarrow$ ==Bandwidth== requirements $\uparrow$ 
 
-- Intel Core i7 6700: 
+- ==Intel Core i7 6700==: 
 	- Generates two data-memory-references/core/cycle 
 	- With four cores and 4.2GHz clock rate
 	- $\rightarrow$ 32.8 billion 64-bit data references/sec = 244 GB/sec
 	- + 12.8 billion 128-bit peak instruction references/sec =  191 GB/sec
-	- Total peak demand bandwidth = 409.6 GiB/s (?)
+	- Total peak demand bandwidth = ==409.6 GiB/s== (?)
 	- Hardware solution for the high BW?
-		- Multi-porting and pipelining the caches
-		- Three levels of caches: Two private L1 and L2 per core, a shared L3
-		- Separate instructions and data cache at L1
-		- Upcoming versions  use L4 DRAM cache using embedded or stacked DRAM
-		- DRAM BW? Only 32.1 GiB/s
+		- ==Multi-porting== and pipelining the caches
+		- Three levels of ==caches==: Two private L1 and L2 per core, a shared L3
+		- ==Separate== instructions and data cache at L1
+		- Upcoming versions  use ==L4 DRAM cache== using embedded or stacked DRAM
+		- DRAM BW? ==Only 32.1 GiB/s==
 
 - Designers focus on optimizing
-	- Average memory access time
+	- Average ==memory access time==
 		- Cache access time
 		- Miss rate
 		- Miss penalty
@@ -72,67 +72,67 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 
 - See appendix on basics on memory hierarchies $\rightarrow$ [[Review of Memory Hierarchy]]
 
-- Cache Basics
+- ==Cache Basics==
 	- Hit / Miss
 	- Block or line
 	- Spatial locality / Temporal locality
 	- Tag
 	- Where to put new block? 
-		- Set associativity
-		- Direct-mapped vs n-way set associative vs fully-associative
+		- ==Set associativity==
+		- ==Direct-mapped== vs ==n-way set associative== vs ==fully-associative==
 	- How to read $\rightarrow$ Easy
 	- How to write?
-		- Write-through: Store to memory every time
-		- Write-back: Store to memory when the block is replaced
+		- ==Write-through==: Store to memory every time
+		- ==Write-back==: Store to memory when the block is replaced
 	- Accelerate write?
-		- Write-buffer: Don't wait fully latency for memory writes
+		- ==Write-buffer==: Don't wait fully latency for memory writes
 	- Three Cs model for better cache design
-		- Compulsory: Initial fetch
-		- Capacity: Unable to store everything in a cache 
-		- Conflict: If not fully-associative
+		- ==Compulsory==: Initial fetch
+		- ==Capacity==: Unable to store everything in a cache 
+		- ==Conflict==: If not fully-associative
 	- Fourth C?
-		- Coherency: Multithreading and multiple cores $\rightarrow$ Covered in Chapter 5
+		- ==Coherency==: Multithreading and multiple cores $\rightarrow$ Covered in Chapter 5
 	- Misses per instruction > Miss rate (Misses per memory reference) ![[Pasted image 20230202161638.png]]
 	-  Better measure = Average memory access time ![[Pasted image 20230202161754.png]]
 	- Latency tolerating techniques
-		- Speculative processors
-		- Multithreading
+		- ==Speculative== processors
+		- ==Multithreading==
 	- Six basic cache optimizations
-		- Larger block size to reduce miss rate
-		- Bigger caches to reduce miss rate
-		- Higher associativity to reduce miss rate
-		- Multilevel caches to reduce miss penalty ![[Pasted image 20230215164834.png]]
-		- Giving priority to read misses over writes to reduce miss penalty
-			- Write buffer
+		- ==Larger block size== to reduce miss rate
+		- ==Bigger caches== to reduce miss rate
+		- ==Higher associativity== to reduce miss rate
+		- ==Multilevel caches== to reduce miss penalty ![[Pasted image 20230215164834.png]]
+		- Giving ==priority to read misses== over writes to reduce miss penalty
+			- ==Write buffer==
 				- RAW hazard $\rightarrow$ Solution: Check write-buffer on a read miss
-		- Avoiding address translation during indexing of the cache to reduce hit time
+		- ==Avoiding address translation== during indexing of the cache to reduce hit time
 
 ---
 
 # Memory Technology and Optimization
 
 - Memory latency measures
-	- Access time: Time between when a read request is requested and when the desired word arrives
-	- Cycle time: The minimum time between unrelated requests to memory
+	- ==Access time==: Time between when a read request is requested and when the desired word arrives
+	- ==Cycle time==: The minimum time between unrelated requests to memory
 
 ---
 
 ## SRAM Technology
 
-- "Static" RAM
+- =="Static" RAM==
 
 - Things that SRAM does not do and DRAM does
 	- Dynamic nature of DRAM $\rightarrow$ Data to be written back after being read
 	- Difference between the access time and the cycle time
 	- Need to refresh
 
-- So, in SRAM, The access time $\sim$ The cycle time
+- So, in SRAM, ==The access time $\sim$ The cycle time==
 
-- Typically use six transistors per bit
+- Typically use ==six transistors per bit==
 
 - Where to put SRAM as caches?
 	- Long time ago: "Separate" SRAM chips 
-	- Recently: "On-chip" memory
+	- Recently: =="On-chip" memory==
 		- eg. up to 60MB of cache for 24 cores w/ 128-256GB DRAM
 
 - Access time and capacity of caches in servers? 
@@ -142,15 +142,34 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 	- DRAM $\rightarrow$ 50-100ns / 32-256GB
 
 - Why is larger cache slower and power-hungry?
-	- Access time $\varpropto$ \#Blocks in cache (except hit detection and selection in a set associative cache)
-	- Static power $\varpropto$ \#Bits in cache
-	- Dynamic power $\varpropto$ \#Blocks
+	- Access time $\varpropto$ \#==Blocks== in cache (except hit detection and selection in a set associative cache)
+	- Static power $\varpropto$ \#==Bits== in cache
+	- Dynamic power $\varpropto$ \#==Blocks==
+
+![[Pasted image 20230421081626.png]]
+<figcaption> 6Transistor SRAM from UC Berkeley lecture </figcaption>
+
+
+![[Pasted image 20230421081646.png]]
+<figcaption> General SRAM structure  from UC Berkeley lecture </figcaption>
+
+![[Pasted image 20230421081658.png]]
+<figcaption> Address decoder structure from UC Berkeley lecture </figcaption>
+
+
+![[Pasted image 20230421081743.png]]
+<figcaption> Building larger memories   from UC Berkeley lecture </figcaption>
+
+
+![[Pasted image 20230421081523.png]]
+<figcaption> 6T SRAM Cell  from UC Berkeley lecture </figcaption>
+
 
 ---
 
 ## DRAM Technology
 
-- Basic DRAM organization ![[Pasted image 20230226083716.png]]
+- Basic ==DRAM organization== ![[Pasted image 20230226083716.png]]
 - 1 Transistor = 1 Switch + 1 Capacitor
 	- Sensing half high charge = 1
 	- Sensing half low charge = 0
@@ -1240,3 +1259,5 @@ tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtu
 - [Quresh and Loh, "Fundamental Latency Trade-offs in Architecting DRAM Cache" (2012)](https://drive.google.com/file/d/1dVjoItCxvT9x_R1qP4LXAYxPY_VIwwKt/view)
 - [VMware Ballooning](http://www.vfrank.org/2013/09/18/understanding-vmware-ballooning/) by FRANKBRIX
 - [Virtualization and Cloud Computing Lecture 6: Memory Virtualization Techniques](https://youtu.be/SiVuXTqwYWk) by [Mythili Vutukuru](https://www.youtube.com/@mythilivutukuru6136)
+- [CS250 VLSI Systems Design Lecture 8: Memory](https://inst.eecs.berkeley.edu/~cs250/fa10/lectures/lec08.pdf) by John Wawrzynek, Krste Asanovic, with John Lazzaro and Yunsup Lee (TA), CS250, UC Berkeley, Fall 2010
+- [EE241 - Spring 2011 Advanced Digital Integrated Circuits Lecture 9: SRAM](http://bwrcs.eecs.berkeley.edu/Classes/icdesign/ee241_s11/Lectures/Lecture9-SRAM.pdf)

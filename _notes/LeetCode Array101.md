@@ -8,15 +8,17 @@ tags: leetCode array python cpp dataStructure
 
 ---
 
-# Basic concepts:
+# Introduction
 
 > An Array is a ==collection of items==. The items could be integers, strings, DVDs, games, books—anything really. The items are stored in ==neighboring (contiguous) memory locations==. Because they're stored together, checking through the entire collection of items is straightforward.
+
 - Accessing elements in arrays
+
 - Array capacity vs length
 
 ---
 
-# Max consecutive ones
+## Max consecutive ones
 
 > Given a binary array `nums`, return _the maximum number of consecutive_ `1`_'s in the array_.
 
@@ -54,7 +56,7 @@ public:
 
 ---
 
-# Find Numbers with Even Number of Digits
+## Find Numbers with Even Number of Digits
 
 > Given an array `nums` of integers, return how many of them contain an **even number** of digits.
 
@@ -91,11 +93,58 @@ public:
 
 ---
 
-# Squares of a Sorted Array
+## Squares of a Sorted Array
 
 > Given an integer array `nums` sorted in **non-decreasing** order, return _an array of **the squares of each number** sorted in non-decreasing order_.
 
-
+```cpp
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        //first find the minimum abs idx
+        int least_abs = Solution::findLeastAbsolute(nums);
+        //Register small squared value by comparing L/R pointers
+        int Lp = least_abs;
+        int Rp = least_abs;
+        vector<int> output;
+        int len = nums.size();
+        output.push_back(pow(nums[Lp],2));
+        while (true){
+            if (Lp >0 && Rp <(len-1)){
+                if (abs(nums[Lp-1]) < abs(nums[Rp+1])){
+	                output.push_back(pow(nums[--Lp],2));
+                }
+                else output.push_back(pow(nums[++Rp],2));
+            }
+            else if (Lp ==0 && Rp <(len-1)){
+                output.push_back(pow(nums[++Rp],2));
+            }   
+            else if (Lp > 0 && Rp == (len-1)){
+                output.push_back(pow(nums[--Lp],2));
+            }
+            else break;
+        }
+        return output;
+    }
+    
+  int findLeastAbsolute(vector<int>& nums) {
+        int idx = 0;
+        int len = nums.size();
+        while (nums[idx] < 0) {
+            idx++; 
+            if (idx <0 or idx >= len) break;
+        }
+        // if idx == 0, all posive
+        if (idx==0) return idx;
+        // if idx == len, all negative => L-pointer only
+        if (idx == len) return (idx-1);                
+        // if idx <> len, neg-pos switch in the middle
+        if (idx > 0 && abs(nums[idx]) <= abs(nums[idx-1])) return idx;
+        if (idx > 0 && abs(nums[idx]) > abs(nums[idx-1])) return (idx-1);
+        return idx;
+    }
+};
+```
 
 ---
 
