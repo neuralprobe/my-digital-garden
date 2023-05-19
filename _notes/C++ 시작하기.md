@@ -86,6 +86,7 @@ int only_in_this_file = 0;
 # C 문법 재활용하기
 
 - 변수형 똑같음
+
 ```cpp
 int main(){
 	int i;
@@ -97,6 +98,7 @@ int main(){
 ```
 
 - 포인터, 배열 똑같음
+
 ```cpp
 int arr[10]; 
 int *parr = arr;
