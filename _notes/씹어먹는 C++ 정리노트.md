@@ -1,5 +1,5 @@
 ---
-title: 씹어먹는 C++
+title: 씹어먹는 C++ 정리노트
 date: 2023-05-18
 tags: C++ programmingLanguage index
 ---
@@ -23,7 +23,7 @@ tags: C++ programmingLanguage index
 	- const, const, const! (p.109)
 	- 내가 만들어보는 문자열 클래스 (p.138)
 	- 클래스의 explicit 과 mutable 키워드(p.179)
-- **제 6 장 연산자 오버로딩(overloading) (p.188)**
+- **제 6 장 [[연산자 오버로딩]](overloading) (p.188)**
 	- 잡다한 연산자들의 오버로딩 (p.219)
 	- N 차원 배열 만들기 프로젝트 (p.240)
 - **제 7 장 클래스의 상속 (p.270)**
