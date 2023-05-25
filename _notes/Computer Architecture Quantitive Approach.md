@@ -15,7 +15,7 @@ tags: computerArchitecture hennessy patterson textbook index
 - Ch-1. [[Fundamentals of Quantitative Design and Analysis]] 
 - Ch-2. [[Memory Hierarchy Design]]
 - Ch-3. [[Instruction-Level Parallelism and Its Exploitation]]
-- Ch-4. Data-Level Parallelism in Vector, SIMD, and GPU Architectures  
+- Ch-4. [[Data-Level Parallelism in Vector, SIMD, and GPU Architectures]]  
 - Ch-5. Multiprocessors and Thread-Level Parallelism  
 - Ch-6. The Warehouse-Scale Computer  
 - Ch-7. Domain Specific Architectures  
