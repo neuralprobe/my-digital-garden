@@ -1,7 +1,7 @@
 ---
 title: English Book Reading List
 date: 2023-01-26
-tags: english book kindle english index
+tags: English Book Kindle Reading index
 ---
 
 # English Book Reading List

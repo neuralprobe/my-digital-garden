@@ -1,7 +1,7 @@
 ---
 title: Computer Architecture by D. Wentzlaff
 date: 2022-12-16
-tags: comptureArchitecture lecture wentzlaff index
+tags: ComptureArchitecture Lecture Wentzlaff Index
 ---
 
 # Computer Architecture by D. Wentzlaff

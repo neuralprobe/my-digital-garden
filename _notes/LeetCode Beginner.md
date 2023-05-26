@@ -1,7 +1,7 @@
 ---
 title: LeetCode Beginner
 date: 2022-09-03
-tags: leetCode cpp python algorithm
+tags: LeetCode C++ Python Algorithm
 ---
 
 # Problems in LeetCode Beginner's Guide

@@ -1,7 +1,7 @@
 ---
 title: Direct Memory Access
 date: 2022-09-27
-tags: memory compArch
+tags: Memory ComputerArchitecture
 ---
 
 # Direct Memory Access

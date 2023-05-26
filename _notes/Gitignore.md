@@ -1,7 +1,7 @@
 ---
 title: Gitignore
 date: 2022-08-08
-tags: git gitHub coding yalco
+tags: Git GitHub Coding Yalco
 ---
 
 # Git-Ignore 사용법

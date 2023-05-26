@@ -1,7 +1,7 @@
 ---
 title: Apple M1 Chip
 date: 2022-09-03
-tags: UMA apple m1 compArch memory
+tags: UMA Apple M1 ComputerArchitecture Memory
 ---
 
 # Memory in Apple's M1 Chip

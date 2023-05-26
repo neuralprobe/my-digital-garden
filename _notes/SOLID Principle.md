@@ -1,7 +1,7 @@
 ---
 title: SOLID Principle
 date: 2022-10-04
-tags: coding designPattern index
+tags: Coding DesignPattern index
 ---
 
 # SOLID Principle

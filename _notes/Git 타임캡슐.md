@@ -1,7 +1,7 @@
 ---
 title: Git 타임캡슐
 date: 2022-08-08
-tags: git gitHub coding yalco
+tags: Git GitHub Coding Yalco
 ---
 
 # Git-타임캡슐?

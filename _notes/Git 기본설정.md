@@ -1,7 +1,7 @@
 ---
 title: Git 기본설정
 date: 2022-08-07
-tags: git gitHub coding yalco
+tags: Git GitHub Coding Yalco
 ---
 
 # Git 설정 & 프로젝트 관리 시작하기

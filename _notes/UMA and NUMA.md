@@ -1,7 +1,7 @@
 ---
 title: UMA and NUMA
 date: 2022-09-02
-tags: UMA NUMA memory compArch 
+tags: UMA NUMA Memory ComputerArchitecture 
 ---
 
 # UMA vs NUMA
@@ -64,4 +64,4 @@ tags: UMA NUMA memory compArch
 - Wikipedia: [Non-Uniform Memory Access](https://en.wikipedia.org/wiki/Non-uniform_memory_access)
 - [NUMA DEEP DIVE PART 1: FROM UMA TO NUMA](https://frankdenneman.nl/2016/07/07/numa-deep-dive-part-1-uma-numa/)
 - [[Apple M1 Chip]]
-- [[MPI Collective Operations by Pjesivac-Grbovic]]
+- [[MPI Collective Operations  by Pjesivac-Grbovic]]

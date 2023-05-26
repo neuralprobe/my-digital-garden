@@ -1,7 +1,7 @@
 ---
 title: Pipelining Basic and Intermediate Concepts
 date: 2023-01-02
-tags: computerArchitecture hennessy patterson risc isa
+tags: ComputerArchitecture HennessyPatterson RISC ISA
 ---
 
 # Pipelining: Basic and Intermediate Concepts

@@ -1,7 +1,7 @@
 ---
 title: Fundamentals of Quantitative Design and Analysis
 date: 2022-12-28
-tags: computerArchitecture hennessy patterson risc isa
+tags: ComputerArchitecture HennessyPatterson RISC ISA
 ---
 
 # Fundamentals of Quantitative Design and Analysis

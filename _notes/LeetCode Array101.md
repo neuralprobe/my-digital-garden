@@ -1,7 +1,7 @@
 ---
 title: LeetCode Array101
 date: 2022-09-06
-tags: leetCode array python cpp dataStructure 
+tags: LeetCode Array Python C++ DataStructure 
 ---
 
 # LeetCode Array101

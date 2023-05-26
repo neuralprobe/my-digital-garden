@@ -1,7 +1,7 @@
 ---
 title: My Markdown Syntax
 date: 2022-08-06
-tags: markdown jekyll
+tags: Markdown Jekyll
 ---
 
 # Markdown 기초 문법 정리

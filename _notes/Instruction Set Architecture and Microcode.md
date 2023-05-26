@@ -1,7 +1,7 @@
 ---
 title: Instruction Set Architecture and Microcode
 date: 2022-12-16
-tags: comptureArchitecture lecture wentzlaff ISA microcode
+tags: ComptureArchitecture Lecture Wentzlaff ISA Microcode
 ---
 
 # Instruction Set Architecture and Microcode

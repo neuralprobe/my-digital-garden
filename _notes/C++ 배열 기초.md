@@ -1,7 +1,7 @@
 ---
 title: C++ 배열 기초
 date: 2023-05-18
-tags: C++ programmingLanguage array
+tags: C++ Array
 ---
 
 # C++ 배열 기초

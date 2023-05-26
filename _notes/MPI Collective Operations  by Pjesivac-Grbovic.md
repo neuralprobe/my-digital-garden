@@ -1,10 +1,11 @@
 ---
-title: Collective Operations by Jelena
+title: MPI Collective Operations by Pjesivac-Grbovic
 date: 2022-09-15
-tags: messagePassing MPI collectiveCommunication collectiveOperations compArch interconnectNetwork book
+tags: Book MPI CollectiveOperations ComputerArchitecture
 ---
 
 # Towards Automatic and Adaptive Optimizations of MPI Collective Operations
+
 by Jelena Pjesivac-Grbovic
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: 씹어먹는 C++ 정리노트
 date: 2023-05-18
-tags: C++ programmingLanguage index
+tags: C++ index
 ---
 
 # 씹어먹는 C++ 정리노트

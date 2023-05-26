@@ -1,7 +1,7 @@
 ---
 title: Instruction Set Principles
 date: 2022-12-29
-tags: computerArchitecture hennessy patterson risc isa
+tags: ComputerArchitecture HennessyPatterson RISC ISA
 ---
 
 # Instruction Set Principles

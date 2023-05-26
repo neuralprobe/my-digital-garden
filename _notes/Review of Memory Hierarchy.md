@@ -1,7 +1,7 @@
 ---
 title: Review of Memory Hierarchy
 date: 2023-01-26
-tags: computerArchitecture hennessy patterson memory cache virtualMemory
+tags: ComputerArchitecture HennessyPatterson Memory Cache VirtualMemory
 ---
 
 # Review of Memory Hierarchy

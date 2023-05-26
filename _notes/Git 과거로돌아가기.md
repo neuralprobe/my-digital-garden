@@ -1,7 +1,7 @@
 ---
 title: Git 과거로돌아가기
 date: 2022-08-14
-tags: git gitHub coding yalco
+tags: Git GitHub Coding Yalco
 ---
 
 # 과거로 돌아가는 2가지 방법

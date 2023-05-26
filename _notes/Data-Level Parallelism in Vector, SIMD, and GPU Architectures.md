@@ -1,7 +1,7 @@
 ---
 title: Data-Level Parallelism in Vector, SIMD, and GPU Architectures
 date: 2023-05-25
-tags: computerArchitecture hennessy patterson gpu dataLevelParallelism simd vector processor
+tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD VectorProcessor
 ---
 
 # Data-Level Parallelism in Vector, SIMD, and GPU Architectures

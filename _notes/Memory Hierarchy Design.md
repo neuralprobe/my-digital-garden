@@ -1,7 +1,7 @@
 ---
 title: Memory Hierarchy Design
 date: 2023-03-26
-tags: computerArchitecture hennessy patterson memory memoryHierarchy cache virtualMemory
+tags: ComputerArchitecture HennessyPatterson Memory MemoryHierarchy Cache VirtualMemory
 ---
 
 # Memory Hierarchy Design
