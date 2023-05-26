@@ -367,6 +367,8 @@ $\rightarrow$ ==Parallel== computing
 
 ---
 
+To be updated ...
+
 ## 4.2 Parallel communication models
 
 ### 1. Modeling point-to-point communication
