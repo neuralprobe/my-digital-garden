@@ -1,7 +1,7 @@
 ---
 title: Multiprocessors and Thread-Level Parallelism
-date: 2023-05-25
-tags: ComputerArchitecture ThreadLevelParallelism Multiprocessing HennessyPatterson
+date: 2023-05-27
+tags: ComputerArchitecture ThreadLevelParallelism Multiprocessing HennessyPatterson CacheCoherence
 ---
 
 # Multiprocessors and Thread-Level Parallelism
@@ -121,17 +121,223 @@ The **independent threads** within a single process are:
 
 ## Challenges of Parallel Processing
 
+The **first hurdle**: **Insufficient parallelism**
+
+**Amdahl's Law**:
+- To achieve a speedup of 80 with 100 processors,
+- Only 0.25% of the original computation can be sequential!
+![[Pasted image 20230526033202.png]]
+
+The **second major challenge**: **Large latency of remote access** in a parallel processor;
+- Communication latency 
+	- Between separate cores: **35–50** clock cycles 
+	- Among cores on separate chips: **100 ~ More than 300** clock cycles
+	- Depending on the **communication mechanism**, the type of **interconnection** network, and the **scale** of the multiprocessor.
+- Example
+	- Multiprocessor with 4GHz clock rate
+	- 100ns delay to handle a reference to a remote memory
+	- All local access hit cache
+	- Base CPI = 0.5
+	- CPI with 0.2% remote communication reference?
+		- 0.5 +0.2% $\times$ Remote request cost = 1.3
+	- $\rightarrow$ **Multiprocessor with all local references is 1.3/0.5 = 2.6 times faster**
+
+---
+
+# Centralized Shared-Memory Architectures
+
+The observation that the use of **large, multilevel caches** can substantially **reduce the memory bandwidth demands** of a processor is the key insight that **motivates centralized memory multiprocessors**. 
+
+**Access to memory is asymmetric** in multiprocessors: 
+- Faster to the local memory 
+- Slower to the remote memory
+
+**Symmetric shared-memory machines** support the caching of both ...
+- **Private** data used by a single processor
+	- Cached like a uniprocessor
+- **Shared** data used by multiple processors
+	- Cache coherence problem!
+
+---
+
+## What Is Multiprocessor Cache Coherence?
+
+**Cache coherence problem:**
+- Because the view of memory held by **two different processors** is through **their individual caches**, 
+- The processors could end up **seeing different values for the same memory location**!
+- *i.e.* **Local** states in private caches vs **Global** state in shared cache or main memory
+
+![[Pasted image 20230526044252.png]]
+
+Two different aspects of memory system behavior:
+- **Coherence**
+	- Defines **what** values can be returned by a read
+- **Consistency**
+	- Determines **when** a written value will be returned by a read
+
+**A memory system is coherent if:** 
+(P = Processor, P' = Another processor, X = Memory location)
+1. **Preserve program order:**
+	- Write by P to X $\rightarrow$ Read by P to X $\rightarrow$ Always returns the value written by P
+	- If no writes of X by P' when P writes and reads
+	- True in even uniprocessors
+2. **Have a coherent view of memory:**
+	- Write by P' to X $\rightarrow$ Read by P to X $\rightarrow$ Returns the written value by P'
+		- If the read and write are sufficiently separated in time and no other writes to X occur between the two accesses
+3. **Write serialization:**
+	- Writes to the same location are **serialized**
+	- Two writes to the same location by any two processors are seen in the **same order by all processors**.
+	- For example, if the values 1 and then 2 are written to a location, processors can never read the value of the location as 2 and then later read it as 1.
+
+**Memory consistency model:** 
+- The question of **when** a written value will be seen is also important.
+- Observe that 
+	- We cannot require that a **read of X** **instantaneously see** the value written for X by some other processor. 
+- For example, 
+	- If a write of X on one processor precedes a read of X on another processor by a very small time, 
+	- It may be impossible to ensure that the read returns the value of the data written, 
+	- Since the written data may not even have left the processor at that point.
+
+**Coherence and consistency are complementary:** 
+- Coherence defines the behavior of reads and writes **to the same memory location**
+- Consistency defines the behavior of reads and writes **with respect to accesses to other memory locations**
+
+**Assume from now** until Section 5.6 (**Memory Consistency Model**)
+- First, a write does not complete (and allow the next write to occur) until all processors have seen the effect of that write.
+- Second, the processor does not change the order of any write with respect to any other memory access. 
+- These two conditions mean that, if a processor **writes** location **A** followed by location **B**, any processor that sees the **new value of B** must **also see the new value of A**
+
+---
+
+## Basic Schemes for Enforcing Coherence
+
+A program running on **multiple processors** will normally have **copies** of the same data in several **caches**. In a coherent multiprocessor, the caches provide both 
+- **Migration** 
+	- A data item can be moved to a local cache and used there in a transparent fashion
+	- Reduces both the **latency** to access a shared data item that is allocated remotely and the **bandwidth demand** on the shared memory
+- **Replication** of shared data items
+	- Reduces both **latency** of access and **contention** for a read shared data item
+
+**Cache coherence protocols:**
+- Multiprocessors adopt a **hardware solution** by introducing a **protocol** to maintain coherent caches, that supports migration and replication.
+- Key idea = "**Tracking the state of any sharing of a data block**"
+- Two classes of protocol in use
+	- Directory based
+	- Snooping
+
+**Directory based**:
+- The sharing status of a particular block of physical memory is kept in one location, called the **directory**
+- **Two very different types** of directory-based cache coherence
+	- (1) **One centralized directory** in an **SMP**
+	- (2) **Distributed directories** in a **DSM** (See Section 5.4)
+
+**Snooping:**
+- **Each cache track**s sharing status of memory blocks they store.
+- In **SMP**, the caches are typically all accessible via some **broadcast** medium (a **bus** connects the per-core caches to the shared cache or memory)
+- All **cache controllers** monitor or **snoop** on the medium to determine whether they have a copy of a block that is requested on a bus or switch access.
+- **Snooping** can also be used as **the coherence protocol** for a **multichip multiprocessor**, and some designs support a 
+	- **Snooping** protocol on top of a **directory** protocol within each multicore.
+
+---
+
+## Snooping Coherence Protocols
+
+**Two ways** to maintain the coherence requirement:
+- Write invalidate protocol
+- Write update or write broadcast protocol
+
+**Write invalidate protocol**:
+- Ensure that a processor has **exclusive access** to a data item before writing that item
+- It **invalidates** other copies on a write
+- The most common protocol
+- For a write, 
+	- We require that the writing processor has **exclusive access**, 
+	- **Preventing** any other processor from being able to write simultaneously
+- **Write serialization**
+	- If **two** processors do attempt to write the same data simultaneously, one of them **wins the race**
+		- Causing the other processor’s copy to be invalidated
+	- For **the other processor** to complete its write, 
+		- It must **obtain a new copy of the data**, which must now contain the updated value.
+
+![[Pasted image 20230527024253.png]]
+
+**Write update or write broadcast protocol:**
+- Must broadcast all writes 
+- Consumes considerably more bandwidth
+- Virtually all recent multiprocessors have opted to implement a write invalidate protocol
+
+---
+
+## Basic Implementation Techniques
+
+**Implementing an invalidate protocol?**
+- Use of the bus to perform invalidate 
+	- Or another broadcast medium
+- In **older** multiple-chip multiprocessors, 
+	- The bus used for coherence is the **shared-memory access bus** 
+- In a single-chip multicore, 
+	- The bus can be the **connection between the private caches (L1 and L2 in the Intel i7) and the shared outer cache (L3 in the i7)**. 
+- To perform an **invalidate**, 
+	- The processor simply **(1) acquires bus access** and **(2) broadcasts the address** to be invalidated on the bus.
+	- All **processors** continuously **(3) snoop** on the bus, watching the addresses. 
+	- The processors **(4) check whether the address on the bus is in their cache**. If so, the corresponding data in the cache are **(5) invalidated**.
+
+**Two processors attempt to write shared blocks at the same time?**
+- Do write serialization!
+- The first processor to obtain bus access will cause 
+	- Any other copies of the block it is writing to be invalidated
+- The core with the sole copy of a cache block is normally called the **owner** of the cache block
+
+**Things to implement:**
+- How to **obtain bus access**
+- How to enforce **write serialization**
+- How to **invalidate** outstanding copies of a cache block that is being written into
+	- Use a **valid bit** of each cache block 
+- How to **locate a data item** when a cache miss occurs in a write-back cache
+	- For a write-through cache, simply fetch the most recent value from the memory
+	- For a write-back cache, 
+		- The most recent value of a data can be in a **private cache**!
+		- Use the **same snooping** scheme both for **cache misses** and for **writes**
+		- **Cache misse steps:**
+			- **(1) A cache miss** occurred in a requestor *P*
+			- The owner *P'* (**2) snoops the read request** from the requestor *P* to the memory (or L3)
+			- If the owner *P'* has updated the request cache block, and it has **(3) a dirty bit**
+			- Then, the owner P' ...
+				- **(4) Provides the cache block** in response the read request
+					- If the owner P' owns the cache block exclusively
+					- Change the state of the cache block **(5) from exclusive (unshared) to shared**
+				- Causes the memory (or L3) **(6) access to be aborted**
+			- The requestor **(7) gets the copy** of the cache block
+		- **Write steps:**
+			- Q. Any other copies of the block are **(1) cached?**
+				- Check a bit indicating whether the block is shared
+			- **No** $\rightarrow$ The write does **not need** to be placed on the bus in a write-back cache
+			- **Yes** $\rightarrow$ 
+				- **(2) Generate an invalidate** on the bus
+				- Marks the block as **(3) exclusive** (unshared)
+
+**Every bus transaction must check the cache-address tags**, which could potentially **interfere with processor cache accesses**. How to reduced the interference? :
+- (Approach\#1) **Duplicate the tags** and have snoop accesses directed to the duplicate tags
+	- While snooping circuit works on the duplicated tag,
+	- The processor can use the tag checking. So no conflict!
+- (Approach\#2) Use a **directory** at the shared L3 cache 
+	- Then, **invalidates** can be **directed only to** those caches with copies of the cache block. 
+	- This requires that L3 must always have a copy of any data item in L1 or L2, a property called **inclusion**
+
+---
+
+## An Example Protocol
+
+**Finite-state controller** in each core:
+- Responds to requests **from the processor** in the core and **from the bus** 
+- **Changes the state** of the selected cache block
+- Use the bus to 
+	- **Access** data
+	- **Invalidate** the data
+
+---
+
 To be continued ...
-
-
-
-
-
-
-
-
-
-
 
 
 

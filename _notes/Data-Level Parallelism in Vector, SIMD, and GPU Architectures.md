@@ -31,7 +31,7 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 	- SIMD : A single instruction can launch many data operations
 		- $\rightarrow$ More energy-efficient
 	- The ==programmer== continues to ==think sequentially== yet achieves ==parallel speedup== by having parallel data operations.
-
+ 
 - Three variations of SIMD
 	- ==Vector architectures==
 		- Easier to understand and compile to than other SIMD variations

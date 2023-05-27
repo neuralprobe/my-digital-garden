@@ -19,15 +19,21 @@ body {
   font-size: 1.1rem;
   max-width: 63em;
 
+
   @media (min-width: 820px) {
     font-size: 1.1rem;
   }
 }
 
-li { 
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
+p { 
+  padding-top: 2.5rem;
+  // padding-bottom: 0.5rem;
 } 
+
+li { 
+  padding-top: 0.0rem;
+  padding-bottom: 0.5rem;
+}
 
 time {
   display: block;
@@ -214,5 +220,4 @@ table {
 td, th {
   border: 1.5px solid rgb(206, 206, 206)
 }
-
 
