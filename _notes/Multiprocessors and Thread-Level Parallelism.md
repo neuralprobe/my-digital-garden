@@ -1,12 +1,15 @@
 ---
 title: Multiprocessors and Thread-Level Parallelism
-date: 2023-05-27
+date: 2023-05-28
 tags: ComputerArchitecture ThreadLevelParallelism Multiprocessing HennessyPatterson CacheCoherence
 ---
 
 # Multiprocessors and Thread-Level Parallelism
 
 - Chapter 5 in [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
+
+![[Pasted image 20230528112050.png]]
+<figcaption> A cute illustration of a distributed shared memory system created by DALL-E</figcaption>
 
 ---
 
@@ -317,9 +320,7 @@ A program running on **multiple processors** will normally have **copies** of th
 				- Marks the block as **(3) exclusive** (unshared)
 
 **Every bus transaction must check the cache-address tags**, which could potentially **interfere with processor cache accesses**. How to reduced the interference? :
-- (Approach\#1) **Duplicate the tags** and have snoop accesses directed to the duplicate tags
-	- While snooping circuit works on the duplicated tag,
-	- The processor can use the tag checking. So no conflict!
+- (Approach\#1) **Duplicate the tags** (just to allow checks in parallel with CPU) and have snoop accesses directed to the duplicate tags
 - (Approach\#2) Use a **directory** at the shared L3 cache 
 	- Then, **invalidates** can be **directed only to** those caches with copies of the cache block. 
 	- This requires that L3 must always have a copy of any data item in L1 or L2, a property called **inclusion**
@@ -335,9 +336,200 @@ A program running on **multiple processors** will normally have **copies** of th
 	- **Access** data
 	- **Invalidate** the data
 
+The **simple protocol** we consider has three states: 
+- **invalid**
+- **shared**: Indicates that the block in the private cache is potentially **shared**,
+- **modified**: Indicates that the block has been **updated** in the private cache, so **exclusive**
+
+![[Pasted image 20230527051516.png]]
+
+A **finite-state transition diagram** for a single private cache block using a write invalidation protocol and a write-back cache:
+
+![[Pasted image 20230527053551.png]]
+![[Pasted image 20230527053559.png]]
+
+![[Pasted image 20230527054017.png]]
+
+The most **important assumption** so far is that the protocol assumes that **operations are atomic**—that is, an operation can be done in such a way that **no intervening operation** can occur. 
+- For example, the protocol described assumes that write misses can be detected, acquire the bus, and receive a response as **a single atomic action.** 
+- **In reality this is not true. In fact, even a read miss might not be atomic**; 
+	- After detecting a miss in the L2 of a multicore, 
+	- The core must arbitrate for access to the bus connecting to the shared L3. 
+	- **Nonatomic actions** introduce the possibility that the protocol can **deadlock**, 
+	- Meaning that it reaches a state where **it cannot continue**.
+
+**Hardware implementation:**
+- **Single-chip** multicore processors 
+	- $\rightarrow$ **snooping** or **simple central directory protocol**
+- **Many** multiprocessor **chips**
+	- eg. Intel Xeon, AMD Opteron with high-speed interface
+	- Usually have a distributed memory architecture and 
+	- $\rightarrow$ Inter-chip coherency mechanism
+	- $\rightarrow$ **Directory scheme**
+
 ---
 
-To be continued ...
+## Extensions to the Basic Coherence Protocol
+
+**Basic protocol described so far:** 
+- **MSI** protocol 
+	- Uses only three states such as `modified`, `shared`, and `invalid` (That why it's called MSI)
+- **Many extensions** of this basic protocol
+	- Adding additional states and transactions
+	- (1) **MESI**: Modified, Exclusive, Shared, and Invalid
+	- (2) **MOESI**: Modified, Owned, Exclusive, Shared, and Invalid
+
+**Two of the most common extensions:**
+- **MESI**
+	- Four states: Modified, **Exclusive**, Shared, and Invalid
+	- **Exclusive** state indicates that a cache block is resident in **only a single cache** **but is clean** 
+	- In MSI protocol, this case was included the `Shared` state
+	- A block is in the **E** state
+		- It can be **written without**
+			- **Acquiring bus access**
+			- **Generating any invalidates**
+		- Which optimizes the case where a block is read by a single cache before being written by that same cache.
+	- **MESIF**
+		- A variant of MESI in Intel i7
+		- Adds a **Forward** state
+		- Designate **which** sharing processor **should respond** to a request
+		- Designed to enhance performance in distributed memory organizations
+- **MOESI**
+	- Five states: Modified, **Owned**, Exclusive, Shared, and Invalid
+	- **Owned state** : indicate that the associated block is owned by that cache and out-of-date in memory.
+	- In MSI and MESI, 
+		- Attempt to share a block in the Modified state
+		- $\rightarrow$ Changed to Shared (in both the original and newly sharing cache)
+		- The block must be written back to memory
+	- In a MOESI protocol, 
+		- Attempt to share a block in the Modified state
+		- $\rightarrow$ Changed to Owned state in the original cache 
+			- Without writing it to memory
+		- Other caches with the data supplied from the owner $\rightarrow$ Shared state
+	- **AMD Opteron**
+
+---
+
+## Limitations in Symmetric Shared-Memory Multiprocessors and Snooping Protocols
+
+**Increasing communication burden:**
+- \#processors in multiprocessor $\uparrow$ , 
+- Memory demands of each processor $\uparrow$, 
+
+$\rightarrow$ **Any centralized resource can be bottleneck:** 
+- **Single shared bus**
+- **Snooping bandwidth at the caches**
+
+**Three different approaches**:
+- IBM Power8
+	- **8 parallel buses** connect
+		- 12 processors in a single multicore
+		- Distributed L3 and
+		- Up to 8 separate memory channels
+	- Nonuniform access time for both L3 and memory
+- Xeon E7
+	- **Three rings** connect
+		- Up to 32 processors
+		- Distributed L3 cache
+		- Two/Four memory channels
+	- Not uniform, but
+	- Can operate as if access times were uniform
+- Fujitsu SPARC64X+ 
+	- **A crossbar** to connect
+		- A shared L2 
+		- To up to 16 cores and multiple memory channels
+	- Symmetric organization with uniform access time
+
+- Example 
+	- Assumption:
+		- 8-processors where each processor has its own L1 and L2
+		- Snooping on a shared bus among L2s
+		- Average L2 request = 15 cycles
+		- Clock rate = 3.0 GHz, CPI = 0.7
+		- load/store frequency = 40%
+	- Question
+		- If our goal is that no more than 50% of the L2 bandwidth is consumed by coherence traffic, what is the maximum coherence miss rate per processor?
+
+![[Pasted image 20230528052821.png]]
+
+Several techniques for **increasing the snoop bandwidth:**
+- (1) Tags can be **duplicated** just to allow checks in parallel with CPU
+	- Doubles the effective cache-level snoop bandwidth
+	- Average cost of a CMR(coherence miss rate) decrease to 12.5cycles 
+		- If 50% the coherence requests do not hit with 10 cycle snoop request cost
+- (2) **Each processor** with **distributed** memory **handles** snoops individually and **broadcast** to L2 again for **snoop hit**
+	- Each processor has a portion of the memory
+	- Handles snoops for that portion of the address space
+	- NUCA design used by IBM 12-core Power8
+		- But effectively scales the snoop bandwidth at L3 by the \#processors. 
+		- Detail steps: If there is a **snoop hit** in L3, then we must still **broadcast to all L2** caches, which must in turn snoop their contents. 
+		- Since L3 is acting as a filter on the snoop requests, L3 must be inclusive
+	- Still need broadcast for snoop hit!!
+- (3) Place a **directory** at the level of the outermost shared cache (eg. L3)
+	- L3 acts as a filter on snoop requests and must be inclusive
+	- We need not snoop or broadcast to all the L2s. 
+	- Both L3 and the associated directory entries can be distributed
+	- Intel Xeon E7 series: 8~32 cores
+
+![[Pasted image 20230528054506.png]]
+
+- **Intermediate point** between a snooping and a directory protocol
+	- Used in **AMD Opteron**
+		- Memory is directly connected to each multicore chip (Up to four multicore chips)
+		- NUMA: Nonuniform memory access
+			- Local memory is somewhat faster
+	- Opteron's coherence protocol
+		- Point-to-point links (Not shared) to broadcast up to three other chips
+		- Not shared $\rightarrow$ Need explicit acknowledgment to know that invalidation operation has completed 
+		- Uses a broadcast to find potentially shared copies, 
+			- like a snooping protocol, 
+		- But uses the acknowledgments to order operations, 
+			- like a directory protocol
+
+**Directory**-based protocols, which **eliminate the need for broadcast** to all caches on a miss? **See Section 5.4**
+- Directories within the multicore (Intel Xeon E7) or
+- Add directories when scaling beyond a multicore
+
+---
+
+## Implementing Snooping Cache Coherence
+
+The major complication in actually implementing the **snooping coherence protocol** we have described is that write and upgrade misses are **not atomic in any recent multiprocessor**. 
+
+- In a **multicore with a single bus**, 
+	- these steps can be **made effectively atomic** 
+	- by arbitrating for the bus to the **shared cache or memory first** (before changing the cache state) and 
+	- not releasing the bus until all actions are complete. 
+- **Without a single, central bus**, 
+	- we must find some other method of making the steps in a miss **atomic**. 
+	- In particular, we must ensure that two processors that attempt to write the same block at the same time, a situation which is called a **race**, are **strictly ordered**: 
+		- one write is processed and precedes before the next is begun.
+	- **In a multicore using multiple buses**, 
+		- races can be eliminated if each block of memory is associated with only a single bus,
+		- ensuring that two attempts to access the same block must be serialized by that common bus. 
+		- This property, together with the ability to **restart the miss handling of the loser in a race**, are the keys to implementing snooping cache coherence without a bus. We explain the details in Appendix I.
+
+- Possible to **combine snooping and directories**
+	- several designs use snooping within a multicore and directories among multiple chips
+	- A combination of directories at one cache level and snooping at another level
+
+---
+
+## Performance of Symmetric Shared-Memory Multiprocessors
+
+Overall cache performance is a combination of the behavior of: 
+- Uniprocessor cache miss traffic by **cache miss rate**
+	- Capacity
+	- Compulsory
+	- Conflict
+- traffic caused by **coherence miss rate**
+	- **True sharing misses**
+	- **False sharing**
+		- Occurs when a **block** is **invalidated** (and a subsequent reference causes a miss) because some **word** in the block, **other than the one being read, is written into.**
+	- 
+
+
+
 
 
 
@@ -357,5 +549,7 @@ To be continued ...
 
 - Chapter 5 in [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
 - Notebook: [[Computer Architecture Quantitive Approach]]
+- [U.C.Berkeley lecture slide(CS252) on snooping vs directory based coherency by D. A. Patterson](https://people.eecs.berkeley.edu/~pattrsn/252F96/Lecture18.pdf)
 - [[UMA and NUMA]]
 - [[Apple M1 Chip]]
+
