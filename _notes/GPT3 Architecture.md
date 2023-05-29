@@ -6,6 +6,8 @@ tags: NLP Attention Decoder GPT
 
 # GPT3 Architecture
 
+
+
 - What is GPT3 and its architecture? : Answer from ChatGPT, one of children of GPT3
 	- GPT-3 (==Generative Pre-trained Transformer 3==) is a language model developed by ==OpenAI==, which is designed to generate human-like text based on its training data. It is one of the largest and most powerful language models created to date, with ==175 billion parameters==.
 	- GPT-3 uses a neural network architecture called a ==transformer==, which enables it to process and ==understand language== in a way that is similar to how humans do. This allows it to perform a variety of natural language processing (NLP) tasks, such as language translation, text summarization, and question-answering, among others.

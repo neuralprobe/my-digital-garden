@@ -1,6 +1,6 @@
 ---
 title: Multiprocessors and Thread-Level Parallelism
-date: 2023-05-28
+date: 2023-05-29
 tags: ComputerArchitecture ThreadLevelParallelism Multiprocessing HennessyPatterson CacheCoherence
 ---
 
@@ -524,17 +524,162 @@ Overall cache performance is a combination of the behavior of:
 	- Conflict
 - traffic caused by **coherence miss rate**
 	- **True sharing misses**
+		- The first write by a processor to a shared cache block causes an invalidation to establish ownership of that block
 	- **False sharing**
 		- Occurs when a **block** is **invalidated** (and a subsequent reference causes a miss) because some **word** in the block, **other than the one being read, is written into.**
-	- 
+		- The **block is shared**, but **no word** in the cache is actually **shared**
+		- **Block size?**
+			- The miss would not occur if the block size were a single word
+
+- Example of False sharing
+	- Words `z1` and `z2` are in the same cache block
+	- The block is shared by `P1` and `P2` processors
+
+![[Pasted image 20230528133830.png]]
+
+---
+
+Will upload workload analysis subsections such as ...
+- A Commercial Workload
+- A Multiprogramming and OS Workload
+- Performance of the Multiprogramming and OS Workload
+
+---
+
+# Distributed Shared-Memory and Directory-Based Coherence
+
+The **absence of any centralized data structure** that tracks the state of the caches is both the fundamental **advantage** of a snooping-based scheme, since it allows it to be **inexpensive**, as well as its **Achilles’ heel** when it comes to **scalability**.
+
+**Directory protocol:**
+- **Keeps the state of every block** that may be cached
+- Information in the directory includes 
+	- **which caches** (or collections of caches) have copies of the block, 
+	- whether it is **dirty**, and so on. 
+- **Single directory** within **a multicore with a shared outermost cache**
+	- Say, L3
+	- Easy to implement a directory scheme
+	- Simply **keep a bit vector** of the size **equal to the number of cores** for each L3 block
+	- **No broadcast**
+		- **Invalidations** are sent **only to the caches** that shares the same cache blocks
+	- Still, not scalable!! 
+		- Even though it avoids broadcast
+- **Distributed directory**
+	- Must **know where to find** the directory information for any cached block of memory
+	- **Distribute the directory along with the memory** so that different coherence requests can go to different directories, just as different memory requests go to different memories.
+	- **Avoid broadcast!**
+		- The sharing status of a block is stored in a single known location
+	- Directory in a shared outer cache (L3)?
+		- Distribute the directory information to different cache banks!
+	- Simplest implementation?
+		- Associate an entry in the directory with each memory  block
+		- Node can be 
+			- a single multiprocessor
+			- a small collection of processors that implements coherence internally
+		- \#information $\propto$ \#(memory blocks)$\times$\#nodes
+
+![[Pasted image 20230528160155.png]]
+
+---
+
+## Directory-Based Cache Coherence Protocols: The Basics
+
+**Two primary operation that a directory protocol must implement:**
+- (1) Handling a **read miss** and
+- (2) Handling a **write** to a shared, clean cache block.
+- (1+2) Handling a **write miss** to a block that is currently shared is a simple combination of these two.
+
+**State of each cache block:**
+- **Shared** — One or more nodes have the block cached, and the value in memory is up to date (as well as in all the caches)
+- **Uncached** — No node has a copy of the cache block.
+- **Modified** — Exactly **one node** has a copy of the cache block, and it has written the block, so the memory copy is out of date. The processor is called the **owner** of the block
+
+**Must track:**
+- the **state** of each potentially shared memory block and
+- **which nodes** have copies of that block because those copies will need to be invalidated on a write
+
+**Implemented by keeping a bit vector for each memory block**:
+- Each bit of the vector indicates whether the **corresponding processor chip** (which is likely a multicore) has a **copy of that block**
+- \+ Keep track of the **owner** of the block when the block is in the **exclusive** state
+- + For efficiency reasons, we also track the **state** of each cache block at the **individual caches**
+
+**A catalog of the message types** that may be sent between the **processors and the directories** for the purpose of handling misses and maintaining coherence
+- **Local node** $-$ the node where a **request** originates. 
+- **Home node** $-$ the node where the **memory location** and the **directory entr**y of an address reside
+	- The location of the home node is known for a given physical address
+- **Remote node** $-$ the node that has a copy of a cache block, whether **exclusive** (in which case it is the only copy) or **shared**
+
+![[Pasted image 20230529040523.png]]
+
+In this section, we **assume a simple model of memory consistency**. 
+- Messages will be 
+	- **Received and acted upon** **in the same order they are sent**.
+	- To minimize the type of messages and the complexity of the protocol, 
+- Ensure that **invalidates sent by a node** are **honored before new messages are transmitted**
+- **Not true in practice**, See **Section 5.6**
+
+---
+
+## An Example Directory Protocol
+
+**(The 1st half implementation of the directory-based coherence) State transition diagram for an individual cache block:**
+(Gray \= Requests coming from outside the node, Bold \= Actions)
+- Almost identical with snooping case
+- Write miss operation 
+	- Snooping-based $\rightarrow$ Broadcast
+	- Directory-based $\rightarrow$ Data fetch and invalidate
+![[Pasted image 20230529043846.png]]
+
+**(The 2nd half implementation of the directory-based coherence)  State transition diagram for the directory:**
+- A message **sent to a directory** causes **two different types of actions**
+	- **Updating** the directory state and 
+	- **Sending** additional messages to satisfy the request
+- **Directory states:**
+	- Unlike in a snooping scheme, however, the **directory state** indicates **the state of all the cached copies of a memory block**, rather than for a single cache block.	
+	- Memory block may be
+		- **Uncached** by any node, 
+		- Cached in multiple nodes and readable (**shared**), or 
+		- Cached **exclusively** and writable in exactly one node
+	- **Sharers**
+		- A set to perform a function that tracks the set of nodes that have a copy of a block
+- A directory receives **three different requests**
+	- **Read miss**
+		- Uncached $\rightarrow$ Shared
+			- The requesting node is sent the requested data from memory and become the only sharing node
+		- Shared $\rightarrow$ Shared
+			- The requesting node is sent the requested data from memory and become a sharing node
+		- Exclusive $\rightarrow$ Shared
+			- The owner is sent a data fetch message, send data to the directory (in memory), and become sharing node
+			- The requesting node is sent the requested data from the memory and become a sharing node
+	- **Write miss**
+		- Uncached $\rightarrow$ Exclusive
+			- The requesting node is sent the value and become the only sharing node
+		- Shared $\rightarrow$ Exclusive
+			- The requesting node is sent the value and become the only sharing node
+			- All nodes in the set Sharers are sent invalidate messages
+		- Exclusive $\rightarrow$ Exclusive
+			- The block has a new owner
+			- The old owner is invalidated, send the value to the directory, and finally to the requesting node 
+			- Maybe optimized by directly forwarding the value from the old owner to the new owner 
+	- **Data write-back**
+		- Exclusive $\rightarrow$ Uncached
+			- The owner is replacing the block and therefore must write it back. 
 
 
+![[Pasted image 20230529050219.png]]
 
+**Note**: All actions are assume to be **atomic**, which is not true in reality. Check Appendix I that explore **non-atomic** memory transactions
 
+**Additional optimization?**
+- Write-miss to an exclusive block:
+	- Many of the protocols in use in commercial multiprocessors **forward the data from the owner node to the requesting node directly** (as well as performing the write-back to the home).
+	- Side effect: 
+		- Add complexity by increasing the possibility of deadlock and by increasing the types of messages
 
+---
 
+# Synchronization: The Basics
 
-
+To be continued!
 
 
 
