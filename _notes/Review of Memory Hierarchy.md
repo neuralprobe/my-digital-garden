@@ -366,7 +366,7 @@ tags: ComputerArchitecture HennessyPatterson Memory Cache VirtualMemory
 - Q2: How Is a Block ==Found== If It Is in Main Memory?
 	- For paging (accessing data in a page), the ==page offset== is simply concatenated to this physical page address (see Figure B.23). 
 	- ==Page table==
-		- Indexed by the virtual page number, the size of the table is the number of pages in the virtual address space. 
+		- Indexed by the virtual page number, the ==size== of the table is the ==number of pages== in the virtual address space. 
 		- Given a 32-bit virtual address, 4 KiB ($2^{12}$) pages, and 4 bytes per page table entry (PTE), the size of the page table would be $(2^{32}/2^{12})\times2^2=2^{22}$ or ==4 MiB==
 		- cf. Inverted page table: Apply ==hashing function== to virtual address to save page table size
 	- ==Translation lookaside buffer (TLB)== or translation buffer
@@ -440,27 +440,27 @@ tags: ComputerArchitecture HennessyPatterson Memory Cache VirtualMemory
 
 # Protection and Examples of Virtual Memory
 
-- Safe multiprogramming $\rightarrow$ Protection and sharing among programs!
+- ==Safe multiprogramming== $\rightarrow$ Protection and sharing among programs!
 
-- Multiprogramming leads to the concept of a ==process==. 
+- ==Multiprogramming== leads to the concept of a ==process==. 
 
-- Metaphorically, a process is a program’s ==breathing air and living space==—that is, a running program plus any state needed to continue running it.
+- Metaphorically, a ==process== is a program’s ==breathing air and living space==—that is, a running program plus any state needed to continue running it.
 
-- Process switch or context switch
-	- Allow time-sharing of concurrent execution and resource allocation with several interactive users at the same time
-	- The computer designer must ensure that the processor portion of the process state can be saved and restored. 
+- ==Process switch== or ==context switch==
+	- Allow ==time-sharing== of concurrent execution and resource allocation with several interactive users at the same time
+	- The computer designer must ensure that the processor portion of the process state can be ==saved and restored.== 
 	- The operating system designer must guarantee that processes do not interfere with each others’ computations.
 
 ## Protecting Processes
 
-- Simple
-	- Processes can be protected by having their own page tables, each pointing to distinct pages of memory
+- Simple:
+	- Processes can be protected by having their ==own page tables==, each pointing to distinct pages of memory
 
-- Ring
-	- Like a military classification system of top secret, secret, confidential, and unclassified, concentric rings of security levels allow the most trusted to access anything, the second most trusted to access everything except the innermost level, and so on.
+- ==Ring==:
+	- ==Like a military classification system== of top secret, secret, confidential, and unclassified, concentric rings of security levels allow the most trusted to access anything, the second most trusted to access everything except the innermost level, and so on.
 
-- Keys and locks: 
-	- A program can’t unlock access to the data unless it has the key. For these keys, or capabilities, to be useful, the hardware and operating system must be able to explicitly pass them from one program to another without allowing a program itself to forge them. Such checking requires a great deal of hardware support if time for checking keys is to be kept low.
+- ==Keys and locks:== 
+	- A program can’t ==unlock== access to the data unless it has the ==key==. For these keys, or capabilities, to be useful, the hardware and operating system must be able to explicitly ==pass them from one program to another== without allowing a program itself to forge them. Such checking ==requires a great deal of hardware support== if time for checking keys is to be kept low.
 
 - Two of the options: 
 	- The older segmented address space  
@@ -505,7 +505,7 @@ tags: ComputerArchitecture HennessyPatterson Memory Cache VirtualMemory
 
 - The 64-bit virtual address of the AMD64 architecture is mapped onto 52-bit physical addresses
 	- You can implement fewer bits to simplify hardware
-	- The size of page tables for the 64-bit address space is alarming. Hence, AMD64 uses a multilevel hierarchical page table to map the address space to keep the size reasonable.
+	- The size of page tables for the 64-bit address space is alarming. Hence, AMD64 uses a **multilevel hierarchical page table** to map the address space to keep the size reasonable.
 	- The offsets for each of these page tables come from four 9-bit fields. Address translation starts with adding the first offset to the page-map level 4 base register and then reading memory from this location to get the base of the next-level page table.
 	- The next address offset is in turn added to this newly fetched address, and memory is accessed again to determine the base of the third page table. It happens again in the same fashion. The last address field is added to this final base address, and memory is read using this sum to (finally) get the physical address of the page being referenced. This address is concatenated with the 12-bit page offset to get the full physical address. Note that the page table in the Opteron architecture fits within a single 4 KiB page.
 

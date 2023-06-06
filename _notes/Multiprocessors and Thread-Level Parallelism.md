@@ -1,6 +1,6 @@
 ---
 title: Multiprocessors and Thread-Level Parallelism
-date: 2023-05-29
+date: 2023-06-04
 tags: ComputerArchitecture ThreadLevelParallelism Multiprocessing HennessyPatterson CacheCoherence
 ---
 
@@ -679,14 +679,328 @@ In this section, we **assume a simple model of memory consistency**.
 
 # Synchronization: The Basics
 
-To be continued!
+**Synchronization mechanisms**
+- Built with user-level **software routines** that
+- **Rely on hardware**-supplied synchronization **instructions**
+- Key hardware capability?
+	- an **uninterruptible instruction** or 
+	- **instruction sequence** capable of **atomically retrieving and changing a value**
+
+In this section, we focus on the **implementation** of **lock and unlock** synchronization operations
+$\rightarrow$ Create **mutual exclusion** and **more complex synchronization mechanisms**
+
+In **high-contention situations**, synchronization can become a performance bottleneck because contention introduces **additional delays** and because **latency** is potentially greater in such a multiprocessor $\rightarrow$ See **Appendix I**
+
+---
+
+## Basic Hardware Primitives
+
+Need to implement **a set of hardware primitives** with the ability to 
+- **Atomically read** and 
+- **Modify a memory location**
+
+$\rightarrow$ Basic building block for 
+- Building a wide variety of **user-level synchronization operations**, 
+- Including things such as **locks** and **barriers**
+
+**Atomic exchange:**
+- Interchanges a value in a register for a value in memory
+	- Want to build a simple lock 
+		- The value 0 is used to indicate that the lock is free and 
+		- 1 is used to indicate that the lock is unavailable
+	- A processor tries to set the lock by doing an exchange of 1, 
+		- which is in a register, 
+		- with the memory address corresponding to the lock
+	- Then, the value returned from the exchange instruction is 
+		- 1 if some other processor had already claimed access and 
+		- 0 otherwise (unlocked)
+			- $\rightarrow$ The value is changed to 1 then,
+			- Preventing any competing exchange from also retrieving a 0
+	- Example
+		- Two processors are trying to do the exchange simultaneously
+		- Only one processor can be a winner in this race
+
+**Atomicity of atomic exchange operation?**
+- The exchange is **indivisible**
+- Two **simultaneous** exchanges will be ordered by the **write serialization** mechanisms.
+
+[Lock and unlock - Georgia Tech - Advanced Operating Systems](https://youtu.be/Bh-V04jRwpo)
+![[Pasted image 20230531050357.png]]
 
 
 
+**Atomic synchronization primitives:**
+- Test-and-set
+	- Tests a value (if it is 0)
+	- Sets (to 1) it if the value passes the test
+- Fetch-and-increment
+	- Returns the value of a memory location and 
+	- Atomically increments it.
+
+[Atomic Read-Modify-Write instructions - Georgia Tech - Advanced Operating Systems](https://youtu.be/Bh-V04jRwpo)
+![[Pasted image 20230531050627.png]]
+
+**Challenges** to implement a **single atomic memory operation**:
+- Require both **a memory read and a write** 
+	- In **a single, uninterruptible instruction**
+- This requirement **complicates** the implementation of **coherence**
+	- Because the hardware cannot allow any other operations 
+	- Between the read and the write, and 
+	- Yet must not deadlock.
+
+Alternative approach used in **MIPS and RISC-V**: 
+- Have **a pair of instructions** 
+	- where the **second instruction returns a value** 
+	- from which it can be **deduced whether** the pair of instructions was executed as though the instructions were **atomic**
+- The pair of instructions is effectively atomic if
+	- it appears as though all other operations executed by **any processor** occurred **before or after the pair**
+
+**The pair of instructions in RISC-V:**
+- **load reserved** (also called **load linked** or **load locked**)
+	- loads the contents of memory given by rs1 into rd and creates a reservation on that memory address
+- **store conditional**
+	- Stores the value in rs2 into the memory address given by rs1
+- **How does it work?**
+	- If the **reservation** of the load is **broken** by a write to the same memory location
+		- The store conditional **fails** and **writes a nonzero** to **rd**; 
+	- If it **succeeds**, the store conditional **writes 0**
+	- If the processor does context switch between the two $\rightarrow$ SC always fails
+- Example
+	- An atomic exchange on the memory location specified by the contents of `x1` with the value in `x4`
+	- At the end of this sequence, the contents of `x4` and the memory location specified by `x1` have been **atomically exchanged.**
+![[Pasted image 20230531054454.png]]
+
+An **advantage** of the **load reserved/store conditional** mechanism?
+- You can build other synchronization primitives 
+- Example: an **atomic fetch-and-increment**
+	
+![[Pasted image 20230531061315.png]]
+
+**How to implement `lr`/`sc` instructions?**
+- Keep track of the address specified in the `lr` instruction in a register 
+	- Called the **reserved register**
+- If an interrupt occurs, or if the cache block matching the address in the link register is invalidated (e.g., by another `sc`), 
+- The link register is cleared. 
+- The `sc` instruction simply checks that its address matches that in the reserved register. 
+	- If so, the sc succeeds; 
+	- Otherwise, it fails.
+
+**Deadlock cases?**
+- Because the store conditional will fail after either another attempted store to the load reserved address or any exception, 
+- Care must be taken in choosing what instructions are inserted between the two instructions. 
+- In particular, only register-register instructions can safely be permitted;
+- Otherwise, it is possible to create **deadlock situations** 
+	- where the processor can never complete the `sc`. 
+- In addition, the number of instructions between the load reserved and the store conditional should be **small** to **minimize the probability** that either an unrelated event or a competing processor causes the store conditional to fail frequently.
 
 
 
+[Synchronization Examples in RISC-V by Amir H. Ashouri](https://youtu.be/hzrmdFZqiTE)
+- Based on "Computer Organization and Design RISC-V Edition- The Hardware Software Interface" by David Patterson and John Hennessy
+![[Pasted image 20230531055435.png]]
+![[Pasted image 20230531055511.png]]
 
+**cf. How does a barrier work?** 
+- From [Centralized barrier - Georgia Tech - Advanced Operating Systems](https://youtu.be/Bh-V04jRwpo)
+- Two spinning episodes: 
+	- (1) `while ( count > 0 );`
+	- (2) `while ( count != n );`
+
+![[Pasted image 20230606034611.png]]
+
+![[Pasted image 20230606035321.png]]
+
+- From [Barrier Synchronization - Georgia Tech - HPCA: Part 5](https://youtu.be/A5KTIi3o7Fw)
+	- In this [Part5 playlist](https://youtube.com/playlist?list=PLAwxTw4SYaPkr-vo9gKBTid_BWpWEfuXe) and [Part6 playlist](https://youtube.com/playlist?list=PLAwxTw4SYaPndXEsI4kAa6BDSTRbkCKJN)
+![[Pasted image 20230606040007.png]]
+![[Pasted image 20230606043144.png]]
+
+![[Pasted image 20230606044836.png]]
+
+
+---
+
+## Implementing Locks Using Coherence
+
+Using atomic operation $\rightarrow$ Use coherence mechanisms of a multiprocessors to implement **spin locks**:
+- Spin locks
+	- Locks that a processor continuously tries to acquire, **spinning** around a loop **until it succeeds**
+	- Spin locks **tie up** the processor waiting in a loop for the lock to **become free**
+
+**Simplest implementation without cache coherence**
+- Keep the **lock variables in memory** (not in a private cache)
+- A processor could continually try to acquire the lock 
+	- Using an atomic operation, say, **atomic exchange**, and
+	- **Test** whether the exchange returned the **lock as free**
+- Spin locks are used 
+	- when programmers expect the lock to be held for **a very short amount of time** and
+	- when they want the process of locking to be **low latency** when the lock is available
+- Code sequence to lock a spin lock
+	- `EXCH`: A macro for the atomic exchange sequence above using `lr`/`sc` instructions
+
+![[Pasted image 20230531064306.png]]
+
+**With cache coherence?**
+- We can **cache the locks** using the coherence mechanism to maintain the **lock value coherently**
+- **Advantage** of caching locks
+	- The process of “spinning” could be done on a **local cached copy**
+	- There is often **locality** in lock accesses
+		- i.e. The processor that **used the lock last** will use it **again** in the near future.
+	- $\rightarrow$ Greatly reducing the time to acquire the lock.
+- Change in the simple spin procedure: Read before exchange!
+	- Motivation
+		- **Each attempt to exchange** in the preceding loop requires a **write operation.**
+		- If multiple processors are attempting to get the lock, **each will generate the write.** 
+		- $\rightarrow$ **Most of these writes** will lead to **write misses** because each processor is trying to obtain the lock variable in an **exclusive state.**
+	- Thus we should **modify our spin lock procedure** so that
+	- It **spins by doing reads on a local copy of the lock** until it successfully sees that the lock is available
+	- Then it **attempts to acquire the lock** by doing a swap operation.
+
+![[Pasted image 20230531073456.png]]
+
+Figure 5.22 examines **how this “spin lock” scheme** uses the **cache coherence** mechanisms:
+- This example shows **another advantage of the load reserved/store conditional primitives:** 
+	- The **read and write** operations are **explicitly separated.**
+
+![[Pasted image 20230531073645.png]]
+
+The fact that the load reserved need not cause any bus traffic
+- Allows the following simple code sequence, 
+	- which has the same characteristics as the optimized version using exchange
+	- (`x1` has the address of the lock, the `lr` has replaced the `LD`, and the `sc` has replaced the `EXCH`)
+- The first branch forms the spinning loop
+- The second branch resolves races when two processors see the lock availability simultaneously
+![[Pasted image 20230531074540.png]]
+
+---
+
+# Models of Memory Consistency: An Introduction
+
+**Cache coherence** 
+- Ensures that multiple processors see a **consistent view of memory**.
+- Does not answer the question of **how consistent** the view of memory must be. 
+	- Q: **When** must a processor **see** a value that has been updated by another processor?
+	- \= In **what order** must a processor observe the data writes of another processor?
+	- \= What properties must be enforced among reads and writes to different locations by different processors?
+
+[Consistency Matters](https://youtu.be/uh8gF64345I)
+- In this slide, programmer never expect the fourth case (R1=1,R2=0), 
+- But, it can happen without memory consistency
+![[Pasted image 20230606050041.png]]
+
+**Look at this two code segments from processes P1 and P2**
+- The processes are running in different processors
+- A and B are originally cached by both processors with initial value of 0
+	- A=0, B=0 in the cache of P1
+	- A=0, B=0 in the cache of P2
+- Writes take immediate effects?
+	- Impossible for both L1 and L2 to be true
+- If write invalidate is delayed (by interconnect latency or something else)
+	- Possible that both P1 and P2 have not seen the invalidations $\rightarrow$ L1/L2 can be false!
+- **Is it allowed? in what condition?**
+![[Pasted image 20230606053210.png]]
+
+**Sequential Consistency** 
+- Requires that the result of any execution be the same as though
+	- The memory accesses executed by each processor were kept in order
+	- The accesses among different processors were arbitrarily interleaved
+- Eliminates the possibility of some nonobvious execution in the previous example because **the assignments must be completed before the IF statements are initiated.**
+- **Simplest implementation?**
+	- Require a processor to **delay the completion of any memory access** until all the invalidation caused by that access are completed.
+	- Example
+		- Write miss = 50 cycles to establish ownership, 
+		- 10 cycles to issue each invalidate after ownership is established
+		- 80 cycles for an invalidate to complete and be acknowledged once it is issued
+		- Four other processors share a cache block
+		- Q: How long does a write miss stall the writing processor if the processor is sequentially consistent?
+		- A: The last processor's invalidation starts 10+10+10+10= 40 cycles after ownership is established. $\rightarrow$ Total time = 50 (ownship) + 40 (issue) + 80 (invalidata/acknowledge) = 170 cycles
+
+## The Programmer's View
+
+Although the sequential consistency model has a **performance disadvantage**, from the viewpoint of the programmer, it has the **advantage of simplicity**
+- Challenge
+	- Develop a programming model that is 
+	- Simple to explain and 
+	- Yet allows a high-performance implementation.
+
+**Synchronized programs**
+- More efficient implementation
+- All accesses to shared data are ordered by synchronization operations
+- Data-race-free
+	- Data-race: The execution outcome depends on the relative speed of the processors
+- Example
+	- Two processors share a data
+	- Each processors surrounds the read and update with a lock and an unlock, 
+	- Both to ensure mutual exclusion for the update and to ensure that the read is consistent
+- Almost all programmers will choose to use **synchronization libraries** that are correct and optimized for the multiprocessor and the type of synchronization.
+
+---
+
+## Relaxed Consistency Models: The Basics and Release Consistency
+
+**Relaxed consistency model:**
+- Allow reads and writes to complete out of order
+- But to use synchronization operations to enforce ordering so that 
+- A synchronized program behaves as though the processors were sequentially consistent
+
+**Sequential consistency** requires maintaining all four possible orderings:
+- R $\rightarrow$ W
+- R $\rightarrow$ R
+- W $\rightarrow$ R
+- W $\rightarrow$ W 
+	- where X $\rightarrow$ Y means that operation X must complete before operation Y is done
+
+**Relaxed model categories:**
+1. **Total store ordering** or **processor consistency**
+	- Relaxing only the W$\rightarrow$ R ordering
+2. Partial store order
+	- Relaxing both W$\rightarrow$R ordering and W$\rightarrow$W ordering
+3. Weak ordering, the PowerPC consistency model, and **release consistency**
+	- Relaxing all four ordering
+	- Significant performance advantage
+	- RISC V, ARMv8, as well as the C++ and C language standards chose release consistency as the model
+
+**Release consistency** distinguishes between
+- Synchronization operations that are used to **acquire** access to a shared variable ($S_A$) and
+- Those that **release** an object to allow another processor to acquire access (denoted $S_R$).
+
+This property allows us to slightly relax the ordering by 
+- (1) **Observing that a read or write that precedes an acquire need not complete** before the acquire, and also that 
+- (2) **A read or write that follows a release need not wait for the release.**
+
+![[Pasted image 20230606105616.png]]
+
+![[Pasted image 20230606105653.png]]
+
+---
+
+Notes on the remaining subsections below will be added later:
+- Cross-Cutting Issues
+	- Compiler Optimization and the Consistency Model
+	- Using Speculation to Hide Latency in Strict Consistency Models
+	- Inclusion and Its Implementation
+	- Performance Gains From Multiprocessing and Multithreading
+- Putting It All Together: Multicore Processors and Their Performance
+	- Performance of Multicore-Based Multiprocessors on a Multiprogrammed Workload
+	- Performance of Multicore-Based Multiprocessors on a Multiprogrammed Workload
+	- Scalability in an Xeon MP With Different Workloads
+	- Performance and Energy Efficiency of the Intel i7 920 Multicore
+		- Putting Multicore and SMT Together
+
+![[Pasted image 20230606111152.png]]
+
+![[Pasted image 20230606111216.png]]
+![[Pasted image 20230606111247.png]]
+
+![[Pasted image 20230606111310.png]]
+
+![[Pasted image 20230606111319.png]]
+
+![[Pasted image 20230606111329.png]]
+
+![[Pasted image 20230606111349.png]]
+
+![[Pasted image 20230606111400.png]]
 
 ---
 
@@ -697,4 +1011,5 @@ To be continued!
 - [U.C.Berkeley lecture slide(CS252) on snooping vs directory based coherency by D. A. Patterson](https://people.eecs.berkeley.edu/~pattrsn/252F96/Lecture18.pdf)
 - [[UMA and NUMA]]
 - [[Apple M1 Chip]]
+- [Atomic Operation by Georgia Tech - Advanced Operating Systems](https://youtu.be/Bh-V04jRwpo)
 

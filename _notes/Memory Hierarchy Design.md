@@ -782,15 +782,15 @@ tags: ComputerArchitecture HennessyPatterson Memory MemoryHierarchy Cache Virtua
 
 # Virtual memory and Virtual Machines
 
-- Virtual machine
+- **Virtual machine**
 	- An efficient, isolated duplicate of the real machine
 
-- Virtual machine monitor (VMM)
+- **Virtual machine monitor (VMM)**
 	- VMM provides an ==environment== for programs which is ==essentially identical with the original machine==
 	- Programs run in this environment show at worst only ==minor decreases== in speed
-	 - The VMM is in complete ==control of system== resources.
+	- The VMM is in complete ==control of system== resources.
 
-- Virtual memory 
+- **Virtual memory** 
 	- Refer to the introduction of virtual memory in [[Review of Memory Hierarchy]]
 	- Physical memory $\rightarrow$ ==Cache of secondary storage==
 	- ==Move pages between== the physical memory and the storage
@@ -843,7 +843,7 @@ tags: ComputerArchitecture HennessyPatterson Memory MemoryHierarchy Cache Virtua
 		3. Memory protection information
 3. Provide mechanism to switch the processor modes
 	1. User mode $\rightarrow$ Supervisor mode : ==System call==
-		1. Implemented as a special instruction 
+		1. Implemented as a ==special instruction== 
 		2. Transfer control to a dedicated location in supervisor code space
 		3. Save the PC from the point of the system call
 	2. Supervisor mode $\rightarrow$  User mode : 
@@ -894,7 +894,7 @@ tags: ComputerArchitecture HennessyPatterson Memory MemoryHierarchy Cache Virtua
 
 - Is it ==enough== to let your computer architecture obey the restrictions on pages?
 	- ==Not enough==!!
-	- We depend on the ==operating system == as well as the hardware!
+	- We depend on the ==operating system== as well as the hardware!
 
 - What's the problem of OS?
 	- It is too big to find and fix the ==bugs== in it
@@ -945,7 +945,7 @@ tags: ComputerArchitecture HennessyPatterson Memory MemoryHierarchy Cache Virtua
 	- Protection improvement
 	- Manage software
 		- Free to use multiple/old/new/legacy OSes
-	- Mange hadrware
+	- Mange hardware
 		- Multiple software stacks share hardware
 		- Possible to migrate 'running VM' to a different computer
 
@@ -979,13 +979,13 @@ tags: ComputerArchitecture HennessyPatterson Memory MemoryHierarchy Cache Virtua
 	- Allows the VM to execute directly on the hardware
 	- e.g. IBM 370, recent x86, RISC-V
 
-- Privileged instruction by guest OS?
+- ==Privileged instruction== by ==guest OS==?
 	- Trap to VMM $\rightarrow$ Support a virtual version of the sensitive information as the guest OS expects
 	- No VMM trapping support? $\rightarrow$ 
 		- Special precautions by VMM, 
 		- Locate all problematic instructions 
 
-- Multi-level privileged instructions
+- ==Multi-level== ==privileged instructions==
 	- One for guest user
 	- One for some OS operations that 
 		- exceed the permissions granted to a user program
