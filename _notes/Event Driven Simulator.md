@@ -1,5 +1,5 @@
 ---
-title: Event-Driven Simulator
+title: Event Driven Simulator
 date: 2023-08-27
 tags: C++ OOP Simulator Simulation
 ---
@@ -33,7 +33,7 @@ tags: C++ OOP Simulator Simulation
 	- 이벤트 큐에 등록이 된 이벤트들을 순서대로 실행시켜주는 함수.
 	- 하나의 이벤트에 의해 호출되는 함수에서 다른 이벤트를 스케쥴한다면, 이벤트 큐는 채워지고 소비되는 과정을 연속하다가, 특정 조건에서 시뮬레이션을 멈추게 하면 된다.
 
-아래는 Event-driven simulator의 간단한 예시 코드. (chatGPT로 만들었다. 하하)
+아래는 Event-driven simulator의 간단한 예시 코드. (chatGPT로 짬(?). 하하)
 
 ```cpp
 #include <iostream>
