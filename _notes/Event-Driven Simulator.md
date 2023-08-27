@@ -1,7 +1,7 @@
 ---
-title: Event-Driven Simulator
+title: EventDriven Simulator
 date: 2023-08-26
-tags: C++ OOP Simulator Simulation
+tags: C++ OOP Simulation
 ---
 
 # Event-Driven Simulator
