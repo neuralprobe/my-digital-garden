@@ -579,7 +579,7 @@ tags: ComputerArchitecture HennessyPatterson RISC ISA
 
 ## Dynamic Scheduling With a Scoreboard
 
-- Scoreboarding allows ==instructions to execute out of order== when there are ==sufficient resources== and ==no data dependences==
+- Scoreboarding allows ==instructions to execute out of order== when there are ==sufficient resources== and ==no (all types of) data dependences==
 
 - Avoid ==OoO-related hazards== 
 	- ==WAR== hazard (which doesn't exist in RISC V in-order pipeline )

@@ -19,8 +19,7 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 
 - Single instruction multiple data (SIMD) classification was proposed by Flynn, 1966
 
-- A question for the ==SIMD== architecture
-	- How wide a set of applications has significant ==data-level parallelism (DLP)==
+- A question for the ==SIMD== architecture: How wide a set of applications has significant ==data-level parallelism (DLP)==?
 	- Matrix-oriented computations of scientific computing
 	- Media-oriented image
 	- Sound processing
@@ -64,11 +63,11 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 
 - Motivation
 	- Deliver good performance 
-	- Without OoO superscalar processors
+	- ==Without OoO superscalar processors==
 		- $\rightarrow$ High complexity and expensive energy consumption
-	- With simple in-order scalar processors 
+	- ==With simple in-order scalar processors== 
 
-- Steps in vector architectures (VA)
+- Steps in ==vector architectures== (VA)
 	- (1) Grab sets of data elements scattered about memory
 	- (2) Place them into large sequential register files
 	- (3) Operate on data in those register files
@@ -76,16 +75,16 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 
 - A ==single instructions== in VA
 	- Works on ==vectors of data==
-	- = Dozens of register-register operation on independent elements
+	- Dozens of register-register operation on independent elements
 
-- Large register files
-	- Act as compiler-controlled buffers
+- ==Large register files==
+	- Act as ==compiler-controlled== buffers
 	- Hide memory latency
 		- Use deep pipeline for vector load/store
-		- Pay long latency only once per vector load/store 
-		- Amortize the latency over, say, 32 elements
+		- Pay long latency only once per vector load/store
+		- ==Amortize the latency== over, say, 32 elements
 	- Leverage memory bandwidth
-		- Keep the memory busy for contiguous data fetching invoked by a single vector load/store
+		- ==Keep the memory busy== for contiguous data fetching invoked by a single vector load/store
 
 ---
 
@@ -93,34 +92,34 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 
 ![[Pasted image 20230516051825.png]]
 
-- Loosely based on the 40-year-old Cray-1
-- At the time of this edition, RVV (RISC-V Vector extension) was still under development
+- Loosely based on the ==40-year-old Cray-1==
+- At the time of this edition, RVV (RISC-V Vector extension) was still under development (version 0.7xx)
 - RV64V = RISC-V base instructions plus the vector extension
 
 **The primary components of RV64V?** 
 
-1. Vector registers
+1. ==Vector registers==
 	- Each vector register holds a single vector
 	- 32 64-bit registors in RV64V
-	- Register file (RF) $\rightarrow$ Enough ports to feed all the vector functional unit (VFU)
+	- Register file (RF) $\rightarrow$ Enough ==ports== to feed all the vector functional unit (VFU)
 		- At least 16 read ports, 8 write ports
 		- Connected to the functional unit input/outputs via two crossbar switches
-		- Need high bandwidth? $\rightarrow$ Multiple banks that works well with long vector
-2. Vector functional units (VFUs)
-	- Fully pipelined $\rightarrow$ Start a new operation on every clock cycle
+		- Need high bandwidth? $\rightarrow$ Multiple ==banks== that works well with long vector
+2. ==Vector functional units (VFUs)==
+	- Fully ==pipelined== $\rightarrow$ Start a new operation on every clock cycle
 	- Control unit
 		- Detect hazards
-		- Structural hazards fro FUs
+		- Structural hazards from FUs
 		- Data hazards on register accesses
-3. Vector load/store units
+3. ==Vector load/store units==
 	- Loads or stores a vector to or from memory
-	- Fully pipelined
+	- Fully ==pipelined==
 		- After an initial latency,
 		- Move words between vector registers and memory 
 		- With a bandwidth of ==one word per clock cycle== 
-	- Also handle scalar load/store
-4. A set of scalar registers
-	- Normal 31 general-purpose registers, 32 floating-point registers of RV64G
+	- Also handle ==scalar== load/store
+4. ==A set of scalar registers==
+	- Normal 31 general-purpose registers, 32 floating-point registers of ==RV64G==
 	- Provide data, addresses
 	- One input of VFUs latches scalar values
 
@@ -151,30 +150,30 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 	- 32 64-bit elements = 128 $\times$ 16-bit elements = 256 $\times$ 8-bit elements
 	- So, useful for both multimedia (low precision) and scientific application (high precision)
 
-- Benefit of dynamic register typing
+- ==Benefit== of dynamic register typing
 	- Reduces the number of instruction types
 	- Lets ==programs disable== unused vector registers
 		- eg. 1024 bytes of vector memory = 4 vector registers enabled $\times$ 64-bit float $\times$ 32 elements per register (i.e. maximum vector length ($mvl$), set by the processor, not by software)
 	- Implicit conversion between different size operands (No need of additional explicit conversion instructions)
 
-- Complaint on the vector architecture's larger state
-	- Slower context switch time (to save and load the large states)
+- ==Complaint== on the vector architecture's larger state
+	- ==Slower context switch time== (to save and load the large states)
 	- Our implementation of RV64V
 		- Increases state a factor of 3 
 		- From 2 $\times$ 32 $\times$ 8 = 512 bytes to 2 $\times$ 32 $\times$ 24 = 1536 bytes
 	- A pleasant side effect of dynamic register typing: The program can configure vector registers as disabled when they are not being used, so no need to save and restore them on a context switch
 
-- Additional registers
+- ==Additional registers==
 	- `vl`
-		- Vector length register
+		- ==Vector length== register
 		- Used when the natural vector length $!=$ `mvl`
 	- `vctype`
-		- Records register types
+		- Records register ==types==
 	- `p_i` 
-		- Predicate registers
+		- ==Predicate== registers
 		- Used when loops involve IF statements
 	- `CSRs`
-		- Control and status registers
+		- ==Control and status registers==
 
 ---
 
@@ -203,15 +202,24 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 
 - **Key advantage of RV64V compared to RV64G?**
 	- Greatly reduces the dynamic instruction bandwidth
-		- Only 8 instructions for RV64V vs 258 for RV64G
+		- Only ==8== instructions for RV64V vs ==258== for RV64G
 	- Greatly reduces frequency of pipeline interlocks
 		- RV64G: Every `fadd.d` must wait for a `fmul.d` and `fsd`, 32$\times$ more stalls than RV64V
-		- RV64V: Stall only for the first element in each vector by using chaining
+		- RV64V: ==Stall only for the first element== in each vector by using chaining
 		- ==Chaining==?
 			- Forwarding of element-dependent operations
 			- Dependent operations are "chained" together
 			- eg. Adjacent `vmul` and `vadd` are dependent, but only the first element's stall is required
 		- Stall only ==once per vector instruction== rather than ==once per vector element==!
+
+![[Pasted image 20230727093417.png]]
+<figcaption> Slide from Digital Design & Comp. Arch. - Lecture 20: SIMD Processing (Vector and Array Processors) (Spring'21), @OnurMutluLectures  
+</figcaption>
+
+
+![[Pasted image 20230727093647.png]]
+<figcaption> Digital Design & Comp. Arch. - Lecture 20: SIMD Processing (Vector and Array Processors) (Spring'21) @OnurMutluLectures  </figcaption>
+
 
 ![[Pasted image 20230516111729.png]]
 ![[Pasted image 20230516111739.png]]
@@ -222,30 +230,30 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 ## Vector Execution Time
 
 - Three factors for the execution time 
-	1. Length of the operand vectors
-	2. Structural hazards among the operations
-	3. Data dependences
+	1. ==Length== of the operand vectors
+	2. ==Structural hazards== among the operations
+	3. Data ==dependences==
 
-- Vector functional units
-	- Multiple parallel pipelines (or lanes) 
+- ==Vector functional units==
+	- Multiple parallel pipelines (or ==lanes==) 
 	- Produce two or more results per clock cycles $\rightarrow$ Initiation rate
 		- The rate at which a vector unit consumes new operands and produces new results
 	- May have VFUs that are not fully pipelined
 
-- Convoy
+- ==Convoy==
 	- The set of vector instructions that
 	- Could ==potentially execute together==.
-	- The instructions in a convoy must not contain any structural hazards
+	- The instructions in a convoy must not contain ==any structural hazards==
 		- If $\exists$ (structural hazards) $\rightarrow$ Serialized and initiated in different convoys
 		- eg. `vld` + `vmul` in the same convoy
 	- Counting \#Convoy $\rightarrow$ Performance estimation
 
-- Instructions with RAW hazard in the same convoy?
-	- No problem!
+- Instructions with ==RAW hazard== in the same convoy?
+	- ==No problem!==
 	- ==Chaining== allows them to be in a same convoy 
 		- The ==results from the first functional unit== in the chain are “==forwarded==” to the ==second== functional unit
 
-- Chaining implementation
+- ==Chaining implementation==
 	- Allowing the processor ==read and write== a particular vector register ==at the same time==, albeit to different elements
 	- Early version:
 		- Worked just like forwarding in scalar pipelining
@@ -256,7 +264,7 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 
 - Estimate the execution time of a convoy?
 	- ==Chime==: 
-		- A metric to estimate the length of a convoy
+		- A metric to estimate the ==length of a convoy==
 		- Simply the unit of time taken to execute one convoy
 	- $m$ convoys executes in $m$ chimes
 	- Vector length of $n$ $\rightarrow$ Approximately, $m\times n$ clock cycles for our simple RV64V implementation
@@ -274,13 +282,20 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 			- eg. 6 clock cycles for FP add, 7 for FP multiply, 20 for FP divide, 12 for vector load
 
 - Questions for optimization of vector architectures
-	- How can a vector processor execute a single vector faster than one element per clock cycle? ==Multiple elements per clock cycle== improve performance.
-	- How does a vector processor ==handle programs where the vector lengths are not the same as the maximum vector length (mvl)?== Because most application vectors don’t match the architecture vector length, we need an efficient solution to this common case.
-	- What happens when there is an ==IF statement== inside the code to be vectorized? More code can vectorize if we can efficiently handle conditional statements.
-	- What does a vector processor ==need from the memory system?== Without sufficient memory bandwidth, vector execution can be futile.
-	- How does a vector processor ==handle multiple dimensional matrices?== This popular data structure must vectorize for vector architectures to do well.
-	- How does a vector processor handle ==sparse matrices?== This popular data structure must vectorize also.
-	- How do you ==program a vector computer?== Architectural innovations that are a mismatch to programming languages and their compilers may not get widespread use.
+	- How can a vector processor execute a single vector faster than one element per clock cycle? 
+		- ==Multiple elements per clock cycle== improve performance.
+	- How does a vector processor ==handle programs where the vector lengths are not the same as the maximum vector length (mvl)?== 
+		- Because most application vectors don’t match the architecture vector length, we need an efficient solution to this common case.
+	- What happens when there is an ==IF statement== inside the code to be vectorized? 
+		- More code can vectorize if we can efficiently handle conditional statements.
+	- What does a vector processor ==need from the memory system?== 
+		- Without sufficient memory bandwidth, vector execution can be futile.
+	- How does a vector processor ==handle multiple dimensional matrices?== 
+		- This popular data structure must vectorize for vector architectures to do well.
+	- How does a vector processor handle ==sparse matrices?== 
+		- This popular data structure must vectorize also.
+	- How do you ==program a vector computer?== 
+		- Architectural innovations that are a mismatch to programming languages and their compilers may not get widespread use.
 
 ---
 
@@ -299,7 +314,7 @@ tags: ComputerArchitecture HennessyPatterson GPU DataLevelParallelism SIMD Vecto
 	- Each lane $\ni$ One portion of the VRF, one execution pipeline from each VFU
 	- Each VFU executes vector instructions @ one element group per cycle, one per lane
 	- The first lane holds the first element (element 0) for all vector registers
-	- The arithmetic pipeline = local to the lane without communicating with other lanes
+	- The arithmetic pipeline \= local to the lane without communicating with other lanes
 
 ![[Pasted image 20230516161401.png]]
 
@@ -1620,3 +1635,5 @@ for (i=999; i>=0; i=i-1)
 - Chapter 4 in [Computer Architecture A Quantitative Approach (6th)](https://www.elsevier.com/books/computer-architecture/hennessy/978-0-12-811905-1) by Hennessy and Patterson (2017)
 - Notebook: [[Computer Architecture Quantitive Approach]]
 - [Do CUDA threads execute in lockstep for O(n) operations? from StackOverfLow](https://stackoverflow.com/questions/40966087/do-cuda-threads-execute-in-lockstep-for-on-operations)
+- [Vector Processor-Encyclopedia, Science News & Research Reviews](https://academic-accelerator.com/encyclopedia/vector-processor)
+- [Vector processor working - Example of a simple vectorized loop execution](https://youtu.be/4Uv-wRqkQzs)

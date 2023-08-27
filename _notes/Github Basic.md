@@ -10,7 +10,7 @@ tags: Git GitHub Coding Yalco
 
 # Github 시작하기
 
-- 게정 등록하고 로그인!
+- 계정 등록하고 로그인!
 - Personal access token 만들기
 	- `Settings` $\rightarrow$  `Developer Settings`  $\rightarrow$ `Personal access tokens` $\rightarrow$ `Generate new token`
 	- [Updating credentials from the macOS Keychain](https://docs.github.com/en/get-started/getting-started-with-git/updating-credentials-from-the-macos-keychain)

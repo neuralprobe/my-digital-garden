@@ -974,31 +974,206 @@ This property allows us to slightly relax the ordering by
 
 ---
 
-Notes on the remaining subsections below will be added later:
-- Cross-Cutting Issues
-	- Compiler Optimization and the Consistency Model
-	- Using Speculation to Hide Latency in Strict Consistency Models
-	- Inclusion and Its Implementation
-	- Performance Gains From Multiprocessing and Multithreading
-- Putting It All Together: Multicore Processors and Their Performance
-	- Performance of Multicore-Based Multiprocessors on a Multiprogrammed Workload
-	- Performance of Multicore-Based Multiprocessors on a Multiprogrammed Workload
-	- Scalability in an Xeon MP With Different Workloads
-	- Performance and Energy Efficiency of the Intel i7 920 Multicore
-		- Putting Multicore and SMT Together
+# Cross-Cutting Issues
+
+## Compiler Optimization and the Consistency Model
+
+In explicitly parallel program without clear synchronization point definition,
+- The compiler cannot interchange a read and a write of two different shared data items
+- Restricts simple optimizations like register allocation of shared data
+
+In implicitly parallelized programs,
+- Programs must be synced and the sync points are known
+- So, more room for compiler to optimize
+
+---
+
+## Using Speculation to Hide Latency in Strict Consistency Models
+
+Use dynamic scheduling to reorder memory references, 
+- letting them possibly execute out of order.
+
+Delayed commit feature of a speculative processor
+- Avoid the violations of sequential consistency for out of order memory references
+- Eg. Memory reference execution (Not committed yet) $\rightarrow$ Receive invalidation $\rightarrow$ Speculation recovery $\rightarrow$ Restart the memory reference
+
+So, need to detect when the results might differ by the reordering of memory requests
+- Triggered only when there are unsynchronized accesses that actually cause a race ([Gharachorloo et al., 1992](https://www.sciencedirect.com/science/article/abs/pii/074373159290052O)).
+
+The combination of sequential or processor consistency together with speculative execution as the consistency model of choice ([Hill (1998)](https://ieeexplore.ieee.org/abstract/document/707614)) Why?
+- Aggressive implementation of sequential consistency $\ni$ Advantage of a more relaxed model
+- Very little implementation cost of a speculative processor
+- Allows the programmer to use the simpler programming models
+
+---
+
+## Inclusion and Its Implementation
+
+Multi-level inclusion of cache?
+- Every level of cache hierarchy is a subset of the level farther away from the processor
+- Can reduce the contention 
+	- between coherence traffic and processor traffic that
+	- occurs when snoops and processor cache accesses must contend for the cache
+
+Two-level example
+- If different block sizes for L1 and L2
+- L2 cache miss can break the inclusion property
+- How to maintain inclusion with multiple block sizes?
+	- Must probe the higher levels of the hierarchy when a replacement is done at the lower level
+	- Or, just use one block size for all memory hierarchy
+
+---
+
+## Performance Gains From Multiprocessing and Multithreading
+
+IBM Power5
+- Dual core with simultaneous multithreading (SMT)
+- Average
+	- SPECintRate2000 $\rightarrow$ 1.23x
+	- SPECfpRate $\rightarrow$ 1.16x
+
+![[Pasted image 20230708075029.png]]
+
+---
+
+# Putting It All Together: Multicore Processors and Their Performance
+
+## Performance of Multicore-Based Multiprocessors on a Multiprogrammed Workload
+
+Three different multicore
+- Xeon systems
+- i7 920
+- i7 6700
+
+**Figure 5.26 : Key characteristics of three multicore processsors**
+- Intel Xeon E7
+	- Based on i7, more cores, a slightly slower clock rate, larger L3
+- IBM Power8 
+	- New IBM Power series with more cores and bigger caches
+- Fujitsu SPARC64 X+
+	- Server chip with SMT
 
 ![[Pasted image 20230606111152.png]]
 
+---
+
+### How the cores are connected within a chip
+
+- ==SPARC64 X+==
+	- The simplest
+	- 16 cores share a single L2 cache  
+		- 24-way set associative
+	- Four separate DIMM channels, 
+	- 16 $\times$ 4 switch between 16 cores and 4 DIMM channels
+
+- ==Power8==
+	- Each core has an 8 MiB bank of L3 directly connected
+	- Other banks accessed via the interconnection network with 8 separate buses
+	- So, it's a true NUCA (Nonuniform Cache Architecture)
+	- Memory links $\leftrightarrow$ Special memory controller with L4 and interfaces directly with DIMMs
+
 ![[Pasted image 20230606111216.png]]
+
+- ==Xeon E7==
+	- 18 or more cores (20s in Figure5.27(b))
+	- Three rings!!
+		- Connect the cores and the L3 cache banks
+		- Each core and each bank of L3 $\leftrightarrow$ Two rings
+	- Uniform access time within a chip
+	- Normally operated as a NUMA architecture 
+		- By logically half the cores with each memory channel
+		- $\rightarrow$ Increases the probability that a desired memory page is open on a given access
+	- Connecting multiple E7s: Three QuickPath Interconnect (QPI)
+
 ![[Pasted image 20230606111247.png]]
+
+---
+
+### Different interconnection strategies
+
+- ==IBM Power8==
+	- Connecting 16 Power8 chips for a total of 192 cores
+	- Intra-group links for 4 processor chips
+	- Each processor is two hops from any other
+	- Different memory access time
+		- (1) local memory, (2) cluster memory, (3) inter-cluster memory 
+- ==Intel Xeon E7==
+	- Chip $\leftrightarrow$ QPI $\leftrightarrow$ Chip
+	- 3 QPI links for 4-chip multiprocessor with 128 cores 
+	- 8 E7 processors
+		- One or two hops
+	- More than 8 chips?
+		- 4 chips as a module
+	- Each processor is connected to two neighbors (Two QPIs)
+	- Third QPI $\rightarrow$ A crossbar witch
+	- Different memory access time
+		- (1) Local to the processors
+		- (2) An immediate neighbor
+		- (3) The neighbor in the cluster that is two hops away
+		- (4) Through the crossbar
+- ==SPARC64 X+== 
+	- Each processor
+		- Three connections to its immediate neighbors 
+		- + Two/three connections to a crossbar
+	- 64 processors $\rightarrow$ Two crossbar switches
+	- Different memory access time (NUMA)
+		- (1) local, (2) within a module, and (3) through the crossbar
+	- Directory based coherency
 
 ![[Pasted image 20230606111310.png]]
 
+---
+
+### Performance of Multicore-Based Multiprocessors on a Multiprogrammed Workload
+
+**Scaling of SPECintRate result $\leq$ 64 cores (Figure 5.29)**
+- Xeon
+	- More core $\rightarrow$ Less L3 per core $\rightarrow$ More L3 miss $\rightarrow$ Band scalability
+- IBM Power8
+	- Looks like have good scalability, 
+	- But it's due to  the higher clock rate 4.4GHz of 64 core configuration than 3.0GHz of 4 core configuration
+
 ![[Pasted image 20230606111319.png]]
 
+**Scaling above 64 processors (Figure 5.30)**
 ![[Pasted image 20230606111329.png]]
 
+---
+
+## Scalability in an Xeon MP With Different Workloads
+
+**Three different workloads**
+1. Java-based commercially oriented workload (SPECjbb2015) 
+	- w/ Java VM software and the VM hypervisor
+	- Small proc-to-proc interaction
+	- 78~95% speedup efficiency
+2. Virtual machine workload (SPECVirt2013) 
+	- w/ Java VM software and the VM hypervisor
+	- Small proc-to-proc interaction
+	- Almost linear speedup
+3. Scientific parallel processing workload (SPECOMP2012)
+	- True parallel code with multiple user processes sharing data and collaborating in the computation
+	- OpenMP standard for shared-memory parallel processing
+	- Fortran, C, C++
+	- Fluid dynamics, molecular modeling, image manipulation
+
+
+![[Pasted image 20230709164129.png]]
+
+---
+
+## Performance and Energy Efficiency of the Intel i7 920 Multicore
+
+Figure 5.32: Speedup and energy efficiency of the Java and PARSEC benchmarks ==without the use of SMT==
+
 ![[Pasted image 20230606111349.png]]
+
+
+### Putting Multicore and SMT Together
+
+Figure 5.33: Speedup and energy efficiency of the Java and PARSEC benchmarks ==with and without the use of 
+- SMT can ==add to performance== when there is ==sufficient thread-level parallelism== available even in the multicore situation.
+- Java's bad scalability in energy efficiency $\rightarrow$ Amdahl's law! (Due to serial parts in Java like garbage collectors for multi-threaded programs)
 
 ![[Pasted image 20230606111400.png]]
 
