@@ -1,7 +1,9 @@
 ---
 title: C++ 의 참조자
 date: 2023-05-18
-tags: C++ Reference
+tags:
+  - Reference
+  - Cplusplus
 ---
 
 # C++ 의 참조자

@@ -1,7 +1,8 @@
 ---
 title: C++ 시작하기
 date: 2023-05-18
-tags: C++
+tags:
+  - Cplusplus
 ---
 
 # C++ 시작하기

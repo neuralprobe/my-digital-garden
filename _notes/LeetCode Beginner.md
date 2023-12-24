@@ -1,7 +1,11 @@
 ---
 title: LeetCode Beginner
 date: 2022-09-03
-tags: LeetCode C++ Python Algorithm
+tags:
+  - LeetCode
+  - Python
+  - Algorithm
+  - Cplusplus
 ---
 
 # Problems in LeetCode Beginner's Guide

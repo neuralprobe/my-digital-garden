@@ -1,7 +1,9 @@
 ---
 title: C++ 의 세계로
 date: 2023-05-18
-tags: C++ Memory
+tags:
+  - Memory
+  - Cplusplus
 ---
 
 # C++ 의 세계로

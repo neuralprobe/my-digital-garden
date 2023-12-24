@@ -1,7 +1,11 @@
 ---
 title: Event-Driven Simulator
 date: 2023-08-26
-tags: C++ OOP Simulator Simulation
+tags:
+  - OOP
+  - "\bSimulator"
+  - Simulation
+  - Cplusplus
 ---
 
 # Event-Driven Simulator
