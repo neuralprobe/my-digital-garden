@@ -206,7 +206,10 @@ vector<int> sortedSquaredArray(vector<int> array) {
 
 ---
 
+# 4. Tournament Winner
 
+![[Pasted image 20231224155225.png]]
+![[Pasted image 20231224155238.png]]
 
 
 
@@ -215,5 +218,4 @@ vector<int> sortedSquaredArray(vector<int> array) {
 
 - [AlgoExpert](https://www.algoexpert.io/)
 	- [github](https://github.com/das-jishu/algoexpert-data-structures-algorithms)
-	- 
 - [[LeetCode Beginner]]
