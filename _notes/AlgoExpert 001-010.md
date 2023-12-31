@@ -93,6 +93,10 @@ vector<int> twoNumberSum(vector<int> array, int targetSum) {
 
 ```
 
+- 한줄요약 (sorting): sorting 한 다음에 L-pointer, R-pointer 값을 더해서 target-sum보다 작으면 L-pointer를 오른쪽으로, 크면 R-pointer를 왼쪽으로!
+
+- 한줄요약 (hash-table): 해쉬테이블 (`unordered_set<int>` 타입) 만들고, target-sum과 각 num의 sub이 해쉬테이블에 없으면 num을 넣어주고, 있으면 짝 찾은거임!
+
 ---
 # 2. Validate Subsequence
 
@@ -147,6 +151,8 @@ bool isValidSubsequence(vector<int> array, vector<int> sequence) {
   return false;
 }
 ```
+
+- 한줄요약: array와 subsequence의 포인터 2개 만들고, array 포인터를 진행시키다가 subsequence 포인터와 같은 값 있으면 subsequence 포인터 한 칸 진행시키기 반복!
 
 ---
 # 3. Sorted Squared Array
@@ -203,6 +209,8 @@ vector<int> sortedSquaredArray(vector<int> array) {
 }
 ```
 
+- 한줄요약: 이미 정렬 되있으니깐, L-pointer와 R-pointer의 절대값 중에 큰 녀석을 빼서 output 벡터에 넣어주고, L-pointer 값이 이겼으면 오른쪽,  R-pointer 값이 이겼으면 왼쪽으로 이동!
+
 ---
 # 4. Tournament Winner
 
@@ -247,6 +255,8 @@ string tournamentWinner(vector<vector<string>> competitions,
 }
 ```
 
+- 한줄요약: `unordered_map<string,int>` 타입 해쉬테이블에 승자들만 (1) 등록 안되어있으면 등록하고 점수 기록하고, (2) 등록 되어있으면 승리 점수 accumulate하고, 최대 점수 쌓은 위너의 점수와 리턴할 위너 이름 계속 업데이트하기.
+
 ---
 # 5. Non-Constructible Change
 
@@ -280,6 +290,8 @@ int nonConstructibleChange(vector<int> coins) {
 }
 ```
 
+- 한줄요약: max-change 보다 작거나 같은 possible-change 값이 "촘촘해야"한다는 것에 초점을 두고, i-th possible-change와 (i+1)-th possible-change의 범위를 비교해보자. 
+
 ---
 # 6. Transpose Matrix
 
@@ -311,6 +323,8 @@ vector<vector<int>> transposeMatrix(vector<vector<int>> matrix) {
   return transposed;
 }
 ```
+
+- 한줄요약: 0으로 채워진 2D 벡터 선언은 `vector<vector<int>> matrix_name(rows, vector<int>(cols, 0));`
 
 ---
 # 7. Find Closest Value In BST
@@ -364,6 +378,8 @@ int findClosestValueInBst(BST *tree, int target) {
 }
 ```
 
+- 한줄요약: target을 (1) 현재 노드 값과 비교해서 closest node 업데이트하고, (2)왼쪽 노드와 오른쪽 노드 중에 어느쪽으로 갈지 결정해서 traversing하면서 closest node 업데이트하면 됨.
+
 ---
 # 8. Branch Sums
 
@@ -373,7 +389,7 @@ Binary tree  받아서, 왼쪽부터 오른쪽까지 branch sum 해주는 함수
 
 1. accumulate 함수에서 ...
 	1. 현재 node의 값을 왼쪽 node 값에 더하고, 왼쪽 node를 인자로 넣어서 accumulate 함수 호출하기.
-	2. 그 다음 현재 node의 값을 오른쪽쪽 node 값에 더하고, 오른쪽 node를 인자로 넣어서 accumulate 함수 호출하기
+	2. 그 다음 현재 node의 값을 오른쪽 node 값에 더하고, 오른쪽 node를 인자로 넣어서 accumulate 함수 호출하기
 	3. 그 다음 Leaf에 도착할 경우, accumulated value를 sum vector에 push_back
 2. What happen?
     1. accumulate 된 값을 node value에 더하면서 왼쪽으로 traversing 하고, 
@@ -418,6 +434,8 @@ vector<int> branchSums(BinaryTree *root) {
 }
 ```
 
+- 한줄요약: accumulate 함수를 만들고, 현재 노드의 값을 왼쪽/오른쪽 노드의 값에 더한다음 왼쪽/오른쪽 노드에 accumulate함수 재귀호출하면서, sum 포인터의 값을 계속 더해나가면 됨!
+
 ---
 # 9. Node Depths
 
@@ -461,6 +479,8 @@ int nodeDepths(BinaryTree *root) {
 }
 ```
 
+- 한줄요약: get_depth_sum함수 시작하면, 인자로 받은 depth에 1을 더해서, 다음 레벨 왼쪽/오른쪽 노드의 get_depth_sum함수에 인자로 넘겨줘서 각 노드가 depth를 인자로 갖게 한 다음 (스택에 저장), depth + left_depth_sum (왼쪽노드의 get_depth_sum함수 결과) + right_depth_sum (오른쪽노드의 get_depth_sum함수)를 재귀적으로 리턴!
+
 ---
 # 10. Evaluate Expression Tree
 
@@ -473,7 +493,7 @@ int nodeDepths(BinaryTree *root) {
 		- {-1 : add, -2: sub, -3: div, -4: mult}
 2. `result(node)` 함수 구조
 	1. Leaf node가 아닐 경우,
-		1. 왼쪽노드의 결과값`result(node->left)`과  오른쪽의 결과값`result(node->left)`을  
+		1. 왼쪽노드의 결과값`result(node->left)`과  오른쪽의 결과값`result(node->right)`을  
 		2. node value에 해당하는 operation을 취해서 결과값을 return
 	2. Leaf node면
 		1. 그냥 그 node value를 return
@@ -519,6 +539,8 @@ int evaluateExpressionTree(BinaryTree *tree) {
   return result(tree);
 }
 ```
+
+- 한줄요약: 재귀함수가 (1) leaf가 아닌 경우, 양쪽 노드의 재귀함수결과에 현재 node value 읽어서 얻은 operation 적용하고, (2) leaf인 경우는 값 자체가 재귀함수 결과 값!
 
 ---
 # Reference
