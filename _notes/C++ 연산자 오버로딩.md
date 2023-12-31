@@ -9,7 +9,7 @@ tags:
 
 # 연산자 오버로딩
 
-- 앞선 [[객체지향프로그래밍의 시작]]에서 만든 MyString 클래스의 멤버함수 중 
+- 앞선 [[C++ 객체지향프로그래밍의 시작]]에서 만든 MyString 클래스의 멤버함수 중 
 	- `compare` 함수를 `==` operator로 바꾸자!
 	- `insert` 함수를 `+` operator로 바꾸자!
 	- `at` 함수를 `[]` operator로 바꾸자!
