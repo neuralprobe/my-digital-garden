@@ -225,7 +225,7 @@ vector<int> sortedSquaredArray(vector<int> array) {
 	3. 등록안되있으면 `scoreboard.insert({game_winner,3})` 으로 3점 주면서 등록 
 3. 현재 최고 스코어와 비교해서 더 높은 스코어의 winner 업데이트.
 
-```Cpp
+```cpp
 #include <vector>
 #include <unordered_map>
 using namespace std;
