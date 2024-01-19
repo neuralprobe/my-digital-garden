@@ -213,6 +213,7 @@ int tandemBicycle(
 ![[Pasted image 20240103193221.png]]
 
 1. Payment 순서대로 sorting
+	1. lambda function 써서 "<" opertion을 오버로딩해줘야 함.
 2. 7 칸짜리 bool 벡터 timeline 만들고,
 3. for-loop에서 payment 큰 job 부터 timeline 채우자
 	1. 선택된 job의 deadline에 해당하는 timeline 칸부터 시작해서 
@@ -246,6 +247,10 @@ int optimalFreelancing(vector<unordered_map<string, int>> jobs) {
 ```
 
 - 한줄요약: 높은 payment 순으로 deadline에 최대한 가까운 날짜에 스케쥴하자!
+
+- 람다함수 사용법:
+![[Pasted image 20240119235530.png]]
+![[Pasted image 20240119235540.png]]
 
 ---
 # 16. Remove Duplicates From Linked List
