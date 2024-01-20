@@ -1,6 +1,6 @@
 ---
 title: AlgoExpert 021-030
-date: 2024-01-19
+date: 2024-01-20
 tags:
   - Algorithm
   - Coding
@@ -141,10 +141,11 @@ vector<int> selectionSort(vector<int> array) {
 ```
 
 - 한줄요약: 셀렉션 소트는.... (1) 첫번째 값 (i=0) 부터 i-forward-iteration 하면서 (2) i번째 값보다 작은 값을 발견하면 swap 해서 맨 앞부터 정렬되게 하는 방식. 
-- Sorting 특징:
+- Sort 알고리즘 비교:
 	- 버블 소트:  맨 뒤부터 정렬.  이웃한 숫자를 비교하면서 swap.
 	- 인설션 소트: 맨 앞부터 정렬. key 값을 중간에 삽입하면서 정렬.
 	- 셀렉션 소트: 맨 앞부터 정렬. 가장 작은 값을 정렬되지 않은 부분의 맨 앞으로 보내기.
+
 ---
 # 25. Palindrome Check
 
