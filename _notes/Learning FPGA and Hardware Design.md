@@ -1,7 +1,16 @@
 ---
+title: Learning FPGA and Hardware Design
+date: 2024-02-01
+tags:
+  - HowTo
+  - Hardware
+  - FPGA
+  - DigitalDesign
+  - HDL
+  - Verilog
+  - Verification
 ---
-
-## Learning FPGA and Hardware Design & Verification: A Step-by-Step Guide
+# Learning FPGA and Hardware Design & Verification: A Step-by-Step Guide
 
 Great choice! FPGA development offers a fantastic mix of creativity and engineering. Here's a roadmap to get you started:
 
@@ -39,3 +48,7 @@ Great choice! FPGA development offers a fantastic mix of creativity and engineer
 - **Stay updated:** FPGA technology is constantly evolving, so keep learning and exploring new developments.
 
 Remember, the key is to be passionate, hands-on, and persistent. Have fun exploring the world of FPGAs and hardware design!
+
+---
+## Reference
+- Written by Gemini
