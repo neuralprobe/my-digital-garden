@@ -29,7 +29,7 @@ Great choice! FPGA development offers a fantastic mix of creativity and engineer
 - **Learn design methodologies:** Modular design, finite state machines, pipelining, clock domain crossing. Resources: FPGAzum blogs, textbooks like "Digital Design with VHDL" by Peter Ashenden
 - **Explore verification techniques:** Unit testing, testbenches, formal verification. Resources: Doulos FPGA training, SystemVerilog tutorials
 - **Practice advanced projects:** Implement more complex designs like image processing filters, communication protocols.
-- **Engage with the community:** Participate in forums, attend online meetups (<invalid URL removed>), find a mentor
+- **Engage with the community:** Participate in forums, attend online meetups, find a mentor
 
 **Additional Tips:**
 
