@@ -48,7 +48,7 @@ tags:
 - [[SystemC 20 Signal - Read and Write]]
 - [[SystemC 21 Signal - Detect Event]]
 - [[SystemC 22 Signal - Many Writers]]
-- [[SystemC 23 Resolved Signal ]]
+- [[SystemC 23 Resolved Signal]]
 - [[SystemC 24 sc_signal_bool]]
 - [[SystemC 25 Buffer]]
 - [[SystemC 26 Communication - port]]
