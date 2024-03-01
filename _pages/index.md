@@ -23,10 +23,12 @@ permalink: /
     {%- for note in notes -%}
         {% assign date =  note.date | split: ' ' | first %}
         {%- if date != prevdate -%}
-            <i>{{date}}</i>:
+            <i style="color:gray">{{date}}</i>:
         {%- endif -%}
         {%- if note.tags contains 'index' -%}
             <li style="padding-bottom: 0.6em; "><a href="{{note.url}}" style="color: #0B7E4A; font-weight:bold">{{ note.title }}</a></li>
+        {%- elsif note.tags contains 'subpage' -%}
+            
         {% else %}
             <li style="padding-bottom: 0.6em; "><a href="{{note.url}}">{{ note.title }}</a></li>
         {%- endif -%}        

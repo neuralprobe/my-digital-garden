@@ -1,7 +1,12 @@
 ---
 title: Github Basic
 date: 2022-08-16
-tags: Git GitHub Coding Yalco
+tags:
+  - Git
+  - GitHub
+  - Coding
+  - Yalco
+  - subpage
 ---
 
 # Github 사용법

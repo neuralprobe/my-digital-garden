@@ -1,23 +1,26 @@
 ---
 title: LeetCode Explore Card Track
-date: 2022-09-06
-tags: LeetCode Algorithm DataStructure
+date: 2024-03-01
+tags:
+  - LeetCode
+  - Algorithm
+  - DataStructure
+  - AlgoExpert
+  - index
 ---
-
-# LeetCode Explore Card Track
+# Data Structure and Algorithm Problems
 
 ---
 
 - [[LeetCode Beginner]] $\rightarrow$ [Explore Card Track](https://leetcode.com/explore/featured/card/the-leetcode-beginners-guide/679/sql-syntax/4358/)
-- 자료구조와 알고리즘의 기본기를 다지기 위한 섹션
+- [[LeetCode Array101]]
+- [[AlgoExpert 001-010]]
+- [[AlgoExpert 011-020]]
+- [[AlgoExpert 021-030]]
+
 
 ![[Screen Shot 2022-09-06 at 4.40.47 PM.png]]
 
-# Progress
-
-- ==Array==: 
-	- Source: [Array101](https://leetcode.com/explore/learn/card/fun-with-arrays/) 
-	- Note: [[LeetCode Array101]]
 
 ---
 

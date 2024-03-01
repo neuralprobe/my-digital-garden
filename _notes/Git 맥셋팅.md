@@ -1,7 +1,14 @@
 ---
 title: Git 맥셋팅
 date: 2022-08-07
-tags: Git GitHub Coding Yalco MacBook 개발환경
+tags:
+  - Git
+  - GitHub
+  - Coding
+  - Yalco
+  - MacBook
+  - 개발환경
+  - subpage
 ---
 
 # "Git in 맥북" 개발 환경 설정하기

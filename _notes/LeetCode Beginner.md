@@ -6,6 +6,7 @@ tags:
   - Python
   - Algorithm
   - Cplusplus
+  - subpage
 ---
 
 # Problems in LeetCode Beginner's Guide
@@ -397,4 +398,4 @@ class Solution:
 # Reference
 
 - [The LeetCode Beginner's Guide](https://leetcode.com/explore/learn/card/the-leetcode-beginners-guide)
-- What's next? [[LeetCode Explore Card Track]] 
+- What's next? [[Data Structure and Algorithm Problems]] 
