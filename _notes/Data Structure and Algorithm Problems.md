@@ -1,5 +1,5 @@
 ---
-title: LeetCode Explore Card Track
+title: Data Structure and Algorithm Problems
 date: 2024-03-01
 tags:
   - LeetCode
