@@ -1,6 +1,6 @@
 ---
 title: AlgoExpert 031-040
-date: 2024-03-05
+date: 2024-03-21
 tags:
   - Algorithm
   - Coding
@@ -313,11 +313,55 @@ vector<int> spiralTraverse(vector<vector<int>> array) {
 - 정수 array를 받아서 longest peak의 길이를 리턴하는 함수 만들기
 - Length of a peak 는 strictly increasing 하다가 strictly decrease하는 subarray의 길이
 
-풀이요약
-- Strictly increasing 하는지로 `peak = True` 켜주고, 계속 strictly-increase하거나 strictly-decrease 하는지로 상태 여부 판단
-- Length counter 달아서 peak 유지되는 동안 하나씩 더해주고, 
-- `max_length`에 등록
+```cpp
+using namespace std;
 
+int longestPeak(vector<int> array) {
+  // Check array size
+  if (array.size()<3) return 0;
+
+  // iterator, delta states, length counter, max length
+  int i = 1;
+  bool prevInc, prevDec, nextInc, nextDec, reset, prevEq, nextEq;
+  bool peak = false;
+  int len = 0;
+  int maxLen = 0;
+  while (i < array.size()-1){
+    // set delta states
+    prevInc = (array[i] > array[i-1]);
+    nextInc = (array[i] < array[i+1]);
+    prevDec = (array[i] < array[i-1]);
+    nextDec = (array[i] > array[i+1]);
+    prevEq = (array[i] == array[i-1]);
+    nextEq = (array[i] == array[i+1]);
+
+    // toggle peak state
+    peak = (prevInc & nextDec) ? true : peak;
+    
+    // check reset condition
+    reset = (prevDec & nextInc) | nextEq | (i == array.size()-2);
+    if (reset) {
+      // if the index reaches to the end of the array, count the last element
+      len = (nextDec & (i == array.size()-2) & peak)?  len+1 : len;
+      // refresh maxLen when peak is ON
+      // +2 comes from the previous and the current element
+      maxLen = ((len > maxLen) & peak) ? len+2 : maxLen;
+      len = 0;
+      peak = false;
+    }
+    else if (prevInc | prevDec) len++;
+    i++;
+  }
+  return maxLen;
+}
+```
+
+풀이요약
+- 두번째 element부터 인덱싱해서, 각 i-th element 의 앞뒤로 증가하는지 감소하는지 delta state 기록
+- peak 맞는지 확인해서 peak state 를 toggle 해주고,
+- 순조롭게 증가/감소하면 counter (len) 하나 더 해주고,
+- reset 해야하는 경우 (바닥 찍고 올라가는 경우, 다음 element랑 크기 같아서 증감 없는 경우, array 끝에 도달한 경우) 확인해서,
+- max length를 업데이트 해주고, peak/len 리셋해주기.
 
 ---
 
@@ -329,16 +373,70 @@ vector<int> spiralTraverse(vector<vector<int>> array) {
 - non-empty integer array 받아서, 같은 길이의 output array 를 반환.
 - i-th output은 i-th input을 제외한 input element를 다 곱한 값
 
+```cpp
+#include <vector>
+
+using namespace std;
+
+vector<int> arrayOfProducts(vector<int> array) {
+  // Write your code here.
+  vector<int> leftProd(array.size(),1);
+  vector<int> rightProd(array.size(),1);
+  vector<int> result;
+
+  if (array.size() < 2) return array;
+  
+  for (int i = 1; i < array.size(); i++){
+    leftProd[i] = leftProd[i-1] * array[i-1];
+  }
+  
+  for (int i = array.size()-2; i >= 0 ; i--){
+    rightProd[i] = rightProd[i+1] * array[i+1];
+  }
+
+  for (int i = 0; i < array.size(); i++){
+    result.emplace_back(leftProd[i]*rightProd[i]);
+  }
+  
+  return result;
+}
+```
+
 풀이요약
-- 다 곱해서, 나누면 될텐데
-- 예외 상황 조심. 0랑 overflow?
+- 다 곱해서, 나누면 이상해짐. 
+- i-th 원소의 왼쪽 원소들을 곱한 값과, 오른쪽 원소들을 곱한 값을 곱하면 되는거니깐,
+- 두 개의 배열 `leftProd`랑 `rightProd`을 만들어서, 
+- 하나는 i-th 원소의 왼쪽 값들을 곱한 값을 i-th 원소로 두는 배열, 하나는 오른쪽 값을 곱한 배열을 만든 다음에,
+- i-th 결과를 구할 땐, 두 배열의 i-th 원소들을 곱하면 됨.
 
 ---
 
 # 39. First Duplicate Value
 
+
 ![[Pasted image 20240317200359.png]]
 
+문제요약:
+- 1~n 사이의 값들로 이루어진 크기 n인 정수 배열을 받아서,
+- 한 번 이상 반복되는 첫번째 정수를 리턴하는 함수 만들기
+
+```cpp
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+int firstDuplicateValue(vector<int> array) { 
+  unordered_set<int> set;
+  for (int elem : array){
+    if (set.find(elem) != set.end()) return elem;
+    set.insert(elem);
+  }
+  return -1;
+}
+```
+
+풀이요약:
+- for-loop 돌면서 unordered_set 찾아보고 없으면 등록
 
 ---
 
@@ -346,6 +444,59 @@ vector<int> spiralTraverse(vector<vector<int>> array) {
 
 ![[Pasted image 20240317200853.png]]
 
+문제요약:
+- 두 숫자로 정해지는 구간 (interval)의 배열을 받아서,
+- Overlap 되는 interval은 합쳐서 새로운 interval 배열을 리턴하는 함수 만들기.
+
+```cpp
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool compareVecs(vector<int> &vec1, vector<int> &vec2){
+  return vec1[0] < vec2[0];
+}
+
+vector<vector<int>> mergeOverlappingIntervals(vector<vector<int>> intervals) {
+  // Sort the intervals with respect to the first element of each interval.
+  sort(intervals.begin(),intervals.end(),compareVecs);
+  
+  vector<bool> mergeNext;
+  vector<vector<int>> result;
+
+  // set mergeNext array
+  int x = INT_MIN;
+  for (int i = 0 ; i < intervals.size()-1 ; i++){
+    // set x : interval-end that might be merged or not
+    x = max(x, intervals[i][1]);
+    if (x >= intervals[i+1][0]) mergeNext.emplace_back(true);
+    else mergeNext.emplace_back(false);
+  }
+  mergeNext.emplace_back(false);
+
+  // build a new interval and push back to the result
+  int a, b;
+  for (int i = 0 ; i < intervals.size(); i++){
+    // need to set a new interval?
+    if (i == 0) {a = intervals[i][0]; b = intervals[i][1];}
+    else if (!mergeNext[i-1]) {a = intervals[i][0]; b = intervals[i][1];}
+    // need to close the new interval?
+    if (!mergeNext[i]) {
+      b = max(b,intervals[i][1]);
+      vector<int> x = {a, b};
+      result.emplace_back(x);
+    }
+    // need to merge?
+    else {b = max(b, intervals[i][1]);}
+  }
+  return result;
+}
+```
+
+풀이요약:
+- 일단 2D vector를 각 interval의 첫번째 element로 sort
+- 각 interval의 끝값 (또는 현재 interval의 끝값 보다 더 큰 interval의 끝값)과 다음 Intervale의 시작값을 비교해서 merge할지 판단해서 mergeNext 마스크를 채움
+- mergeNext 마스크를 보면서, interval을 새로 만들지, merge 할지 판단하면서 result 2D vector에 새 interval 채워넣기.
 
 ---
 # Reference
