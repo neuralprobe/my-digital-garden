@@ -17,6 +17,8 @@ tags:
 - [[AlgoExpert 001-010]]
 - [[AlgoExpert 011-020]]
 - [[AlgoExpert 021-030]]
+- [[AlgoExpert 031-040]]
+- [[AlgoExpert 041-050]]
 
 
 ![[Screen Shot 2022-09-06 at 4.40.47 PM.png]]
