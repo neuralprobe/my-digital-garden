@@ -16,7 +16,8 @@ tags:
 ![[Pasted image 20240408224021.png]]
 
 문제요약:
-
+- Coin denomination 배열이랑 목표 금액 받아서
+- 목표금액 만드는 최소 코인 갯수 리턴하는 함수 만들기
 
 ```cpp
 
