@@ -178,7 +178,7 @@ tags: NLP Attention Decoder GPT
 
 - Step3: Make ==weighted values== $Y$
 	- Multiply the importance matrix to the values
-	- $Y=$ $Softmax(Q_{(3\times 64)}\times K^T_{(64\times 3)})_{(3\times 3)}\times V_{(3\times 64)}$
+	- $Y=$ $Softmax$$(Q_{(3\times 64)}\times K^T_{(64\times 3)})_{(3\times 3)}$$\times$$V_{(3\times 64)}$
 
 - Computation Steps: ==Save the previous Q and K history== !!
 	1. The i-th row vector $x_i$ of $X$ matrix with 12288 dimension is fed as input

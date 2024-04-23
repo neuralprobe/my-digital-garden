@@ -216,8 +216,22 @@ tags:
 ---
 # Word Break
 
-하나의 문자열과, 여러 단어가 들어있는 dictionary를 받아서, dictionary 안에 있는 문자만으로 주어진 문자열을 만들 수 있는지 여부를 리턴
+**하나의 문자열과, 여러 단어가 들어있는 dictionary를 받아서, dictionary 안에 있는 문자만으로 주어진 문자열을 만들 수 있는지 여부를 리턴**
 - [LeetCode139. Workd Break](https://leetcode.com/problems/word-break/description/)
+
+**풀이 방법**
+- Brute force
+	- n 개 문자로 이뤄진 문자열은, 최대 n-1개로 쪼갤 수 있고 그 방법은 $2^{n-1}$ 개이 있고, word matching 하는 n번을 곱하면 $O(n\times 2^{n-1})$ time complexity. 너무 심함 ㅠ
+- 일단 배열로 주어진 dictionary를 hashset으로 바꿔주자
+	- 그러면, 해당 단어가 있는지를 $O(1)$에 판단할 수 있음.
+- 주어진 문장을 한번에 두개로 자르는 함수 WordBreak를 생각해보자
+	- 한 번만 자르면, "nocope"를 "n"와 "ocope", "no"와 "cope" 이런식으로 나눌 수 있음.
+	- Recursive하게 추가로 자르면, $O(2^n)$ complexity로 자를 수 있음.
+
+![[Pasted image 20240423224704.png]]
+
+
+
 
 
 ---
