@@ -221,16 +221,130 @@ tags:
 
 **풀이 방법**
 - Brute force
-	- n 개 문자로 이뤄진 문자열은, 최대 n-1개로 쪼갤 수 있고 그 방법은 $2^{n-1}$ 개이 있고, word matching 하는 n번을 곱하면 $O(n\times 2^{n-1})$ time complexity. 너무 심함 ㅠ
+	- n 개 문자로 이뤄진 문자열은, 최대 n-1개의 splitter로 쪼갤 수 있고 그 방법은 $2^{n-1}$ 개이 있고, word matching 하는 시도 횟수 n번을 곱하면 $O(n\times 2^{n-1})$ time complexity. 너무 심함 ㅠ
 - 일단 배열로 주어진 dictionary를 hashset으로 바꿔주자
 	- 그러면, 해당 단어가 있는지를 $O(1)$에 판단할 수 있음.
 - 주어진 문장을 한번에 두개로 자르는 함수 WordBreak를 생각해보자
-	- 한 번만 자르면, "nocope"를 "n"와 "ocope", "no"와 "cope" 이런식으로 나눌 수 있음.
-	- Recursive하게 추가로 자르면, $O(2^n)$ complexity로 자를 수 있음.
+	- 한 번만 자르면, "nocope"를 "n"와 "ocope", "no"와 "cope" 이런 식으로 나눌 수 있음.
+	- 이렇게 만든 피라미드에 있는 node의 갯수, 즉 문장을 쪼개는 방법의 갯수는 $2^n$  (1+2+4+8 ....)
+	- 첫 칸을 검색해서 hashset에 있으면 두번째 칸은 추가로 자르면서 recursive하게 진행해보면,
+	- WB("nocope") = 
+		- WB("ocope")&&Dict("n"))  || WB("cope") && Dict("no") || WB ...
 
 ![[Pasted image 20240423224704.png]]
 
 
+- 쪼개고 한 부분을 검색에서 찾으면, 남은 부분 쪼개고 다시 한 부분 검색 하는 방식으로 recursion 하면 됨.
+- 이 때 한 단계씩 깊어질 때마다 O(1)의 공간이 필요해서, 필요한 space complexity = O(n)
+
+![[Pasted image 20240423225911.png]]
+
+- WB("cope")가 겹치는 거처럼 같은 subproblem을 반복해서 풀어야 하기 때문에, Memoization 해서 문제 더 빨리 풀 수 있음.
+- Bottom-up으로 해보자
+	- 맨 뒤에 부터 한 글자 e, 두 글자 pe, 세 글자 ope, 이런 식으로 subproblem 등록해 놓을 수 있음
+	- string의 글자 수와 같은 크기의 배열 WB를 만들고
+	- WB("pe") 같은 뒤에서 두글자 경우의 결과를 WB의 뒤에서 두번째 자리에 배치
+
+![[Pasted image 20240506093053.png]]
+
+- WB 배열을 왼쪽에서 채워나가는 방식으로 다시 풀면 ...
+	- empty string을 표현하는 칸을 배열 WB 맨 앞에 추가
+	- n번째 칸의 결과는
+		- n번째 칸의 위치에서 테스트하는 딕셔너리 단어의 길이만큼 앞에 있는 칸이 True이고
+		- 그 사이의 글자들의 테스트하는 딕셔너리 단어와 동일할 때 True로 등록할 수 있음.
+
+![[Pasted image 20240506094224.png]]
+
+![[Pasted image 20240506094346.png]]
+
+- Add-on 문제: 딕셔너리 크기 K가 너무 크면??
+	- string을 움직이는 포인터 2개 만들어서
+	- 이중 for 문 만들고,
+	- LP와 RP의 사이에 있는 substring이 딕셔너리 안에 있는가? 체크하면 됨
+	- 그러면 $O(n\times k)$에서 $O(n^2)$ 로 크기가 작아짐.
+
+---
+# 0-1 Knapsack Problem
+
+**무게 제한 있는 가방에, 무게와 value가 정해져 있는 아이템을 여러 개 넣을 수 있는데, 이때 넣을 수 있는 최대 value를 구하기**
+- [0/1 Knapsack Problem and Dynamic Programming](https://leetcode.com/discuss/study-guide/1152328/01-Knapsack-Problem-and-Dynamic-Programming)
+
+풀이방법:
+- Brute-force:
+	- 4개의 item 있으면, $2^4$ 경우의 수 $\rightarrow$ $O(2^n)$ 
+![[Pasted image 20240506095805.png]]
+
+- 최적화 문제니깐 Dynamic programming 의심해보자
+	- Problem과 subproblem으로 쪼갤 수 있는가?
+	- `NS("ABCD",5)`를 쪼개려면 ?
+
+- 잘못된 문제 쪼개기
+	- 첫번째 arg는 sack에 넣을 후보 아이템들 (이미 넣었거나, 넣지 않기로 결정한 경우에는 여기서 배제 됨)
+	- 두번째 arg는 sack의 남은 무게
+	- 아래 그림의 네 가지 경우는 a, b, c, d를 하나씩 가방에 넣은 경우.
+	- 하지만 이러면 아무것도 넣지 않는 경우를 놓치게 됨.
+![[Pasted image 20240506100200.png]]
+
+- 제대로 쪼개기?!
+	- 각 물체가 가방안에 있는 경우와 없는 경우를 고려해서 쪼개야 함
+	- `NS(n, w)` 로 두개의 argument가 들어가니깐, 2차원 subproblem matrix를 만들어서 결과 저장해야 함
+
+![[Pasted image 20240506101223.png]]
+
+- Top-down으로 풀기
+	- NS("ABCD",5)에서 시작해서 초록색 링크 타고 갔다가,
+	- 오렌지색 링크 타면서 값 만들기
+![[Pasted image 20240506101702.png]]
+
+- Bottom-up으로 풀기
+	- 엣지에 있는 숫자로부터 매트릭스 채워나가기
+
+![[Pasted image 20240506101841.png]]
+
+- Time complexity = $O(n\times w)$
+- Time complexity = $O(n\times w)$ 
+	- $\rightarrow$ $O(w)$ 로 최적화 가능 (계산할 때 윗줄만 필요하니깐)
+
+--- 
+# Partition Equal Subset Sum
+
+**주어진 배열을 두개의 subset으로 나눠서, 각 subset의 합이 같아지는 경우가 존재하는지를 리턴**
+- [LeetCode416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/description/)
+
+![[Pasted image 20240506102425.png]]
+
+**풀이방법**
+- Brute-force:
+	- 각 숫자가 첫번째 그룹에 선택 될 수 있고 안될 수 있으니깐.
+	- $2^N$ complexity 갖는 문제
+- Problem과 Subproblem으로 나누기?
+	- Knapsack 문제처럼,
+	- 각 숫자가 첫번째 그룹 A에 포함될지 안될지 정하면 됨
+	- 왼쪽은 맨 끝자리 수가 A에 포함되는 경우, 오른쪽은 포함 안되는 경우 (자동으로 B에 포함되는 경우)
+	- `DP(n,s)` 를 저장하기 위한 2차원 배열 만들어서 채워나가면 문제 풀 수 있음
+
+![[Pasted image 20240506102909.png]]
+
+![[Pasted image 20240506103050.png]]
+
+---
+# Coin Change II
+
+**동전의 종류가 주어지고, 동전으로 만들어야 할 target sum 주어지고, 각 동전은 무한개 가져다 쓸 수 있을 때, target sum 만들 수 있는지 여부 리턴** 
+- [LeetCode518. Coin Change II](https://leetcode.com/problems/coin-change-ii/)
+
+풀이방법:
+- 잘못된 문제나누기
+	- 아래 그림은 동전이 선택되지 않는 경우가 포함 안 되어있음
+
+![[Pasted image 20240506112617.png]]
+
+- Knapsack처럼 동전을 포함할지 정해야 할 뿐만 아니라, 각 동전의 갯수까지 정해야하는 Knapsack 응용문제
+	- 왼쪽은 마지막 숫자가 선택이 안 되었을 경우, 남은 sum은 그대로 5
+	- 오른쪽은 선택이 되었을 경우, 선택된 3만큼 sum이 소비된 2가 남은 sum.
+	- 코인 3을 중복 선택할 수 있으니, 첫번째 arg의 배열에서 3을 지우지 않기! : 이부분이 Knapsack과의 차이점!!
+
+![[Pasted image 20240507002012.png]]
 
 
 
@@ -247,4 +361,5 @@ tags:
 - [LeetCode152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/)
 - [LeetCode5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)
 - [LeetCode647. Panlidromic Substrings](https://leetcode.com/problems/palindromic-substrings/description/)
-- 
+- [0/1 Knapsack Problem and Dynamic Programming](https://leetcode.com/discuss/study-guide/1152328/01-Knapsack-Problem-and-Dynamic-Programming)
+
